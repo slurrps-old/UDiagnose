@@ -1,0 +1,10 @@
+E:\Current Projects\UFormat\UFormat\bin\Release\UFormat.exe.config
+E:\Current Projects\UFormat\UFormat\bin\Release\UFormat.exe
+E:\Current Projects\UFormat\UFormat\bin\Release\UFormat.pdb
+E:\Current Projects\UFormat\UFormat\obj\Release\UFormat.csprojAssemblyReference.cache
+E:\Current Projects\UFormat\UFormat\obj\Release\UFormat.frmMain.resources
+E:\Current Projects\UFormat\UFormat\obj\Release\UFormat.Properties.Resources.resources
+E:\Current Projects\UFormat\UFormat\obj\Release\UFormat.splashScreen.resources
+E:\Current Projects\UFormat\UFormat\obj\Release\UFormat.csproj.GenerateResource.cache
+E:\Current Projects\UFormat\UFormat\obj\Release\UFormat.exe
+E:\Current Projects\UFormat\UFormat\obj\Release\UFormat.pdb

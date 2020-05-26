@@ -1,0 +1,113 @@
+G:\Current Projects\UFormat\UFormat\bin\Debug\UFormat.exe.config
+G:\Current Projects\UFormat\UFormat\bin\Debug\UFormat.exe
+G:\Current Projects\UFormat\UFormat\bin\Debug\UFormat.pdb
+G:\Current Projects\UFormat\UFormat\obj\Debug\UFormat.csprojAssemblyReference.cache
+G:\Current Projects\UFormat\UFormat\obj\Debug\UFormat.Properties.Resources.resources
+G:\Current Projects\UFormat\UFormat\obj\Debug\UFormat.csproj.GenerateResource.cache
+G:\Current Projects\UFormat\UFormat\obj\Debug\UFormat.exe
+G:\Current Projects\UFormat\UFormat\obj\Debug\UFormat.pdb
+C:\Users\lambk\Desktop\UFormat\UFormat\bin\Debug\UFormat.exe.config
+C:\Users\lambk\Desktop\UFormat\UFormat\bin\Debug\UFormat.exe
+C:\Users\lambk\Desktop\UFormat\UFormat\bin\Debug\UFormat.pdb
+C:\Users\lambk\Desktop\UFormat\UFormat\obj\Debug\UFormat.csprojAssemblyReference.cache
+C:\Users\lambk\Desktop\UFormat\UFormat\obj\Debug\UFormat.frmDriveFormat.resources
+C:\Users\lambk\Desktop\UFormat\UFormat\obj\Debug\UFormat.Properties.Resources.resources
+C:\Users\lambk\Desktop\UFormat\UFormat\obj\Debug\UFormat.csproj.GenerateResource.cache
+C:\Users\lambk\Desktop\UFormat\UFormat\obj\Debug\UFormat.exe
+C:\Users\lambk\Desktop\UFormat\UFormat\obj\Debug\UFormat.pdb
+F:\Current Projects\UFormat\UFormat\bin\Debug\UFormat.exe.config
+F:\Current Projects\UFormat\UFormat\bin\Debug\UFormat.exe
+F:\Current Projects\UFormat\UFormat\bin\Debug\UFormat.pdb
+F:\Current Projects\UFormat\UFormat\obj\Debug\UFormat.csprojAssemblyReference.cache
+F:\Current Projects\UFormat\UFormat\obj\Debug\UFormat.Properties.Resources.resources
+F:\Current Projects\UFormat\UFormat\obj\Debug\UFormat.csproj.GenerateResource.cache
+F:\Current Projects\UFormat\UFormat\obj\Debug\UFormat.exe
+F:\Current Projects\UFormat\UFormat\obj\Debug\UFormat.pdb
+E:\Current Projects\UFormat\UFormat\bin\Debug\UFormat.exe.config
+E:\Current Projects\UFormat\UFormat\bin\Debug\UFormat.exe
+E:\Current Projects\UFormat\UFormat\bin\Debug\UFormat.pdb
+E:\Current Projects\UFormat\UFormat\obj\Debug\UFormat.csprojAssemblyReference.cache
+E:\Current Projects\UFormat\UFormat\obj\Debug\UFormat.Properties.Resources.resources
+E:\Current Projects\UFormat\UFormat\obj\Debug\UFormat.csproj.GenerateResource.cache
+E:\Current Projects\UFormat\UFormat\obj\Debug\UFormat.exe
+E:\Current Projects\UFormat\UFormat\obj\Debug\UFormat.pdb
+G:\Current Projects\UFormat\UFormat\obj\Debug\UFormat.frmMain.resources
+E:\Current Projects\UFormat\UFormat\obj\Debug\UFormat.frmMain.resources
+F:\Current Projects\UFormat\UFormat\obj\Debug\UFormat.frmMain.resources
+E:\Current Projects\UFormat\UFormat\obj\Debug\UFormat.splashScreen.resources
+F:\Current Projects\UFormat\UFormat\obj\Debug\UFormat.splashScreen.resources
+G:\Current Projects\UDiagnose\UFormat\bin\Debug\UFormat.exe.config
+G:\Current Projects\UDiagnose\UFormat\bin\Debug\UFormat.exe
+G:\Current Projects\UDiagnose\UFormat\bin\Debug\UFormat.pdb
+G:\Current Projects\UDiagnose\UFormat\obj\Debug\UFormat.csprojAssemblyReference.cache
+G:\Current Projects\UDiagnose\UFormat\obj\Debug\UFormat.frmMain.resources
+G:\Current Projects\UDiagnose\UFormat\obj\Debug\UFormat.Properties.Resources.resources
+G:\Current Projects\UDiagnose\UFormat\obj\Debug\UFormat.splashScreen.resources
+G:\Current Projects\UDiagnose\UFormat\obj\Debug\UFormat.csproj.GenerateResource.cache
+G:\Current Projects\UDiagnose\UFormat\obj\Debug\UFormat.exe
+G:\Current Projects\UDiagnose\UFormat\obj\Debug\UFormat.pdb
+E:\Current Projects\UDiagnose\UFormat\bin\Debug\UFormat.exe.config
+E:\Current Projects\UDiagnose\UFormat\bin\Debug\UFormat.exe
+E:\Current Projects\UDiagnose\UFormat\bin\Debug\UFormat.pdb
+E:\Current Projects\UDiagnose\UFormat\obj\Debug\UFormat.csprojAssemblyReference.cache
+E:\Current Projects\UDiagnose\UFormat\obj\Debug\UFormat.Forms.ErrorCodeForm.resources
+E:\Current Projects\UDiagnose\UFormat\obj\Debug\UFormat.frmMain.resources
+E:\Current Projects\UDiagnose\UFormat\obj\Debug\UFormat.Properties.Resources.resources
+E:\Current Projects\UDiagnose\UFormat\obj\Debug\UFormat.splashScreen.resources
+E:\Current Projects\UDiagnose\UFormat\obj\Debug\UFormat.csproj.GenerateResource.cache
+E:\Current Projects\UDiagnose\UFormat\obj\Debug\UFormat.exe
+E:\Current Projects\UDiagnose\UFormat\obj\Debug\UFormat.pdb
+E:\Current Projects\UDiagnose\UFormat\bin\Debug\UFormat.exe.manifest
+E:\Current Projects\UDiagnose\UFormat\bin\Debug\UFormat.application
+E:\Current Projects\UDiagnose\UFormat\obj\Debug\UFormat.exe.manifest
+E:\Current Projects\UDiagnose\UFormat\obj\Debug\UFormat.application
+C:\Users\brandonthomas\source\repos\udiagnose\UFormat\bin\Debug\UFormat.exe.config
+C:\Users\brandonthomas\source\repos\udiagnose\UFormat\bin\Debug\UFormat.exe.manifest
+C:\Users\brandonthomas\source\repos\udiagnose\UFormat\bin\Debug\UFormat.application
+C:\Users\brandonthomas\source\repos\udiagnose\UFormat\bin\Debug\UFormat.exe
+C:\Users\brandonthomas\source\repos\udiagnose\UFormat\bin\Debug\UFormat.pdb
+C:\Users\brandonthomas\source\repos\udiagnose\UFormat\obj\Debug\UFormat.csprojAssemblyReference.cache
+C:\Users\brandonthomas\source\repos\udiagnose\UFormat\obj\Debug\UFormat.Forms.ErrorCodeForm.resources
+C:\Users\brandonthomas\source\repos\udiagnose\UFormat\obj\Debug\UFormat.frmMain.resources
+C:\Users\brandonthomas\source\repos\udiagnose\UFormat\obj\Debug\UFormat.Properties.Resources.resources
+C:\Users\brandonthomas\source\repos\udiagnose\UFormat\obj\Debug\UFormat.splashScreen.resources
+C:\Users\brandonthomas\source\repos\udiagnose\UFormat\obj\Debug\UFormat.csproj.GenerateResource.cache
+C:\Users\brandonthomas\source\repos\udiagnose\UFormat\obj\Debug\UFormat.exe.manifest
+C:\Users\brandonthomas\source\repos\udiagnose\UFormat\obj\Debug\UFormat.application
+C:\Users\brandonthomas\source\repos\udiagnose\UFormat\obj\Debug\UFormat.exe
+C:\Users\brandonthomas\source\repos\udiagnose\UFormat\obj\Debug\UFormat.pdb
+C:\Users\brandonthomas\source\repos\udiagnose\UFormat\bin\Debug\Ref\ErrorCodes.xml
+C:\Users\klamb\Source\Repos\udiagnose\UFormat\bin\Debug\Ref\ErrorCodes.xml
+C:\Users\klamb\Source\Repos\udiagnose\UFormat\bin\Debug\UFormat.exe.config
+C:\Users\klamb\Source\Repos\udiagnose\UFormat\bin\Debug\UFormat.exe.manifest
+C:\Users\klamb\Source\Repos\udiagnose\UFormat\bin\Debug\UFormat.application
+C:\Users\klamb\Source\Repos\udiagnose\UFormat\bin\Debug\UFormat.exe
+C:\Users\klamb\Source\Repos\udiagnose\UFormat\bin\Debug\UFormat.pdb
+C:\Users\klamb\Source\Repos\udiagnose\UFormat\obj\Debug\UFormat.csprojAssemblyReference.cache
+C:\Users\klamb\Source\Repos\udiagnose\UFormat\obj\Debug\UFormat.Forms.ErrorCodeForm.resources
+C:\Users\klamb\Source\Repos\udiagnose\UFormat\obj\Debug\UFormat.frmMain.resources
+C:\Users\klamb\Source\Repos\udiagnose\UFormat\obj\Debug\UFormat.Properties.Resources.resources
+C:\Users\klamb\Source\Repos\udiagnose\UFormat\obj\Debug\UFormat.splashScreen.resources
+C:\Users\klamb\Source\Repos\udiagnose\UFormat\obj\Debug\UFormat.csproj.GenerateResource.cache
+C:\Users\klamb\Source\Repos\udiagnose\UFormat\obj\Debug\UFormat.exe.manifest
+C:\Users\klamb\Source\Repos\udiagnose\UFormat\obj\Debug\UFormat.application
+C:\Users\klamb\Source\Repos\udiagnose\UFormat\obj\Debug\UFormat.exe
+C:\Users\klamb\Source\Repos\udiagnose\UFormat\obj\Debug\UFormat.pdb
+C:\Users\lambk\Source\Repos\udiagnose\UFormat\bin\Debug\Ref\ErrorCodes.xml
+C:\Users\lambk\Source\Repos\udiagnose\UFormat\bin\Debug\UFormat.exe.config
+C:\Users\lambk\Source\Repos\udiagnose\UFormat\bin\Debug\UFormat.exe.manifest
+C:\Users\lambk\Source\Repos\udiagnose\UFormat\bin\Debug\UFormat.application
+C:\Users\lambk\Source\Repos\udiagnose\UFormat\bin\Debug\UFormat.exe
+C:\Users\lambk\Source\Repos\udiagnose\UFormat\bin\Debug\UFormat.pdb
+C:\Users\lambk\Source\Repos\udiagnose\UFormat\obj\Debug\UFormat.csprojAssemblyReference.cache
+C:\Users\lambk\Source\Repos\udiagnose\UFormat\obj\Debug\UFormat.Forms.ErrorCodeForm.resources
+C:\Users\lambk\Source\Repos\udiagnose\UFormat\obj\Debug\UFormat.frmMain.resources
+C:\Users\lambk\Source\Repos\udiagnose\UFormat\obj\Debug\UFormat.Properties.Resources.resources
+C:\Users\lambk\Source\Repos\udiagnose\UFormat\obj\Debug\UFormat.splashScreen.resources
+C:\Users\lambk\Source\Repos\udiagnose\UFormat\obj\Debug\UFormat.csproj.GenerateResource.cache
+C:\Users\lambk\Source\Repos\udiagnose\UFormat\obj\Debug\UFormat.exe.manifest
+C:\Users\lambk\Source\Repos\udiagnose\UFormat\obj\Debug\UFormat.application
+C:\Users\lambk\Source\Repos\udiagnose\UFormat\obj\Debug\UFormat.exe
+C:\Users\lambk\Source\Repos\udiagnose\UFormat\obj\Debug\UFormat.pdb
+C:\Users\lambk\Source\Repos\udiagnose\UFormat\bin\Debug\OpenHardwareMonitorLib.dll
+C:\Users\lambk\Source\Repos\udiagnose\UFormat\obj\Debug\UFormat.csproj.CopyComplete
