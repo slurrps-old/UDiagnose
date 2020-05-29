@@ -1,4 +1,4 @@
-﻿namespace UFormat.Forms
+﻿namespace UDiagnose.Forms
 {
     partial class ErrorCodeForm
     {

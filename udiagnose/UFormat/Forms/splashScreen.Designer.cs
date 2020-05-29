@@ -1,4 +1,4 @@
-﻿namespace UFormat
+﻿namespace UDiagnose
 {
     partial class splashScreen
     {
@@ -100,7 +100,7 @@
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.BackgroundImage = global::UFormat.Properties.Resources.UDiagnose64v2px;
+            this.pictureBox1.BackgroundImage = global::UDiagnose.Properties.Resources.UDiagnose64v2px;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox1.Location = new System.Drawing.Point(253, 52);
             this.pictureBox1.Name = "pictureBox1";
@@ -112,7 +112,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::UFormat.Properties.Resources.splashScreen;
+            this.BackgroundImage = global::UDiagnose.Properties.Resources.splashScreen;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(614, 471);
             this.Controls.Add(this.pictureBox1);

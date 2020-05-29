@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using OpenHardwareMonitor.Hardware;
 using UFormat.Forms;
 
-namespace UFormat
+namespace UDiagnose
 {
     class CPUTemp
     {

@@ -19,23 +19,26 @@ using System.Management;
 using System.Diagnostics;
 using Microsoft.Win32;
 using HardwareDisplay; //HardWare class
-using UFormat.Forms;
+using UDiagnose.Forms;
 using System.Timers;
-using UFormat.Classes;
+using UDiagnose.Classes;
 using ComponentFactory.Krypton.Toolkit;
 using System.Threading;
+using UFormat.Forms;
 
 
-namespace UFormat
+namespace UDiagnose
 {
     public partial class frmMain : KryptonForm
     {
+        //Public Timer for the system to gather load and temperatures live so that they do not iterfier with the UI controls
+        public System.Timers.Timer systemLoadTimer;
         //-------------------------------------------------------------------------------------------------
-        //Constants
+        //Constants for conveersions of different byt sizes
         const float FLOAT_GIG_CONVERSION = 1073741824f; //Holds the float conversion number of GB per bit
         const float FLOAT_TERA_CONVERSION = 0.0009765625F;
 
-        //Global Variables
+        //Global Variables to use DriveInfo and variable to hold all of the systems rive information.
         DriveInfo[] allDrives = DriveInfo.GetDrives(); //Calling the drive info instance from system.IO
         string driveInfo; //This is the variable that will hold all of the drive information
 
@@ -43,9 +46,19 @@ namespace UFormat
         Hardware hwInfo = new Hardware();
         CPUTemp CPUTemperature = new CPUTemp();
 
-        //Public Timer for the system to gather load and temperatures live
-        public System.Timers.Timer systemLoadTimer;
+        //Performance Counters-------------------------------------------------------------------------------------------
+        //Physical Disk
+        public PerformanceCounter pDrive = new PerformanceCounter("PhysicalDisk", "% Disk Time", "_Total");
+        //System
+        public PerformanceCounter pUpTime = new PerformanceCounter("System", "System Up Time");
+        //Processor
+        public PerformanceCounter pFrequency = new PerformanceCounter("Processor Performance", "Processor Frequency", "PPM_Processor_0");
+        public PerformanceCounter pThreads = new PerformanceCounter("Process", "Thread Count", "_Total");
+        public PerformanceCounter pHandles = new PerformanceCounter("Process", "Handle Count", "_Total");
 
+        //GPU
+        //Find a way to make this work for any GPU
+        //public PerformanceCounter pGPUPercent = new PerformanceCounter("GPU Engine", "Utilization Percentage", "pid_10244_luid_0x00000000_0x00009FDA_phys_0_eng_0_engtype_3D");
         //------------------------------------------------------------------------------------------------
 
         public frmMain()
@@ -127,27 +140,54 @@ namespace UFormat
             //    MessageBox.Show("Alert - Your CPU Temperature is dangerously high please shutdown", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             //}
 
-            //CPU and RAM load values on the chart and the progress bars
-            //Load
-            float fCPU = pCPUCounter.NextValue();
+            //System Loads Page----------------------------------------------------------------------------------------------------------------------
+            //Holds the performance counters for CPU, RAM, and Drive load percentage on the system
+            //Memeory
             float fRAM = pRAMCounter.NextValue();
-
-            //Load
+            //Physical Disk
+            float fDrive = pDrive.NextValue();
+            //CPU
+            float fCPU = pCPUCounter.NextValue();
+            float fFrequency = (pFrequency.NextValue()/ 1000);
+            int intThreads = Convert.ToInt32(pThreads.NextValue());
+            int intHandles = Convert.ToInt32(pHandles.NextValue());
+            //GPU
+            
+            //float fGPU = pGPUPercent.NextValue();
+            //Sysyem
+            TimeSpan ts = TimeSpan.FromSeconds(pUpTime.NextValue());//Holds the performance counter for the system up time
+            
+            //--
             //Invoke the UI elements from a different thread!! Important or the UI will not work for the system loads
             this.BeginInvoke((ThreadStart)delegate ()
             {
-                //UI change code goes here
-                cpuLoad.Value = (int)fCPU;
-                ramLoad.Value = (int)fRAM;
+               
+                //--
+                //Load information on the text below the chart
+                //Memory
+                lblRAMUtilization.Text = string.Format("{0:0.00}%", fRAM);
 
-                //Load
-                lblCPUPercent.Text = string.Format("{0:0.00}%", fCPU);
-                lblRAMPercent.Text = string.Format("{0:0.00}%", fRAM);
-                //Load
+                //Physical Disk
+                lblDriveUtilization.Text = string.Format("{0:0.00}%", fDrive);
+
+                //CPU
+                lblCPUUtilization.Text = string.Format("{0:0.00}%", fCPU);
+                lblFrequency.Text = string.Format("{0:0.00}GHz", fFrequency);
+                lblHandles.Text = (intHandles.ToString());
+                lblThreads.Text = (intThreads.ToString());
+
+                //GPU
+                //lblGPUUtilization.Text = string.Format("{0:0.00}%", fGPU);
+
+                //Chart Load
                 chartCPURAM.Series["CPU"].Points.AddY(fCPU);
                 chartCPURAM.Series["RAM"].Points.AddY(fRAM);
+                chartCPURAM.Series["Drive"].Points.AddY(fDrive);
+                //chartCPURAM.Series["GPU"].Points.AddY(fGPU);
 
-                //lblCurrentCPUSpeed.Text = hwInfo.GetCpuSpeedInGHz().ToString() + " GHz";
+                //System Up Time
+                lblSystemUpTime.Text = string.Format("{0}d:{1}h:{2}m:{3}s", ts.Days, ts.Hours, ts.Minutes, ts.Seconds);
+
             });
 
         }//End OnTimedEvent event
@@ -160,6 +200,7 @@ namespace UFormat
             //Get the CPU name and RAM information
             lblCPU.Text = "CPU - " + hwInfo.ProcessorName();
             lblRAM.Text = "RAM - " + hwInfo.RamInformation();
+            lblGPUInfo.Text = "GPU - " + hwInfo.GPUName();
 
             //We get all of the drive information here
             foreach (DriveInfo di in DriveInfo.GetDrives())
@@ -409,6 +450,7 @@ namespace UFormat
             About facts = new About();
             facts.Show();
         }
+
         //---------------------------------------------------------------------------------------------------------------------------------
         //---------------------------------------------------------------------------------------------------------------------------------
 

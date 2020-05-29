@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using OpenHardwareMonitor.Hardware;
 
-namespace UFormat
+namespace UDiagnose
 {
     class UpdateVisitor : IVisitor
     {

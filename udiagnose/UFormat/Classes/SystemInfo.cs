@@ -11,7 +11,7 @@ using System.Management;
 using Microsoft.Win32;
 
 
-namespace UFormat
+namespace UDiagnose
 {
     //Author: Kenneth Lamb
     //Purpose:  This class contains the definiton of a SystemInfo class. It contains no private variables however 
@@ -107,7 +107,7 @@ namespace UFormat
 
 
         //Retrieves processor speed
-        protected double GetCpuSpeedInGHz()
+        private double GetCpuSpeedInGHz()
         {
             double GHz = 0.0;
             using (ManagementClass mc = new ManagementClass("Win32_Processor"))
@@ -169,7 +169,7 @@ namespace UFormat
 
         ////////////////////////////////////////////////////////////////////////
         //Retrieves current clock speed of cpu
-        public double GetCPUCurrentClockSpeed()
+        protected double GetCPUCurrentClockSpeed()
         {
             double cpuClockSpeed = 0;
             //create an instance of the Managemnet class with the

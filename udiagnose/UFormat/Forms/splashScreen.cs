@@ -11,8 +11,9 @@ using UFormat;
 using System.Threading;
 using HardwareDisplay;
 using ComponentFactory.Krypton.Toolkit;
+using UFormat;
 
-namespace UFormat
+namespace UDiagnose
 {
     public partial class splashScreen : KryptonForm
     {

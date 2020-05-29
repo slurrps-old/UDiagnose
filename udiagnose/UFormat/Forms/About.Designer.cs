@@ -66,7 +66,7 @@
             // 
             // logoPictureBox
             // 
-            this.logoPictureBox.BackgroundImage = global::UFormat.Properties.Resources.UDiagnose64v2px;
+            this.logoPictureBox.BackgroundImage = global::UDiagnose.Properties.Resources.UDiagnose64v2px;
             this.logoPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.logoPictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.logoPictureBox.Location = new System.Drawing.Point(3, 3);

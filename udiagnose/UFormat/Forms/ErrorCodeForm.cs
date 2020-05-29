@@ -18,7 +18,7 @@ using System.IO;
 
 
 
-namespace UFormat.Forms
+namespace UDiagnose.Forms
 {
     public partial class ErrorCodeForm : KryptonForm
     {

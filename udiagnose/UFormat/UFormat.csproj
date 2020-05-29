@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{BE3C31C6-ECE6-4428-8C74-561DBBEA2F18}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>UDiagnose</RootNamespace>
-    <AssemblyName>UDiagnose</AssemblyName>
+    <RootNamespace>UFormat</RootNamespace>
+    <AssemblyName>UFormat</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -53,7 +53,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>UDiagnose.Program</StartupObject>
+    <StartupObject>UFormat.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>7EB71D6D8787025830AEB4B75AFB733844E87114</ManifestCertificateThumbprint>

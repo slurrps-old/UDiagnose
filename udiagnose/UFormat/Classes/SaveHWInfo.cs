@@ -7,7 +7,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.IO; //Used to list the drives
 
-namespace UFormat.Classes
+namespace UDiagnose.Classes
 {
     class SaveHWInfo
     {

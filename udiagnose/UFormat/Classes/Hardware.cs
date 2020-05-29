@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using UFormat;
+using UDiagnose;
 using System.Windows.Forms;
 using System.Management;
 
@@ -74,7 +74,7 @@ namespace HardwareDisplay
             processorID = ("Processor ID: " + GetProcessorId());
             numCores = ("Number of Cores: " + GetNumberCores().ToString());
             numThreads = ("Number of Threads: " + GetNumberThreads().ToString());
-            cpuSpeed = ("Speed: " + GetCpuSpeedInGHz().ToString("0.00") + " GHz");
+            cpuSpeed = ("Speed: " + GetCpuMaxSpeedInGHz().ToString("0.00") + " GHz");
             l2Cache = ("L2 Cache: " + GetL2Cache().ToString() + " KB");
             l3Cache = ("L3 Cache: " + GetL3Cache().ToString() + " MB");
 
@@ -93,7 +93,7 @@ namespace HardwareDisplay
 
             //GPU info
             gpuName = (GetGPUName());
-            gpuDriver = ("Driver: " + GetGPUDriver());
+            gpuDriver = ("Driver version: " + GetGPUDriver());
             gpuInfo = (GetGPUInformation());
 
         }//End TreeView
@@ -152,7 +152,14 @@ namespace HardwareDisplay
             info = GetRAMManufact() + " " + (GetPhysicalMemory() / 1024).ToString() + " GB";
             return info;
         }
-        
+
+        public string GPUName() //Get the RAM information in this method and return it
+        {
+            string info = "";
+            info = GetGPUName();
+            return info;
+        }
+
     }//End Class
 
 }//End Namespace
