@@ -10,5 +10,6 @@ You can also save your hardware configuration to a txt file on your computer to 
 This is an alpha program as it is still being designed and worked on. But feel free to download it and give it a try. 
 
 Note* You will need to run the program in administrator mode to get the live monitoring feature to work.
+Temperature monitoring is currently turned off while it is still being worked on. This will be available in a future update.
 
 For comments, requested features, or critique please leave me an email at neutronapplications@gmail.com
