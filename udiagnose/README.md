@@ -22,4 +22,8 @@
 
 <!-- wp:paragraph -->
 <p>Note* You will need to run the program in administrator mode to get the live Temperature monitoring feature to work.</p>
+<<<<<<< HEAD
 <!-- /wp:paragraph -->
+=======
+<!-- /wp:paragraph -->
+>>>>>>> e62eb4766205a50bbf125e18c24cb4758167422a
