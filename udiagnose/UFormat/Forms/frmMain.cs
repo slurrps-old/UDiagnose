@@ -25,14 +25,16 @@ using UDiagnose.Classes;
 using ComponentFactory.Krypton.Toolkit;
 using System.Threading;
 using UFormat.Forms;
-
+using System.Windows.Forms.VisualStyles;
 
 namespace UDiagnose
 {
     public partial class frmMain : KryptonForm
     {
+        #region Public variables and constants for the program
         //Public Timer for the system to gather load and temperatures live so that they do not iterfier with the UI controls
         public System.Timers.Timer systemLoadTimer;
+        public string[] instances = null;
         //-------------------------------------------------------------------------------------------------
         //Constants for conveersions of different byt sizes
         const float FLOAT_GIG_CONVERSION = 1073741824f; //Holds the float conversion number of GB per bit
@@ -45,7 +47,10 @@ namespace UDiagnose
         //Initialize the SystemInfo Class and cputemp classes
         Hardware hwInfo = new Hardware();
         CPUTemp CPUTemperature = new CPUTemp();
+        #endregion
 
+        
+        #region Performance Counters
         //Performance Counters-------------------------------------------------------------------------------------------
         //Physical Disk
         public PerformanceCounter pDrive = new PerformanceCounter("PhysicalDisk", "% Disk Time", "_Total");
@@ -56,10 +61,20 @@ namespace UDiagnose
         public PerformanceCounter pThreads = new PerformanceCounter("Process", "Thread Count", "_Total");
         public PerformanceCounter pHandles = new PerformanceCounter("Process", "Handle Count", "_Total");
 
+
         //GPU
+        //GPU Utilization
+        //Not sure how to implement this as this changes from computer to computer
+        //public PerformanceCounter pGPUPercent = new PerformanceCounter("GPU Engine", "Utilization Percentage", "pid_10236_luid_0x00000000_0x0000CE82_phus_0_eng_0_engtype_3D");
+
+
+
+
         //Find a way to make this work for any GPU
         //public PerformanceCounter pGPUPercent = new PerformanceCounter("GPU Engine", "Utilization Percentage", "pid_10244_luid_0x00000000_0x00009FDA_phys_0_eng_0_engtype_3D");
         //------------------------------------------------------------------------------------------------
+        #endregion
+
 
         public frmMain()
         {
@@ -77,13 +92,16 @@ namespace UDiagnose
             systemLoadTimer = new System.Timers.Timer(1000);
             systemLoadTimer.Elapsed += OnTimedEvent;
             systemLoadTimer.Enabled = true;
-            //--
+            //---
+            chartCPURAM.ChartAreas[0].AxisY.Maximum = 100;
+            chartCPU.ChartAreas[0].AxisY.Maximum = 100;
 
-        }
-        //--------------------------------------------------------------------------------------------------------------------------------------------------------------
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
-        //////////////////////////////////////////////////////////////Functions////////////////////////////////////////////////////////////////////
+        }//End Form Load
 
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////// Functions ///////////////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        #region Functions
         //Convert bytes to Gigabytes used to display correct drive information
         public float ConversionToGig(float conversionNum)
         {
@@ -118,7 +136,7 @@ namespace UDiagnose
             }
 
         }
-
+        
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //This event will load up the live data that will continue to read as long as the program is up and running. This is on a separate thread from the GUI
 
@@ -140,7 +158,7 @@ namespace UDiagnose
             //    MessageBox.Show("Alert - Your CPU Temperature is dangerously high please shutdown", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             //}
 
-            //System Loads Page----------------------------------------------------------------------------------------------------------------------
+            //System Loads Page--------------------------------------------------------------------------//
             //Holds the performance counters for CPU, RAM, and Drive load percentage on the system
             //Memeory
             float fRAM = pRAMCounter.NextValue();
@@ -152,17 +170,19 @@ namespace UDiagnose
             int intThreads = Convert.ToInt32(pThreads.NextValue());
             int intHandles = Convert.ToInt32(pHandles.NextValue());
             //GPU
-            
             //float fGPU = pGPUPercent.NextValue();
+
+
             //Sysyem
             TimeSpan ts = TimeSpan.FromSeconds(pUpTime.NextValue());//Holds the performance counter for the system up time
-            
-            //--
+            //------
+
+            //Important!!!
             //Invoke the UI elements from a different thread!! Important or the UI will not work for the system loads
             this.BeginInvoke((ThreadStart)delegate ()
             {
                
-                //--
+                //----
                 //Load information on the text below the chart
                 //Memory
                 lblRAMUtilization.Text = string.Format("{0:0.00}%", fRAM);
@@ -179,12 +199,14 @@ namespace UDiagnose
                 //GPU
                 //lblGPUUtilization.Text = string.Format("{0:0.00}%", fGPU);
 
-                //Chart Load
+                //Chart Overview Load
                 chartCPURAM.Series["CPU"].Points.AddY(fCPU);
                 chartCPURAM.Series["RAM"].Points.AddY(fRAM);
                 chartCPURAM.Series["Drive"].Points.AddY(fDrive);
                 //chartCPURAM.Series["GPU"].Points.AddY(fGPU);
 
+                //chartCPU
+                chartCPU.Series["CPU"].Points.AddY(fCPU);
                 //System Up Time
                 lblSystemUpTime.Text = string.Format("{0}d:{1}h:{2}m:{3}s", ts.Days, ts.Hours, ts.Minutes, ts.Seconds);
 
@@ -197,6 +219,8 @@ namespace UDiagnose
         /// </summary>
         public void loadUpData()
         {
+            //Pre: Does not need anything to initialize
+            //Purpose: To load up the data during the splash screen form
             //Get the CPU name and RAM information
             lblCPU.Text = "CPU - " + hwInfo.ProcessorName();
             lblRAM.Text = "RAM - " + hwInfo.RamInformation();
@@ -213,11 +237,12 @@ namespace UDiagnose
 
         }//End loadUpData
 
-
-         //----------------------------------------------------------------------------------------------------------------
+        #endregion
+        //----------------------------------------------------------------------------------------------------------------
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //////////////////////////////////////////////////////////// DRIVE INFORMATION ////////////////////////////////////////////////////////////////////////////
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        #region Drive Information
         //This will update the drive information in rtbDriveInfo rich text box on the form everytime you select a different drive from lstDrives on the form
         private void lstDrives_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -284,7 +309,7 @@ namespace UDiagnose
         {
             //Clears both lists in the system so that drives don't duplicate
             lstDrives.Items.Clear();
-            rtbDriveInfo.Clear();
+            
 
             //Here we will update the list of drives in the system in case one was removed 
             foreach (DriveInfo di in DriveInfo.GetDrives())
@@ -298,13 +323,14 @@ namespace UDiagnose
         }//End Drive Button code
          ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
          ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        #endregion
 
-
-        //--------------------------------------------------------------------------------------------------------------------------------------------------------------
+       
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //////////////////////////////////////////////////////////// Menu Strip ///////////////////////////////////////////////////////////////////////////////////
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //
+        #region Menu Strip Items
         //File strip Menu items
 
         //Save the Hardware tree to a text file listing all the hardware in the system
@@ -451,11 +477,33 @@ namespace UDiagnose
             facts.Show();
         }
 
-        //---------------------------------------------------------------------------------------------------------------------------------
-        //---------------------------------------------------------------------------------------------------------------------------------
+        #endregion
 
 
+        private void pgSystemTemp_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("This feature is currently in development, Thank you for your patience");
+        }
 
+        private void label11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chartCPURAM_Click(object sender, EventArgs e)
+        {
+
+        }
     }//End class
 
 

@@ -78,3 +78,9 @@ C:\Users\lambk\source\repos\udiagnose\UFormat\bin\Debug\UDiagnose.exe
 C:\Users\lambk\source\repos\udiagnose\UFormat\bin\Debug\UDiagnose.pdb
 C:\Users\lambk\source\repos\udiagnose\UFormat\obj\Debug\UDiagnose.exe
 C:\Users\lambk\source\repos\udiagnose\UFormat\obj\Debug\UDiagnose.pdb
+C:\Users\lambk\Source\Repos\udiagnose\UFormat\bin\Debug\ComponentFactory.Krypton.Design.dll
+C:\Users\lambk\Source\Repos\udiagnose\UFormat\bin\Debug\ComponentFactory.Krypton.Docking.dll
+C:\Users\lambk\Source\Repos\udiagnose\UFormat\bin\Debug\ComponentFactory.Krypton.Navigator.dll
+C:\Users\lambk\Source\Repos\udiagnose\UFormat\bin\Debug\ComponentFactory.Krypton.Ribbon.dll
+C:\Users\lambk\Source\Repos\udiagnose\UFormat\bin\Debug\ComponentFactory.Krypton.Toolkit.dll
+C:\Users\lambk\Source\Repos\udiagnose\UFormat\bin\Debug\ComponentFactory.Krypton.Workspace.dll
