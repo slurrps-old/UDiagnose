@@ -49,6 +49,10 @@
             System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
@@ -56,10 +60,6 @@
             System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Title title3 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lstDrives = new ComponentFactory.Krypton.Toolkit.KryptonListBox();
@@ -78,7 +78,7 @@
             this.DriveandHardware = new ComponentFactory.Krypton.Docking.KryptonDockableNavigator();
             this.pgDrives = new ComponentFactory.Krypton.Navigator.KryptonPage();
             this.kryptonGroupBox1 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
-            this.kryptonButton1 = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.btnFormatDrive = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.kryptonButton2 = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.kryptonButton3 = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.label2 = new System.Windows.Forms.Label();
@@ -87,15 +87,10 @@
             this.kryptonDockableNavigator1 = new ComponentFactory.Krypton.Docking.KryptonDockableNavigator();
             this.pgOverview = new ComponentFactory.Krypton.Navigator.KryptonPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lblCPUOverview = new System.Windows.Forms.Label();
             this.lblGPUInfo = new System.Windows.Forms.Label();
             this.lblGPUUtilization = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.lblHandles = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.lblThreads = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.lblFrequency = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.lblDriveUtilization = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.lblRAMUtilization = new System.Windows.Forms.Label();
@@ -106,8 +101,32 @@
             this.lblSystem = new System.Windows.Forms.Label();
             this.chartCPURAM = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.lblRAM = new System.Windows.Forms.Label();
-            this.lblCPU = new System.Windows.Forms.Label();
             this.pgCPU = new ComponentFactory.Krypton.Navigator.KryptonPage();
+            this.lblCPUPageUpTime = new System.Windows.Forms.Label();
+            this.label38 = new System.Windows.Forms.Label();
+            this.lblCPUPAgeUtil = new System.Windows.Forms.Label();
+            this.label35 = new System.Windows.Forms.Label();
+            this.lblL3Cache = new System.Windows.Forms.Label();
+            this.label37 = new System.Windows.Forms.Label();
+            this.lblL2Cache = new System.Windows.Forms.Label();
+            this.label33 = new System.Windows.Forms.Label();
+            this.lblCPUThreads = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
+            this.lblCPUCores = new System.Windows.Forms.Label();
+            this.label34 = new System.Windows.Forms.Label();
+            this.lblL1Cahce = new System.Windows.Forms.Label();
+            this.label36 = new System.Windows.Forms.Label();
+            this.lblBaseCPUSpeed = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.lblCPU = new System.Windows.Forms.Label();
+            this.lblHandles = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.lblThreads = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.lblFrequency = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.chartCPU = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.pgGPU = new ComponentFactory.Krypton.Navigator.KryptonPage();
             this.pgSystemTemp = new ComponentFactory.Krypton.Navigator.KryptonPage();
             this.label4 = new System.Windows.Forms.Label();
             this.progMoboTemp = new MetroFramework.Controls.MetroProgressSpinner();
@@ -173,16 +192,6 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.chartCPU = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.btn = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pCPUCounter)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pRAMCounter)).BeginInit();
@@ -207,12 +216,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.chartCPURAM)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pgCPU)).BeginInit();
             this.pgCPU.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartCPU)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pgGPU)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pgSystemTemp)).BeginInit();
             this.pgSystemTemp.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uDiagnoseRibbon)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartCPU)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -380,7 +390,7 @@
             this.pgSystemLoad,
             this.pgSystemTemp});
             this.DriveandHardware.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue;
-            this.DriveandHardware.SelectedIndex = 2;
+            this.DriveandHardware.SelectedIndex = 0;
             this.DriveandHardware.Size = new System.Drawing.Size(909, 715);
             this.DriveandHardware.TabIndex = 12;
             this.DriveandHardware.Text = "kryptonDockableNavigator1";
@@ -397,7 +407,7 @@
             this.pgDrives.MinimumSize = new System.Drawing.Size(50, 50);
             this.pgDrives.Name = "pgDrives";
             this.pgDrives.Size = new System.Drawing.Size(745, 713);
-            this.pgDrives.Text = "Drive Information";
+            this.pgDrives.Text = "";
             this.pgDrives.ToolTipTitle = "Page ToolTip";
             this.pgDrives.UniqueName = "0E0C8E0A832345B073A5BFCB901374AF";
             // 
@@ -413,21 +423,22 @@
             // 
             // kryptonGroupBox1.Panel
             // 
-            this.kryptonGroupBox1.Panel.Controls.Add(this.kryptonButton1);
+            this.kryptonGroupBox1.Panel.Controls.Add(this.btnFormatDrive);
             this.kryptonGroupBox1.Panel.Controls.Add(this.kryptonButton2);
             this.kryptonGroupBox1.Panel.Controls.Add(this.kryptonButton3);
             this.kryptonGroupBox1.Size = new System.Drawing.Size(327, 213);
             this.kryptonGroupBox1.TabIndex = 12;
             this.kryptonGroupBox1.Values.Heading = "Test Features not yet available";
             // 
-            // kryptonButton1
+            // btnFormatDrive
             // 
-            this.kryptonButton1.Location = new System.Drawing.Point(13, 27);
-            this.kryptonButton1.Name = "kryptonButton1";
-            this.kryptonButton1.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue;
-            this.kryptonButton1.Size = new System.Drawing.Size(155, 34);
-            this.kryptonButton1.TabIndex = 9;
-            this.kryptonButton1.Values.Text = "Format Drive";
+            this.btnFormatDrive.Location = new System.Drawing.Point(13, 27);
+            this.btnFormatDrive.Name = "btnFormatDrive";
+            this.btnFormatDrive.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue;
+            this.btnFormatDrive.Size = new System.Drawing.Size(155, 34);
+            this.btnFormatDrive.TabIndex = 9;
+            this.btnFormatDrive.Values.Text = "Format Drive";
+            this.btnFormatDrive.Click += new System.EventHandler(this.kryptonButton1_Click);
             // 
             // kryptonButton2
             // 
@@ -501,7 +512,8 @@
             this.kryptonDockableNavigator1.PageBackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.PanelClient;
             this.kryptonDockableNavigator1.Pages.AddRange(new ComponentFactory.Krypton.Navigator.KryptonPage[] {
             this.pgOverview,
-            this.pgCPU});
+            this.pgCPU,
+            this.pgGPU});
             this.kryptonDockableNavigator1.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue;
             this.kryptonDockableNavigator1.SelectedIndex = 0;
             this.kryptonDockableNavigator1.Size = new System.Drawing.Size(745, 713);
@@ -524,15 +536,10 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox2.Controls.Add(this.lblCPUOverview);
             this.groupBox2.Controls.Add(this.lblGPUInfo);
             this.groupBox2.Controls.Add(this.lblGPUUtilization);
             this.groupBox2.Controls.Add(this.label10);
-            this.groupBox2.Controls.Add(this.lblHandles);
-            this.groupBox2.Controls.Add(this.label11);
-            this.groupBox2.Controls.Add(this.lblThreads);
-            this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Controls.Add(this.lblFrequency);
-            this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.lblDriveUtilization);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.lblRAMUtilization);
@@ -543,7 +550,6 @@
             this.groupBox2.Controls.Add(this.lblSystem);
             this.groupBox2.Controls.Add(this.chartCPURAM);
             this.groupBox2.Controls.Add(this.lblRAM);
-            this.groupBox2.Controls.Add(this.lblCPU);
             this.groupBox2.Font = new System.Drawing.Font("Gadugi", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.ForeColor = System.Drawing.Color.White;
             this.groupBox2.Location = new System.Drawing.Point(20, 22);
@@ -553,11 +559,23 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "System Loads";
             // 
+            // lblCPUOverview
+            // 
+            this.lblCPUOverview.AutoSize = true;
+            this.lblCPUOverview.BackColor = System.Drawing.Color.Transparent;
+            this.lblCPUOverview.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCPUOverview.ForeColor = System.Drawing.Color.White;
+            this.lblCPUOverview.Location = new System.Drawing.Point(26, 43);
+            this.lblCPUOverview.Name = "lblCPUOverview";
+            this.lblCPUOverview.Size = new System.Drawing.Size(76, 19);
+            this.lblCPUOverview.TabIndex = 27;
+            this.lblCPUOverview.Text = "CPU Info";
+            // 
             // lblGPUInfo
             // 
             this.lblGPUInfo.AutoSize = true;
             this.lblGPUInfo.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGPUInfo.Location = new System.Drawing.Point(26, 88);
+            this.lblGPUInfo.Location = new System.Drawing.Point(26, 101);
             this.lblGPUInfo.Name = "lblGPUInfo";
             this.lblGPUInfo.Size = new System.Drawing.Size(92, 19);
             this.lblGPUInfo.TabIndex = 22;
@@ -567,7 +585,7 @@
             // 
             this.lblGPUUtilization.AutoSize = true;
             this.lblGPUUtilization.Font = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGPUUtilization.Location = new System.Drawing.Point(183, 546);
+            this.lblGPUUtilization.Location = new System.Drawing.Point(541, 473);
             this.lblGPUUtilization.Name = "lblGPUUtilization";
             this.lblGPUUtilization.Size = new System.Drawing.Size(19, 17);
             this.lblGPUUtilization.TabIndex = 20;
@@ -577,80 +595,17 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(61, 545);
+            this.label10.Location = new System.Drawing.Point(419, 472);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(114, 19);
             this.label10.TabIndex = 21;
             this.label10.Text = "GPU Utilization";
             // 
-            // lblHandles
-            // 
-            this.lblHandles.AutoSize = true;
-            this.lblHandles.Font = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHandles.Location = new System.Drawing.Point(363, 510);
-            this.lblHandles.Name = "lblHandles";
-            this.lblHandles.Size = new System.Drawing.Size(18, 17);
-            this.lblHandles.TabIndex = 18;
-            this.lblHandles.Text = "--";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(255, 508);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(102, 19);
-            this.label11.TabIndex = 19;
-            this.label11.Text = "CPU Handles:";
-            this.label11.Click += new System.EventHandler(this.label11_Click);
-            // 
-            // lblThreads
-            // 
-            this.lblThreads.AutoSize = true;
-            this.lblThreads.Font = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblThreads.Location = new System.Drawing.Point(363, 474);
-            this.lblThreads.Name = "lblThreads";
-            this.lblThreads.Size = new System.Drawing.Size(18, 17);
-            this.lblThreads.TabIndex = 16;
-            this.lblThreads.Text = "--";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(255, 472);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(101, 19);
-            this.label8.TabIndex = 17;
-            this.label8.Text = "CPU Threads:";
-            this.label8.Click += new System.EventHandler(this.label8_Click);
-            // 
-            // lblFrequency
-            // 
-            this.lblFrequency.AutoSize = true;
-            this.lblFrequency.Font = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFrequency.Location = new System.Drawing.Point(363, 438);
-            this.lblFrequency.Name = "lblFrequency";
-            this.lblFrequency.Size = new System.Drawing.Size(33, 17);
-            this.lblFrequency.TabIndex = 14;
-            this.lblFrequency.Text = "GHz";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(255, 438);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(89, 19);
-            this.label6.TabIndex = 15;
-            this.label6.Text = "CPU Speed:";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
-            // 
             // lblDriveUtilization
             // 
             this.lblDriveUtilization.AutoSize = true;
             this.lblDriveUtilization.Font = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDriveUtilization.Location = new System.Drawing.Point(183, 510);
+            this.lblDriveUtilization.Location = new System.Drawing.Point(541, 437);
             this.lblDriveUtilization.Name = "lblDriveUtilization";
             this.lblDriveUtilization.Size = new System.Drawing.Size(19, 17);
             this.lblDriveUtilization.TabIndex = 12;
@@ -660,7 +615,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(62, 509);
+            this.label9.Location = new System.Drawing.Point(420, 436);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(120, 19);
             this.label9.TabIndex = 13;
@@ -670,7 +625,7 @@
             // 
             this.lblRAMUtilization.AutoSize = true;
             this.lblRAMUtilization.Font = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRAMUtilization.Location = new System.Drawing.Point(183, 473);
+            this.lblRAMUtilization.Location = new System.Drawing.Point(193, 473);
             this.lblRAMUtilization.Name = "lblRAMUtilization";
             this.lblRAMUtilization.Size = new System.Drawing.Size(19, 17);
             this.lblRAMUtilization.TabIndex = 10;
@@ -680,7 +635,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(62, 473);
+            this.label7.Location = new System.Drawing.Point(72, 473);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(115, 19);
             this.label7.TabIndex = 11;
@@ -690,7 +645,7 @@
             // 
             this.lblCPUUtilization.AutoSize = true;
             this.lblCPUUtilization.Font = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCPUUtilization.Location = new System.Drawing.Point(183, 438);
+            this.lblCPUUtilization.Location = new System.Drawing.Point(193, 438);
             this.lblCPUUtilization.Name = "lblCPUUtilization";
             this.lblCPUUtilization.Size = new System.Drawing.Size(19, 17);
             this.lblCPUUtilization.TabIndex = 9;
@@ -700,7 +655,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(61, 437);
+            this.label3.Location = new System.Drawing.Point(71, 437);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(116, 19);
             this.label3.TabIndex = 9;
@@ -710,7 +665,7 @@
             // 
             this.lblSystemUpTime.AutoSize = true;
             this.lblSystemUpTime.Font = new System.Drawing.Font("Gadugi", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSystemUpTime.Location = new System.Drawing.Point(156, 586);
+            this.lblSystemUpTime.Location = new System.Drawing.Point(193, 554);
             this.lblSystemUpTime.Name = "lblSystemUpTime";
             this.lblSystemUpTime.Size = new System.Drawing.Size(21, 19);
             this.lblSystemUpTime.TabIndex = 9;
@@ -720,7 +675,7 @@
             // 
             this.lblSystem.AutoSize = true;
             this.lblSystem.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSystem.Location = new System.Drawing.Point(25, 586);
+            this.lblSystem.Location = new System.Drawing.Point(62, 554);
             this.lblSystem.Name = "lblSystem";
             this.lblSystem.Size = new System.Drawing.Size(125, 19);
             this.lblSystem.TabIndex = 9;
@@ -807,40 +762,43 @@
             title1.ForeColor = System.Drawing.Color.White;
             title1.Name = "System Loads";
             this.chartCPURAM.Titles.Add(title1);
-            this.chartCPURAM.Click += new System.EventHandler(this.chartCPURAM_Click);
             // 
             // lblRAM
             // 
             this.lblRAM.AutoSize = true;
             this.lblRAM.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRAM.Location = new System.Drawing.Point(26, 62);
+            this.lblRAM.Location = new System.Drawing.Point(26, 72);
             this.lblRAM.Name = "lblRAM";
             this.lblRAM.Size = new System.Drawing.Size(80, 19);
             this.lblRAM.TabIndex = 6;
             this.lblRAM.Text = "RAM Info";
             // 
-            // lblCPU
-            // 
-            this.lblCPU.AutoSize = true;
-            this.lblCPU.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCPU.Location = new System.Drawing.Point(25, 35);
-            this.lblCPU.Name = "lblCPU";
-            this.lblCPU.Size = new System.Drawing.Size(76, 19);
-            this.lblCPU.TabIndex = 6;
-            this.lblCPU.Text = "CPU Info";
-            // 
             // pgCPU
             // 
             this.pgCPU.AutoHiddenSlideSize = new System.Drawing.Size(200, 200);
-            this.pgCPU.Controls.Add(this.button7);
-            this.pgCPU.Controls.Add(this.button8);
-            this.pgCPU.Controls.Add(this.button9);
-            this.pgCPU.Controls.Add(this.button4);
-            this.pgCPU.Controls.Add(this.button5);
-            this.pgCPU.Controls.Add(this.button6);
-            this.pgCPU.Controls.Add(this.button3);
-            this.pgCPU.Controls.Add(this.button2);
-            this.pgCPU.Controls.Add(this.btn);
+            this.pgCPU.Controls.Add(this.lblCPUPageUpTime);
+            this.pgCPU.Controls.Add(this.label38);
+            this.pgCPU.Controls.Add(this.lblCPUPAgeUtil);
+            this.pgCPU.Controls.Add(this.label35);
+            this.pgCPU.Controls.Add(this.lblL3Cache);
+            this.pgCPU.Controls.Add(this.label37);
+            this.pgCPU.Controls.Add(this.lblL2Cache);
+            this.pgCPU.Controls.Add(this.label33);
+            this.pgCPU.Controls.Add(this.lblCPUThreads);
+            this.pgCPU.Controls.Add(this.label32);
+            this.pgCPU.Controls.Add(this.lblCPUCores);
+            this.pgCPU.Controls.Add(this.label34);
+            this.pgCPU.Controls.Add(this.lblL1Cahce);
+            this.pgCPU.Controls.Add(this.label36);
+            this.pgCPU.Controls.Add(this.lblBaseCPUSpeed);
+            this.pgCPU.Controls.Add(this.label31);
+            this.pgCPU.Controls.Add(this.lblCPU);
+            this.pgCPU.Controls.Add(this.lblHandles);
+            this.pgCPU.Controls.Add(this.label11);
+            this.pgCPU.Controls.Add(this.lblThreads);
+            this.pgCPU.Controls.Add(this.label8);
+            this.pgCPU.Controls.Add(this.lblFrequency);
+            this.pgCPU.Controls.Add(this.label6);
             this.pgCPU.Controls.Add(this.chartCPU);
             this.pgCPU.Flags = 65534;
             this.pgCPU.LastVisibleSet = true;
@@ -850,6 +808,359 @@
             this.pgCPU.Text = "CPU Details";
             this.pgCPU.ToolTipTitle = "Page ToolTip";
             this.pgCPU.UniqueName = "C3ABA6D2693646D01AA7D8E5CE815F85";
+            // 
+            // lblCPUPageUpTime
+            // 
+            this.lblCPUPageUpTime.AutoSize = true;
+            this.lblCPUPageUpTime.BackColor = System.Drawing.Color.Transparent;
+            this.lblCPUPageUpTime.Font = new System.Drawing.Font("Gadugi", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCPUPageUpTime.ForeColor = System.Drawing.Color.White;
+            this.lblCPUPageUpTime.Location = new System.Drawing.Point(177, 635);
+            this.lblCPUPageUpTime.Name = "lblCPUPageUpTime";
+            this.lblCPUPageUpTime.Size = new System.Drawing.Size(21, 19);
+            this.lblCPUPageUpTime.TabIndex = 41;
+            this.lblCPUPageUpTime.Text = "--";
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.BackColor = System.Drawing.Color.Transparent;
+            this.label38.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label38.ForeColor = System.Drawing.Color.White;
+            this.label38.Location = new System.Drawing.Point(46, 635);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(125, 19);
+            this.label38.TabIndex = 42;
+            this.label38.Text = "System Up Time:";
+            // 
+            // lblCPUPAgeUtil
+            // 
+            this.lblCPUPAgeUtil.AutoSize = true;
+            this.lblCPUPAgeUtil.BackColor = System.Drawing.Color.Transparent;
+            this.lblCPUPAgeUtil.Font = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCPUPAgeUtil.ForeColor = System.Drawing.Color.White;
+            this.lblCPUPAgeUtil.Location = new System.Drawing.Point(168, 429);
+            this.lblCPUPAgeUtil.Name = "lblCPUPAgeUtil";
+            this.lblCPUPAgeUtil.Size = new System.Drawing.Size(19, 17);
+            this.lblCPUPAgeUtil.TabIndex = 39;
+            this.lblCPUPAgeUtil.Text = "%";
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.BackColor = System.Drawing.Color.Transparent;
+            this.label35.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label35.ForeColor = System.Drawing.Color.White;
+            this.label35.Location = new System.Drawing.Point(46, 428);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(116, 19);
+            this.label35.TabIndex = 40;
+            this.label35.Text = "CPU Utilization:";
+            // 
+            // lblL3Cache
+            // 
+            this.lblL3Cache.AutoSize = true;
+            this.lblL3Cache.BackColor = System.Drawing.Color.Transparent;
+            this.lblL3Cache.Font = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblL3Cache.ForeColor = System.Drawing.Color.White;
+            this.lblL3Cache.Location = new System.Drawing.Point(572, 605);
+            this.lblL3Cache.Name = "lblL3Cache";
+            this.lblL3Cache.Size = new System.Drawing.Size(18, 17);
+            this.lblL3Cache.TabIndex = 37;
+            this.lblL3Cache.Text = "--";
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.BackColor = System.Drawing.Color.Transparent;
+            this.label37.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label37.ForeColor = System.Drawing.Color.White;
+            this.label37.Location = new System.Drawing.Point(422, 603);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(75, 19);
+            this.label37.TabIndex = 38;
+            this.label37.Text = "L3 Cache:";
+            // 
+            // lblL2Cache
+            // 
+            this.lblL2Cache.AutoSize = true;
+            this.lblL2Cache.BackColor = System.Drawing.Color.Transparent;
+            this.lblL2Cache.Font = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblL2Cache.ForeColor = System.Drawing.Color.White;
+            this.lblL2Cache.Location = new System.Drawing.Point(572, 570);
+            this.lblL2Cache.Name = "lblL2Cache";
+            this.lblL2Cache.Size = new System.Drawing.Size(18, 17);
+            this.lblL2Cache.TabIndex = 35;
+            this.lblL2Cache.Text = "--";
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.BackColor = System.Drawing.Color.Transparent;
+            this.label33.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label33.ForeColor = System.Drawing.Color.White;
+            this.label33.Location = new System.Drawing.Point(422, 568);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(75, 19);
+            this.label33.TabIndex = 36;
+            this.label33.Text = "L2 Cache:";
+            // 
+            // lblCPUThreads
+            // 
+            this.lblCPUThreads.AutoSize = true;
+            this.lblCPUThreads.BackColor = System.Drawing.Color.Transparent;
+            this.lblCPUThreads.Font = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCPUThreads.ForeColor = System.Drawing.Color.White;
+            this.lblCPUThreads.Location = new System.Drawing.Point(572, 500);
+            this.lblCPUThreads.Name = "lblCPUThreads";
+            this.lblCPUThreads.Size = new System.Drawing.Size(18, 17);
+            this.lblCPUThreads.TabIndex = 33;
+            this.lblCPUThreads.Text = "--";
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.BackColor = System.Drawing.Color.Transparent;
+            this.label32.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label32.ForeColor = System.Drawing.Color.White;
+            this.label32.Location = new System.Drawing.Point(422, 498);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(140, 19);
+            this.label32.TabIndex = 34;
+            this.label32.Text = "Logical Processors:";
+            // 
+            // lblCPUCores
+            // 
+            this.lblCPUCores.AutoSize = true;
+            this.lblCPUCores.BackColor = System.Drawing.Color.Transparent;
+            this.lblCPUCores.Font = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCPUCores.ForeColor = System.Drawing.Color.White;
+            this.lblCPUCores.Location = new System.Drawing.Point(572, 465);
+            this.lblCPUCores.Name = "lblCPUCores";
+            this.lblCPUCores.Size = new System.Drawing.Size(18, 17);
+            this.lblCPUCores.TabIndex = 31;
+            this.lblCPUCores.Text = "--";
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.BackColor = System.Drawing.Color.Transparent;
+            this.label34.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label34.ForeColor = System.Drawing.Color.White;
+            this.label34.Location = new System.Drawing.Point(422, 463);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(52, 19);
+            this.label34.TabIndex = 32;
+            this.label34.Text = "Cores:";
+            // 
+            // lblL1Cahce
+            // 
+            this.lblL1Cahce.AutoSize = true;
+            this.lblL1Cahce.BackColor = System.Drawing.Color.Transparent;
+            this.lblL1Cahce.Font = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblL1Cahce.ForeColor = System.Drawing.Color.White;
+            this.lblL1Cahce.Location = new System.Drawing.Point(572, 535);
+            this.lblL1Cahce.Name = "lblL1Cahce";
+            this.lblL1Cahce.Size = new System.Drawing.Size(18, 17);
+            this.lblL1Cahce.TabIndex = 29;
+            this.lblL1Cahce.Text = "--";
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.BackColor = System.Drawing.Color.Transparent;
+            this.label36.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label36.ForeColor = System.Drawing.Color.White;
+            this.label36.Location = new System.Drawing.Point(422, 533);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(75, 19);
+            this.label36.TabIndex = 30;
+            this.label36.Text = "L1 Cache:";
+            // 
+            // lblBaseCPUSpeed
+            // 
+            this.lblBaseCPUSpeed.AutoSize = true;
+            this.lblBaseCPUSpeed.BackColor = System.Drawing.Color.Transparent;
+            this.lblBaseCPUSpeed.Font = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBaseCPUSpeed.ForeColor = System.Drawing.Color.White;
+            this.lblBaseCPUSpeed.Location = new System.Drawing.Point(569, 429);
+            this.lblBaseCPUSpeed.Name = "lblBaseCPUSpeed";
+            this.lblBaseCPUSpeed.Size = new System.Drawing.Size(33, 17);
+            this.lblBaseCPUSpeed.TabIndex = 27;
+            this.lblBaseCPUSpeed.Text = "GHz";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.BackColor = System.Drawing.Color.Transparent;
+            this.label31.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label31.ForeColor = System.Drawing.Color.White;
+            this.label31.Location = new System.Drawing.Point(419, 428);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(91, 19);
+            this.label31.TabIndex = 28;
+            this.label31.Text = "Base Speed:";
+            // 
+            // lblCPU
+            // 
+            this.lblCPU.AutoSize = true;
+            this.lblCPU.BackColor = System.Drawing.Color.Transparent;
+            this.lblCPU.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCPU.ForeColor = System.Drawing.Color.White;
+            this.lblCPU.Location = new System.Drawing.Point(177, 25);
+            this.lblCPU.Name = "lblCPU";
+            this.lblCPU.Size = new System.Drawing.Size(76, 19);
+            this.lblCPU.TabIndex = 26;
+            this.lblCPU.Text = "CPU Info";
+            // 
+            // lblHandles
+            // 
+            this.lblHandles.AutoSize = true;
+            this.lblHandles.BackColor = System.Drawing.Color.Transparent;
+            this.lblHandles.Font = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHandles.ForeColor = System.Drawing.Color.White;
+            this.lblHandles.Location = new System.Drawing.Point(331, 500);
+            this.lblHandles.Name = "lblHandles";
+            this.lblHandles.Size = new System.Drawing.Size(18, 17);
+            this.lblHandles.TabIndex = 24;
+            this.lblHandles.Text = "--";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.BackColor = System.Drawing.Color.Transparent;
+            this.label11.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.White;
+            this.label11.Location = new System.Drawing.Point(223, 498);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(102, 19);
+            this.label11.TabIndex = 25;
+            this.label11.Text = "CPU Handles:";
+            // 
+            // lblThreads
+            // 
+            this.lblThreads.AutoSize = true;
+            this.lblThreads.BackColor = System.Drawing.Color.Transparent;
+            this.lblThreads.Font = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblThreads.ForeColor = System.Drawing.Color.White;
+            this.lblThreads.Location = new System.Drawing.Point(331, 464);
+            this.lblThreads.Name = "lblThreads";
+            this.lblThreads.Size = new System.Drawing.Size(18, 17);
+            this.lblThreads.TabIndex = 22;
+            this.lblThreads.Text = "--";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.Transparent;
+            this.label8.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.White;
+            this.label8.Location = new System.Drawing.Point(223, 462);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(101, 19);
+            this.label8.TabIndex = 23;
+            this.label8.Text = "CPU Threads:";
+            // 
+            // lblFrequency
+            // 
+            this.lblFrequency.AutoSize = true;
+            this.lblFrequency.BackColor = System.Drawing.Color.Transparent;
+            this.lblFrequency.Font = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFrequency.ForeColor = System.Drawing.Color.White;
+            this.lblFrequency.Location = new System.Drawing.Point(331, 428);
+            this.lblFrequency.Name = "lblFrequency";
+            this.lblFrequency.Size = new System.Drawing.Size(33, 17);
+            this.lblFrequency.TabIndex = 20;
+            this.lblFrequency.Text = "GHz";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(223, 428);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(89, 19);
+            this.label6.TabIndex = 21;
+            this.label6.Text = "CPU Speed:";
+            // 
+            // chartCPU
+            // 
+            this.chartCPU.BackColor = System.Drawing.Color.Transparent;
+            this.chartCPU.BorderSkin.BackColor = System.Drawing.Color.White;
+            chartArea2.AxisX.IsLabelAutoFit = false;
+            chartArea2.AxisX.LabelStyle.Font = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea2.AxisX.LabelStyle.ForeColor = System.Drawing.Color.White;
+            chartArea2.AxisX.LineColor = System.Drawing.Color.White;
+            chartArea2.AxisX.MajorGrid.LineColor = System.Drawing.Color.White;
+            chartArea2.AxisX.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dot;
+            chartArea2.AxisX.MajorTickMark.LineColor = System.Drawing.Color.White;
+            chartArea2.AxisX.MinorGrid.LineColor = System.Drawing.Color.White;
+            chartArea2.AxisX.Title = "Time in Seconds";
+            chartArea2.AxisX.TitleFont = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea2.AxisX.TitleForeColor = System.Drawing.Color.White;
+            chartArea2.AxisX2.LineColor = System.Drawing.Color.White;
+            chartArea2.AxisY.IsLabelAutoFit = false;
+            chartArea2.AxisY.LabelStyle.Font = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea2.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White;
+            chartArea2.AxisY.LineColor = System.Drawing.Color.White;
+            chartArea2.AxisY.MajorGrid.LineColor = System.Drawing.Color.White;
+            chartArea2.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dot;
+            chartArea2.AxisY.MajorTickMark.LineColor = System.Drawing.Color.White;
+            chartArea2.AxisY.MinorGrid.LineColor = System.Drawing.Color.White;
+            chartArea2.AxisY.Title = "System Utilization %";
+            chartArea2.AxisY.TitleFont = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea2.AxisY.TitleForeColor = System.Drawing.Color.White;
+            chartArea2.AxisY2.LineColor = System.Drawing.Color.White;
+            chartArea2.BackColor = System.Drawing.Color.Transparent;
+            chartArea2.BorderColor = System.Drawing.Color.White;
+            chartArea2.Name = "CPUArea";
+            chartArea2.ShadowColor = System.Drawing.Color.White;
+            this.chartCPU.ChartAreas.Add(chartArea2);
+            legend2.Font = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            legend2.IsTextAutoFit = false;
+            legend2.Name = "Legend1";
+            legend2.TitleFont = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chartCPU.Legends.Add(legend2);
+            this.chartCPU.Location = new System.Drawing.Point(4, 24);
+            this.chartCPU.Name = "chartCPU";
+            this.chartCPU.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
+            this.chartCPU.PaletteCustomColors = new System.Drawing.Color[] {
+        System.Drawing.Color.Aqua,
+        System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255))))),
+        System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128))))),
+        System.Drawing.Color.LawnGreen};
+            series5.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.TopBottom;
+            series5.ChartArea = "CPUArea";
+            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Area;
+            series5.EmptyPointStyle.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.TopBottom;
+            series5.Font = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            series5.LabelBackColor = System.Drawing.Color.Transparent;
+            series5.LabelBorderColor = System.Drawing.Color.Transparent;
+            series5.LabelForeColor = System.Drawing.Color.White;
+            series5.Legend = "Legend1";
+            series5.Name = "CPU";
+            series5.ShadowColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.chartCPU.Series.Add(series5);
+            this.chartCPU.Size = new System.Drawing.Size(737, 406);
+            this.chartCPU.TabIndex = 9;
+            this.chartCPU.Text = "CPU Utilization";
+            title2.ForeColor = System.Drawing.Color.White;
+            title2.Name = "CPU Utilization";
+            this.chartCPU.Titles.Add(title2);
+            // 
+            // pgGPU
+            // 
+            this.pgGPU.AutoHiddenSlideSize = new System.Drawing.Size(200, 200);
+            this.pgGPU.Flags = 65534;
+            this.pgGPU.LastVisibleSet = true;
+            this.pgGPU.MinimumSize = new System.Drawing.Size(50, 50);
+            this.pgGPU.Name = "pgGPU";
+            this.pgGPU.Size = new System.Drawing.Size(743, 680);
+            this.pgGPU.Text = "GPU Details";
+            this.pgGPU.ToolTipTitle = "Page ToolTip";
+            this.pgGPU.UniqueName = "F28124FC65A8430BDB934FF2B49CD80E";
             // 
             // pgSystemTemp
             // 
@@ -872,7 +1183,6 @@
             this.pgSystemTemp.Text = "System Temperatures";
             this.pgSystemTemp.ToolTipTitle = "Page ToolTip";
             this.pgSystemTemp.UniqueName = "9CAC71B5A8DD4B3D24B75C4949832D73";
-            this.pgSystemTemp.Click += new System.EventHandler(this.pgSystemTemp_Click);
             // 
             // label4
             // 
@@ -1425,188 +1735,6 @@
             this.label1.Size = new System.Drawing.Size(92, 19);
             this.label1.TabIndex = 22;
             // 
-            // chartCPU
-            // 
-            this.chartCPU.BackColor = System.Drawing.Color.Transparent;
-            this.chartCPU.BorderSkin.BackColor = System.Drawing.Color.White;
-            chartArea2.AxisX.IsLabelAutoFit = false;
-            chartArea2.AxisX.LabelStyle.Font = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea2.AxisX.LabelStyle.ForeColor = System.Drawing.Color.White;
-            chartArea2.AxisX.LineColor = System.Drawing.Color.White;
-            chartArea2.AxisX.MajorGrid.LineColor = System.Drawing.Color.White;
-            chartArea2.AxisX.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dot;
-            chartArea2.AxisX.MajorTickMark.LineColor = System.Drawing.Color.White;
-            chartArea2.AxisX.MinorGrid.LineColor = System.Drawing.Color.White;
-            chartArea2.AxisX.Title = "Time in Seconds";
-            chartArea2.AxisX.TitleFont = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea2.AxisX.TitleForeColor = System.Drawing.Color.White;
-            chartArea2.AxisX2.LineColor = System.Drawing.Color.White;
-            chartArea2.AxisY.IsLabelAutoFit = false;
-            chartArea2.AxisY.LabelStyle.Font = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea2.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White;
-            chartArea2.AxisY.LineColor = System.Drawing.Color.White;
-            chartArea2.AxisY.MajorGrid.LineColor = System.Drawing.Color.White;
-            chartArea2.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dot;
-            chartArea2.AxisY.MajorTickMark.LineColor = System.Drawing.Color.White;
-            chartArea2.AxisY.MinorGrid.LineColor = System.Drawing.Color.White;
-            chartArea2.AxisY.Title = "System Utilization %";
-            chartArea2.AxisY.TitleFont = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea2.AxisY.TitleForeColor = System.Drawing.Color.White;
-            chartArea2.AxisY2.LineColor = System.Drawing.Color.White;
-            chartArea2.BackColor = System.Drawing.Color.Transparent;
-            chartArea2.BorderColor = System.Drawing.Color.White;
-            chartArea2.Name = "CPUArea";
-            chartArea2.ShadowColor = System.Drawing.Color.White;
-            this.chartCPU.ChartAreas.Add(chartArea2);
-            legend2.Font = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            legend2.IsTextAutoFit = false;
-            legend2.Name = "Legend1";
-            legend2.TitleFont = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chartCPU.Legends.Add(legend2);
-            this.chartCPU.Location = new System.Drawing.Point(3, 3);
-            this.chartCPU.Name = "chartCPU";
-            this.chartCPU.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
-            this.chartCPU.PaletteCustomColors = new System.Drawing.Color[] {
-        System.Drawing.Color.Aqua,
-        System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255))))),
-        System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128))))),
-        System.Drawing.Color.LawnGreen};
-            series5.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.TopBottom;
-            series5.ChartArea = "CPUArea";
-            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Area;
-            series5.EmptyPointStyle.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.TopBottom;
-            series5.Font = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            series5.LabelBackColor = System.Drawing.Color.Transparent;
-            series5.LabelBorderColor = System.Drawing.Color.Transparent;
-            series5.LabelForeColor = System.Drawing.Color.White;
-            series5.Legend = "Legend1";
-            series5.Name = "CPU";
-            series5.ShadowColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.chartCPU.Series.Add(series5);
-            this.chartCPU.Size = new System.Drawing.Size(737, 406);
-            this.chartCPU.TabIndex = 9;
-            this.chartCPU.Text = "CPU Utilization";
-            title2.ForeColor = System.Drawing.Color.White;
-            title2.Name = "CPU Utilization";
-            this.chartCPU.Titles.Add(title2);
-            // 
-            // btn
-            // 
-            this.btn.BackColor = System.Drawing.Color.Silver;
-            this.btn.FlatAppearance.BorderSize = 0;
-            this.btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn.Location = new System.Drawing.Point(36, 436);
-            this.btn.Name = "btn";
-            this.btn.Size = new System.Drawing.Size(213, 67);
-            this.btn.TabIndex = 10;
-            this.btn.Text = "button1";
-            this.btn.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btn.UseVisualStyleBackColor = false;
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.Silver;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(36, 519);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(213, 67);
-            this.button2.TabIndex = 11;
-            this.button2.Text = "button2";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button2.UseVisualStyleBackColor = false;
-            // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.Color.Silver;
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Location = new System.Drawing.Point(34, 598);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(213, 67);
-            this.button3.TabIndex = 12;
-            this.button3.Text = "button3";
-            this.button3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button3.UseVisualStyleBackColor = false;
-            // 
-            // button4
-            // 
-            this.button4.BackColor = System.Drawing.Color.Silver;
-            this.button4.FlatAppearance.BorderSize = 0;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Location = new System.Drawing.Point(261, 598);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(213, 67);
-            this.button4.TabIndex = 15;
-            this.button4.Text = "button4";
-            this.button4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button4.UseVisualStyleBackColor = false;
-            // 
-            // button5
-            // 
-            this.button5.BackColor = System.Drawing.Color.Silver;
-            this.button5.FlatAppearance.BorderSize = 0;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Location = new System.Drawing.Point(263, 519);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(213, 67);
-            this.button5.TabIndex = 14;
-            this.button5.Text = "button5";
-            this.button5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button5.UseVisualStyleBackColor = false;
-            // 
-            // button6
-            // 
-            this.button6.BackColor = System.Drawing.Color.Silver;
-            this.button6.FlatAppearance.BorderSize = 0;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Location = new System.Drawing.Point(263, 436);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(213, 67);
-            this.button6.TabIndex = 13;
-            this.button6.Text = "button6";
-            this.button6.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button6.UseVisualStyleBackColor = false;
-            // 
-            // button7
-            // 
-            this.button7.BackColor = System.Drawing.Color.Silver;
-            this.button7.FlatAppearance.BorderSize = 0;
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Location = new System.Drawing.Point(488, 598);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(213, 67);
-            this.button7.TabIndex = 18;
-            this.button7.Text = "button7";
-            this.button7.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button7.UseVisualStyleBackColor = false;
-            // 
-            // button8
-            // 
-            this.button8.BackColor = System.Drawing.Color.Silver;
-            this.button8.FlatAppearance.BorderSize = 0;
-            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.Location = new System.Drawing.Point(490, 519);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(213, 67);
-            this.button8.TabIndex = 17;
-            this.button8.Text = "button8";
-            this.button8.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button8.UseVisualStyleBackColor = false;
-            // 
-            // button9
-            // 
-            this.button9.BackColor = System.Drawing.Color.Silver;
-            this.button9.FlatAppearance.BorderSize = 0;
-            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button9.Location = new System.Drawing.Point(490, 436);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(213, 67);
-            this.button9.TabIndex = 16;
-            this.button9.Text = "button9";
-            this.button9.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button9.UseVisualStyleBackColor = false;
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -1654,13 +1782,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.chartCPURAM)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pgCPU)).EndInit();
             this.pgCPU.ResumeLayout(false);
+            this.pgCPU.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartCPU)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pgGPU)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pgSystemTemp)).EndInit();
             this.pgSystemTemp.ResumeLayout(false);
             this.pgSystemTemp.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uDiagnoseRibbon)).EndInit();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartCPU)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1668,9 +1798,6 @@
 
         #endregion
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.RichTextBox rtbDriveInfo;
-        private System.Windows.Forms.ProgressBar progHardDrive;
-        private System.Windows.Forms.Label lblDrivePercentage;
         private System.Windows.Forms.Label lblDriveInfo;
         private System.Windows.Forms.Label lblDriveList;
         public System.Windows.Forms.TreeView treeHardwareInfo;
@@ -1716,7 +1843,7 @@
         private ComponentFactory.Krypton.Navigator.KryptonPage pgSystemLoad;
         private ComponentFactory.Krypton.Toolkit.KryptonButton kryptonButton3;
         private ComponentFactory.Krypton.Toolkit.KryptonButton kryptonButton2;
-        private ComponentFactory.Krypton.Toolkit.KryptonButton kryptonButton1;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnFormatDrive;
         private System.Windows.Forms.ToolTip ToolTipUDiagnose;
         private ComponentFactory.Krypton.Toolkit.KryptonGroupBox kryptonGroupBox1;
         private ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton kryptonRibbonGroupButton3;
@@ -1727,7 +1854,6 @@
         private MetroFramework.Controls.MetroProgressSpinner progCPUTemp;
         private System.Windows.Forms.Label lblGetGPUTemp;
         private System.Windows.Forms.Label lblGetCPUTemp;
-        private ComponentFactory.Krypton.Toolkit.KryptonListBox lstDrives;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label4;
         private MetroFramework.Controls.MetroProgressSpinner progMoboTemp;
@@ -1741,12 +1867,6 @@
         private System.Windows.Forms.Label lblGPUInfo;
         private System.Windows.Forms.Label lblGPUUtilization;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label lblHandles;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label lblThreads;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label lblFrequency;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label lblDriveUtilization;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label lblRAMUtilization;
@@ -1757,7 +1877,6 @@
         private System.Windows.Forms.Label lblSystem;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartCPURAM;
         private System.Windows.Forms.Label lblRAM;
-        private System.Windows.Forms.Label lblCPU;
         private ComponentFactory.Krypton.Navigator.KryptonPage pgCPU;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.Label label28;
@@ -1779,16 +1898,36 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button btn;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartCPU;
+        private System.Windows.Forms.Label lblHandles;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label lblThreads;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lblFrequency;
+        private System.Windows.Forms.Label label6;
+        private ComponentFactory.Krypton.Navigator.KryptonPage pgGPU;
+        private System.Windows.Forms.Label lblCPU;
+        private System.Windows.Forms.Label lblCPUThreads;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.Label lblCPUCores;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.Label lblL1Cahce;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.Label lblBaseCPUSpeed;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.Label lblL3Cache;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.Label lblL2Cache;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.Label lblCPUPAgeUtil;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.Label lblCPUPageUpTime;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.Label lblCPUOverview;
+        public ComponentFactory.Krypton.Toolkit.KryptonListBox lstDrives;
+        public System.Windows.Forms.RichTextBox rtbDriveInfo;
+        public System.Windows.Forms.ProgressBar progHardDrive;
+        public System.Windows.Forms.Label lblDrivePercentage;
     }
 }
 

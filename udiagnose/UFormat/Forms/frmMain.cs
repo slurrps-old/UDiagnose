@@ -41,15 +41,14 @@ namespace UDiagnose
         const float FLOAT_TERA_CONVERSION = 0.0009765625F;
 
         //Global Variables to use DriveInfo and variable to hold all of the systems rive information.
-        DriveInfo[] allDrives = DriveInfo.GetDrives(); //Calling the drive info instance from system.IO
-        string driveInfo; //This is the variable that will hold all of the drive information
+        //DriveInfo[] allDrives = DriveInfo.GetDrives(); //Calling the drive info instance from system.IO
+        public string driveInfo; //This is the variable that will hold all of the drive information
 
         //Initialize the SystemInfo Class and cputemp classes
         Hardware hwInfo = new Hardware();
         CPUTemp CPUTemperature = new CPUTemp();
         #endregion
 
-        
         #region Performance Counters
         //Performance Counters-------------------------------------------------------------------------------------------
         //Physical Disk
@@ -75,33 +74,61 @@ namespace UDiagnose
         //------------------------------------------------------------------------------------------------
         #endregion
 
-
         public frmMain()
         {
             InitializeComponent();
         }
 
+        #region Form Load
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //This is the load section that loads in the default values and code when launching the program.
         private void Form1_Load(object sender, EventArgs e)
         {
             //Call the FillTreeView function
+            //It will load the treeview with all of the information queried in the splash screen.
             hwInfo.FillTreeView(this);
 
             //Start the timer for the live data       
             systemLoadTimer = new System.Timers.Timer(1000);
             systemLoadTimer.Elapsed += OnTimedEvent;
             systemLoadTimer.Enabled = true;
-            //---
+            //Defaults for the Charts in the program-----
             chartCPURAM.ChartAreas[0].AxisY.Maximum = 100;
             chartCPU.ChartAreas[0].AxisY.Maximum = 100;
 
-        }//End Form Load
+            
 
+        }//End Form Load
+        #endregion
+
+        #region Events for DRIVE Page
+        private void kryptonButton1_Click(object sender, EventArgs e)
+        {
+            FormatClass format = new FormatClass();
+            string driveLetter = "";
+
+            if (lstDrives.SelectedIndex == 0)
+            {
+                MessageBox.Show("Error you cannot format the windows partition drive, please try another drive.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                //Get selected drive letter
+                driveLetter = lstDrives.SelectedItem.ToString();
+                driveLetter = driveLetter.Remove(2, 1);
+                //Call the formatdrive method
+                format.FormatDrive(driveLetter);
+                //Set an instance of the driveinfo class and call the refresh drives
+                DriveInfoClass dwInfo = new DriveInfoClass(this);
+                dwInfo.RefreshDrives();
+            }
+        }
+        #endregion
+
+        #region Functions
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //////////////////////////////////////////////////////////// Functions ///////////////////////////////////////////////////////////////////////////////////
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        #region Functions
         //Convert bytes to Gigabytes used to display correct drive information
         public float ConversionToGig(float conversionNum)
         {
@@ -136,7 +163,9 @@ namespace UDiagnose
             }
 
         }
-        
+        #endregion
+
+        #region Events for the Timer and Load for the splash screen
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //This event will load up the live data that will continue to read as long as the program is up and running. This is on a separate thread from the GUI
 
@@ -173,7 +202,7 @@ namespace UDiagnose
             //float fGPU = pGPUPercent.NextValue();
 
 
-            //Sysyem
+            //Sysyem up time
             TimeSpan ts = TimeSpan.FromSeconds(pUpTime.NextValue());//Holds the performance counter for the system up time
             //------
 
@@ -182,22 +211,22 @@ namespace UDiagnose
             this.BeginInvoke((ThreadStart)delegate ()
             {
                
-                //----
-                //Load information on the text below the chart
+                //OVERVIEW PAGE---------------------------------------------------------------------------------
+                //Utilizations
                 //Memory
                 lblRAMUtilization.Text = string.Format("{0:0.00}%", fRAM);
 
                 //Physical Disk
                 lblDriveUtilization.Text = string.Format("{0:0.00}%", fDrive);
 
-                //CPU
+                //CPU On Overview page
                 lblCPUUtilization.Text = string.Format("{0:0.00}%", fCPU);
-                lblFrequency.Text = string.Format("{0:0.00}GHz", fFrequency);
-                lblHandles.Text = (intHandles.ToString());
-                lblThreads.Text = (intThreads.ToString());
 
                 //GPU
                 //lblGPUUtilization.Text = string.Format("{0:0.00}%", fGPU);
+
+                //System Up Time
+                lblSystemUpTime.Text = string.Format("{0}d:{1}h:{2}m:{3}s", ts.Days, ts.Hours, ts.Minutes, ts.Seconds);
 
                 //Chart Overview Load
                 chartCPURAM.Series["CPU"].Points.AddY(fCPU);
@@ -205,10 +234,21 @@ namespace UDiagnose
                 chartCPURAM.Series["Drive"].Points.AddY(fDrive);
                 //chartCPURAM.Series["GPU"].Points.AddY(fGPU);
 
+
+                //CPU PAGE-----------------------------------------------------------------------------------------
+                //CPU Information
+                lblFrequency.Text = string.Format("{0:0.00}GHz", fFrequency);
+                lblHandles.Text = (intHandles.ToString());
+                lblThreads.Text = (intThreads.ToString());
+
                 //chartCPU
                 chartCPU.Series["CPU"].Points.AddY(fCPU);
+
+                //Utilization
+                lblCPUPAgeUtil.Text = string.Format("{0:0.00}%", fCPU);
+
                 //System Up Time
-                lblSystemUpTime.Text = string.Format("{0}d:{1}h:{2}m:{3}s", ts.Days, ts.Hours, ts.Minutes, ts.Seconds);
+                lblCPUPageUpTime.Text = string.Format("{0}d:{1}h:{2}m:{3}s", ts.Days, ts.Hours, ts.Minutes, ts.Seconds);
 
             });
 
@@ -221,12 +261,13 @@ namespace UDiagnose
         {
             //Pre: Does not need anything to initialize
             //Purpose: To load up the data during the splash screen form
-            //Get the CPU name and RAM information
-            lblCPU.Text = "CPU - " + hwInfo.ProcessorName();
+            //Get the CPU name and RAM information for the OVERVIEW Page---------------------------------------
+            lblCPUOverview.Text = "CPU - " + hwInfo.ProcessorName();
             lblRAM.Text = "RAM - " + hwInfo.RamInformation();
             lblGPUInfo.Text = "GPU - " + hwInfo.GPUName();
 
-            //We get all of the drive information here
+            
+            //We get all of the drive information here for the DRIVE PAGE--------------------------------------
             foreach (DriveInfo di in DriveInfo.GetDrives())
             {
                 lstDrives.Items.Add(di.Name); //Populates the drive list with all of the drives attached to the computer
@@ -235,146 +276,55 @@ namespace UDiagnose
             //Grab the TreeViewHardware queries
             hwInfo.TreeViewHardware();
 
+            //CPU PAGE Information must be loaded after the Hardware information above.
+            //CPU Page Details
+            lblCPU.Text = "CPU - " + hwInfo.ProcessorName();
+            lblBaseCPUSpeed.Text = hwInfo.cpuSpeed.ToString();
+            lblCPUCores.Text = hwInfo.numCores.ToString();
+            lblCPUThreads.Text = hwInfo.numThreads.ToString();
+            lblL1Cahce.Text = hwInfo.l1Cache.ToString();
+            lblL2Cache.Text = hwInfo.l2Cache.ToString();
+            lblL3Cache.Text = hwInfo.l3Cache.ToString();
+
         }//End loadUpData
 
         #endregion
-        //----------------------------------------------------------------------------------------------------------------
+
+        #region Drive Information
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //////////////////////////////////////////////////////////// DRIVE INFORMATION ////////////////////////////////////////////////////////////////////////////
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        #region Drive Information
+
         //This will update the drive information in rtbDriveInfo rich text box on the form everytime you select a different drive from lstDrives on the form
         private void lstDrives_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //Here we will set a couple variables.
-            string drive_letter = lstDrives.SelectedItem.ToString(); //Set the drive letter of the selected drives and populate the listbox on the form
-            DriveInfo di = new DriveInfo(drive_letter); //Set the drive information as a new instance di
-            float fltPercent = 0;
+            DriveInfoClass dwInfo = new DriveInfoClass(this);
 
-            //Here we will start to fill in the variable driveInfo
-            driveInfo = "Is Drive Ready: " + di.IsReady.ToString() + Environment.NewLine;
-            driveInfo = driveInfo + "Drive Type: " + di.DriveType.ToString() + Environment.NewLine;
-            driveInfo = driveInfo + "Drive Letter: " + di.Name + Environment.NewLine;
-            //driveInfo = driveInfo + "RootDirectory: " +di.RootDirectory.Name + Environment.NewLine; //Not sure if I need the root directory
-
-            if (di.IsReady)
-            {
-                //Information to populate the rich text box
-                driveInfo = driveInfo + "Drive Name: " + di.VolumeLabel + Environment.NewLine;
-                driveInfo = driveInfo + "Drive Format: " + di.DriveFormat + Environment.NewLine;
-                driveInfo = driveInfo + "Used Space: " + (ConversionToGig(di.TotalSize) - ConversionToGig(di.AvailableFreeSpace)).ToString("0.00") + " GB" + Environment.NewLine;
-                driveInfo = driveInfo + "Available Free Space: " + ConversionToGig(di.AvailableFreeSpace).ToString("0.00") + " GB" + Environment.NewLine;
-                //driveInfo = driveInfo + "Total Free Space: " +ConversionToGig(di.TotalFreeSpace).ToString("0.00") + Environment.NewLine;
-                driveInfo = driveInfo + "Total Size: " + ConversionToGig(di.TotalSize).ToString("0.00") + " GB" + Environment.NewLine;
-
-                //Calculate the percentage of the drive that has been filled.
-                fltPercent = (((float)ConversionToGig(di.TotalSize) - (float)ConversionToGig(di.AvailableFreeSpace)) / (float)ConversionToGig(di.TotalSize)) * 100.0f;
-
-
-                lblDrivePercentage.Text = "You have used " + fltPercent.ToString("0.00") + "% of your drive"; //This will show the percentage of the drive being used 
-
-                //Progress bar This needs to be inside the if statement as they need to be initialized by the drive being ready
-                progHardDrive.Maximum = Convert.ToInt32(ConversionToGig(di.TotalSize)); //This will set the maximun space on the drive to the progress bar
-                progHardDrive.Value = Convert.ToInt32(ConversionToGig(di.TotalSize) - ConversionToGig(di.AvailableFreeSpace)); //This will get how much is used on the drive and set the value to the progress bar
-
-                if (fltPercent >= 80.0f)
-                {
-                    lblDrivePercentage.ForeColor = Color.Red; //Sets the label color to Crimson
-                }
-                else
-                {
-                    lblDrivePercentage.ForeColor = Color.White; //Sets the label color to White
-                }
-            }
-            else
-            {
-                //Fills in the rich text box letting the user know the drive is not ready
-                driveInfo = "Is Drive Ready: " + di.IsReady.ToString() + Environment.NewLine; //If not found set the information to nothing
-
-                progHardDrive.Maximum = 100; //Sets the maximun to 100
-                progHardDrive.Value = 0; //Sets the value to 0
-
-                lblDrivePercentage.ForeColor = Color.White; //Sets the label color to white
-                lblDrivePercentage.Text = "This drive is not ready"; //Changes the label to read the drive is not ready
-
-            }
-
-            rtbDriveInfo.Text = driveInfo; //Set the above information on the drives to the rich text box on the form
-
+            dwInfo.LoadDrives();
         }//End Drive information Gathering
 
-        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //The button code that will update the form with the most recent drives in the computer
         private void btnGetDriveInfo_Click(object sender, EventArgs e)
         {
-            //Clears both lists in the system so that drives don't duplicate
-            lstDrives.Items.Clear();
-            
-
-            //Here we will update the list of drives in the system in case one was removed 
-            foreach (DriveInfo di in DriveInfo.GetDrives())
-            {
-                lstDrives.Items.Add(di.Name);
-                lstDrives.SelectedIndex = 0;
-
-
-            }
-
+            DriveInfoClass dwInfo = new DriveInfoClass(this);
+            dwInfo.RefreshDrives();
         }//End Drive Button code
-         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         #endregion
 
-       
+        #region Menu Strip Items
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //////////////////////////////////////////////////////////// Menu Strip ///////////////////////////////////////////////////////////////////////////////////
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //
-        #region Menu Strip Items
         //File strip Menu items
 
         //Save the Hardware tree to a text file listing all the hardware in the system
         private void saveAstxtToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
-                string location = "";
-                //Set it's name
-                saveFileDialog1.FileName = "HardWare Info ";
-                //Set the extention
-                saveFileDialog1.DefaultExt = ".txt";
-                //Filters that can be used for the file
-                saveFileDialog1.Filter = "All Documents (*.docx;*.docm;*.doc;*.dotx;*.dotm;*.dot;*.htm;*.html;*.rtf;*.txt;*.pdf)" +
-                    "|*.docx;*.docm;*.dotx;*.dotm;*.doc;*.dot;*.htm;*.html;*.rtf;*.txt;*.pdf|" +
-                        "Word Documents (*.docx)|*.docx|" +
-                        "Word Macro-Enabled Documents (*.docm)|*.docm|" +
-                        "Word 97-2003 Documents (*.doc)|*.doc|" +
-                        "Word Templates (*.dotx)|*.dotx|" +
-                        "Word Macro-Enabled Templates (*.dotm)|*.dotm|" +
-                        "Word 97-2003 Templates (*.dot)|*.dot|" +
-                        "Web Pages (*.htm;*.html)|*.htm;*.html|" +
-                        "Rich Text Format (*.rtf)|*.rtf|" +
-                        "Text Files (*.txt)|*.txt|" +
-                        "PDF Files (*.pdf)|*.pdf";
+            SaveHWInfo saveHW = new SaveHWInfo(this);
 
-                //Show the dialog
-                saveFileDialog1.ShowDialog();
-                //Save the filename to the variable string location
-                location = saveFileDialog1.FileName;
+            saveHW.SaveInfo();
 
-                // create buffer for storing string data
-                System.Text.StringBuilder buffer = new System.Text.StringBuilder();
-                //Add the time to the top of the file and two lines 
-                buffer.Append(System.DateTime.Now.ToString());
-                buffer.Append(Environment.NewLine);
-                buffer.Append(Environment.NewLine);
-                // loop through each of the treeview's root nodes
-                foreach (TreeNode rootNode in treeHardwareInfo.Nodes)
-                    // call recursive function
-                    BuildTreeString(rootNode, buffer);
-                // write data to file
-                System.IO.File.WriteAllText(location, buffer.ToString());
-            
-            
         }//End SaveAs tool
 
         //Exit button
@@ -479,31 +429,6 @@ namespace UDiagnose
 
         #endregion
 
-
-        private void pgSystemTemp_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("This feature is currently in development, Thank you for your patience");
-        }
-
-        private void label11_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label8_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void chartCPURAM_Click(object sender, EventArgs e)
-        {
-
-        }
     }//End class
 
 

@@ -12,11 +12,11 @@ namespace UDiagnose.Classes
     class SaveHWInfo
     {
         private frmMain mainForm; //PDM
+        
 
-
-        public SaveHWInfo()
+        public SaveHWInfo(frmMain form)
         {
-            mainForm = new frmMain();
+            mainForm = form;
 
         }
 
@@ -37,36 +37,33 @@ namespace UDiagnose.Classes
         public void SaveInfo()
         {
 
+
             string location = "";
-
-            mainForm.saveFileDialog1.FileName = "HardWare Info";
+            //Set it's name
+            mainForm.saveFileDialog1.FileName = "HardWare Info ";
+            //Set the extention
             mainForm.saveFileDialog1.DefaultExt = ".txt";
+            //Filters that can be used for the file
+            mainForm.saveFileDialog1.Filter = "Text Files|*.txt";
 
-            mainForm.saveFileDialog1.Filter = "All Documents (*.docx;*.docm;*.doc;*.dotx;*.dotm;*.dot;*.htm;*.html;*.rtf;*.txt;*.pdf)|*.docx;*.docm;*.dotx;*.dotm;*.doc;*.dot;*.htm;*.html;*.rtf;*.txt;*.pdf|" +
-                    "Word Documents (*.docx)|*.docx|" +
-                    "Word Macro-Enabled Documents (*.docm)|*.docm|" +
-                    "Word 97-2003 Documents (*.doc)|*.doc|" +
-                    "Word Templates (*.dotx)|*.dotx|" +
-                    "Word Macro-Enabled Templates (*.dotm)|*.dotm|" +
-                    "Word 97-2003 Templates (*.dot)|*.dot|" +
-                    "Web Pages (*.htm;*.html)|*.htm;*.html|" +
-                    "Rich Text Format (*.rtf)|*.rtf|" +
-                    "Text Files (*.txt)|*.txt|" +
-                    "PDF Files (*.pdf)|*.pdf";
-
-
+            //Show the dialog
             mainForm.saveFileDialog1.ShowDialog();
+            //Save the filename to the variable string location
             location = mainForm.saveFileDialog1.FileName;
 
             // create buffer for storing string data
             System.Text.StringBuilder buffer = new System.Text.StringBuilder();
+            //Add the time to the top of the file and two lines 
+            buffer.Append(System.DateTime.Now.ToString());
+            buffer.Append(Environment.NewLine);
+            buffer.Append(Environment.NewLine);
             // loop through each of the treeview's root nodes
             foreach (TreeNode rootNode in mainForm.treeHardwareInfo.Nodes)
                 // call recursive function
                 BuildTreeString(rootNode, buffer);
             // write data to file
-
             System.IO.File.WriteAllText(location, buffer.ToString());
+
         }
 
     }

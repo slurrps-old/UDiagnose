@@ -16,7 +16,7 @@ namespace UDiagnose
 {
     //Author: Kenneth Lamb
     //Purpose:  This class contains the definiton of a SystemInfo class. It contains no private variables however 
-    // it does contain 20 methods that pull the computer hardware information from the system the application is on
+    // it does contain 21 methods that pull the computer hardware information from the system the application is on
     //There may be more added on as more hardware info is requested in the program
     //This uses System.Management so that you can Query the WMI Classes on windows.
     // A summary of the methods appears below:
@@ -195,11 +195,11 @@ namespace UDiagnose
         protected int GetNumberThreads()
         {
             int threads = 0;
-            ManagementObjectSearcher cpuThread = new ManagementObjectSearcher("select NumberOfCores from Win32_Processor");
+            ManagementObjectSearcher cpuThread = new ManagementObjectSearcher("select ThreadCount from Win32_Processor");
 
             foreach (ManagementObject obj in cpuThread.Get())
             {
-                threads = Convert.ToInt32(obj.Properties["NumberOfCores"].Value.ToString());
+                threads = Convert.ToInt32(obj.Properties["ThreadCount"].Value.ToString());
             }
 
             return threads;

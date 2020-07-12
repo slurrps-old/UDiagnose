@@ -13,7 +13,17 @@ namespace HardwareDisplay
 {
     class Hardware: SystemInfo
     {
-        
+        //Author: Kenneth Lamb
+        //Purpose:  This class queries the information from the systeminfo class so the main program can obtain the information.
+        // Here we set pdms for all of the information that is to be queried and then pass those pdm's to the main program.
+        // 
+        // Assumptions: That the locations for the readings will be in the same place
+        //
+        // Exception Handling: None as all of the queries are properly made to always inquire the appropriate information from the OS
+        //
+        // Summary of Methods:
+
+        #region Public and private PDM's for the main program to talk to
         //------------------------------------------------------------------------------------
         //Search PDM's to load up the data required for the FillTree method
         //to be searched on a separate thread than the UI
@@ -24,13 +34,13 @@ namespace HardwareDisplay
         private string processorSubInfo;
         private string processorID;
         private string processorRevision;
-        private string numCores;
-        private string numThreads;
-        private string cpuSpeed;
+        public string numCores;
+        public string numThreads;
+        public string cpuSpeed;
         private int[] Cache = new int[3];
-        private string l1Cache;
-        private string l2Cache;
-        private string l3Cache;
+        public string l1Cache;
+        public string l2Cache;
+        public string l3Cache;
 
 
         //Mobo
@@ -50,7 +60,7 @@ namespace HardwareDisplay
         private string gpuName;
         private string gpuDriver;
         private string gpuInfo;
-
+        #endregion
 
         //--------------------------------------------------------------------------------------------------------
         //Default Constructor
@@ -83,28 +93,28 @@ namespace HardwareDisplay
             processorSubInfo = (GetProcessorSubInfo());
             processorID = ("Processor ID: " + GetProcessorId());
             processorRevision = ("Processor Revision: " + GetProcessorRevision().ToString());
-            numCores = ("Number of Cores: " + GetNumberCores().ToString());
-            numThreads = ("Number of Threads: " + GetNumberThreads().ToString());
-            cpuSpeed = ("Speed: " + GetCpuMaxSpeedInGHz().ToString("0.00") + " GHz");
+            numCores = (GetNumberCores().ToString());
+            numThreads = (GetNumberThreads().ToString());
+            cpuSpeed = (GetCpuMaxSpeedInGHz().ToString("0.00") + " GHz");
             //Cache Sizes---
-            l1Cache = ("L1 Cache: " + Cache[0].ToString() + " KB");
+            l1Cache = (Cache[0].ToString() + " KB");
             //level 2
             if(Cache[1] > 1000)
             {
-                l2Cache = ("L2 Cache: " + ((float)(Cache[1] / 1000)).ToString() + " MB");
+                l2Cache = (((float)(Cache[1] / 1000)).ToString() + " MB");
             }
             else
             {
-                l2Cache = ("L2 Cache: " + Cache[1].ToString() + " KB");
+                l2Cache = (Cache[1].ToString() + " KB");
             }
             //Level 3
             if (Cache[2] > 1000)
             {
-                l3Cache = ("L3 Cache: " + ((float)(Cache[2] / 1000)).ToString() + " MB");
+                l3Cache = (((float)(Cache[2] / 1000)).ToString() + " MB");
             }
             else
             {
-                l3Cache = ("L3 Cache: " + Cache[2].ToString() + " MB");
+                l3Cache = (Cache[2].ToString() + " MB");
             }
             //End Cache sizes---
 
@@ -145,12 +155,12 @@ namespace HardwareDisplay
             mainForm.treeHardwareInfo.Nodes[0].Nodes[1].Nodes[0].Nodes.Add(processorSubInfo); //Sub info 
             mainForm.treeHardwareInfo.Nodes[0].Nodes[1].Nodes.Add(processorID);// the ID of the processor
             mainForm.treeHardwareInfo.Nodes[0].Nodes[1].Nodes.Add(processorRevision);// the revision of the processor
-            mainForm.treeHardwareInfo.Nodes[0].Nodes[1].Nodes.Add(numCores); //Amount of cores
-            mainForm.treeHardwareInfo.Nodes[0].Nodes[1].Nodes.Add(numThreads); //Number of threads
-            mainForm.treeHardwareInfo.Nodes[0].Nodes[1].Nodes.Add(cpuSpeed); //Current clock speed of the CPU
-            mainForm.treeHardwareInfo.Nodes[0].Nodes[1].Nodes.Add(l1Cache); //Size of the l1 Cache
-            mainForm.treeHardwareInfo.Nodes[0].Nodes[1].Nodes.Add(l2Cache); //Size of the l2 Cache
-            mainForm.treeHardwareInfo.Nodes[0].Nodes[1].Nodes.Add(l3Cache); //Size of the l3 Cache
+            mainForm.treeHardwareInfo.Nodes[0].Nodes[1].Nodes.Add("Number of Cores: " + numCores); //Amount of cores
+            mainForm.treeHardwareInfo.Nodes[0].Nodes[1].Nodes.Add("Number of Threads: " + numThreads); //Number of threads
+            mainForm.treeHardwareInfo.Nodes[0].Nodes[1].Nodes.Add("Speed: " + cpuSpeed); //Current clock speed of the CPU
+            mainForm.treeHardwareInfo.Nodes[0].Nodes[1].Nodes.Add("L1 Cache: " + l1Cache); //Size of the l1 Cache
+            mainForm.treeHardwareInfo.Nodes[0].Nodes[1].Nodes.Add("L2 Cache: " + l2Cache); //Size of the l2 Cache
+            mainForm.treeHardwareInfo.Nodes[0].Nodes[1].Nodes.Add("L3 Cache: " + l3Cache); //Size of the l3 Cache
 
             //Mobo info
             mainForm.treeHardwareInfo.Nodes[0].Nodes[2].Nodes.Add(manufacturerMobo); //Mobo manufacturer
@@ -179,6 +189,7 @@ namespace HardwareDisplay
         #endregion
 
 
+        #region Name of GPU, CPU, and RAM for OverView Screen
         public string ProcessorName() //Hold the name of the processor in this method and return it
         {
             string info = "";
@@ -199,6 +210,7 @@ namespace HardwareDisplay
             info = GetGPUName();
             return info;
         }
+        #endregion
 
     }//End Class
 
