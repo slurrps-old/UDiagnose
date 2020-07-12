@@ -407,7 +407,7 @@
             this.pgDrives.MinimumSize = new System.Drawing.Size(50, 50);
             this.pgDrives.Name = "pgDrives";
             this.pgDrives.Size = new System.Drawing.Size(745, 713);
-            this.pgDrives.Text = "";
+            this.pgDrives.Text = "Drive Information";
             this.pgDrives.ToolTipTitle = "Page ToolTip";
             this.pgDrives.UniqueName = "0E0C8E0A832345B073A5BFCB901374AF";
             // 
@@ -515,7 +515,7 @@
             this.pgCPU,
             this.pgGPU});
             this.kryptonDockableNavigator1.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue;
-            this.kryptonDockableNavigator1.SelectedIndex = 0;
+            this.kryptonDockableNavigator1.SelectedIndex = 1;
             this.kryptonDockableNavigator1.Size = new System.Drawing.Size(745, 713);
             this.kryptonDockableNavigator1.TabIndex = 9;
             this.kryptonDockableNavigator1.Text = "kryptonDockableNavigator1";
