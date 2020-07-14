@@ -483,6 +483,11 @@ namespace UDiagnose
 
         #endregion
 
+        private void btnFileWipe_Click(object sender, EventArgs e)
+        {
+
+            format.WipeFile();
+        }
     }//End class
 
 

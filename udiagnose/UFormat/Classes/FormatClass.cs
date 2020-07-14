@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using System.Management;
 using UDiagnose.Forms;
 using UDiagnose.Popups;
+using System.Security.Cryptography;
 
 namespace UDiagnose.Classes
 {
@@ -107,45 +108,27 @@ namespace UDiagnose.Classes
             //If Yes go ahead with the format
             if (result == DialogResult.Yes)
             {
-                frmSecurepopup secure = new frmSecurepopup();
-                secure.ShowDialog();
-                bool isFormated = false;
-                int numtimes = 0;
-
-                numtimes = secure.numPasses;
-                isFormated = secure.isFormated;
-
-                if(secure.canceled == true)
+                //Go through a loop creating and deleting a file as big as the available space on the drive.
+                for (int i = 0; i < 50; i++)
                 {
-                    MessageBox.Show("This has been aborted.", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return false;
+                    CreateFile(driveLetter);
+                    File.Delete(driveLetter.ToString() + @"\Secure.txt");
                 }
-                else
+
+                //Then to finish query and format given drive         
+                ManagementObjectSearcher searcher = new ManagementObjectSearcher
+                 (@"select * from Win32_Volume WHERE DriveLetter = '" + driveLetter + "'");
+                //Format the drive with the below code.
+                foreach (ManagementObject vi in searcher.Get())
                 {
-                    if (isFormated == true)
-                    {
-                        //query and format given drive         
-                        ManagementObjectSearcher searcher = new ManagementObjectSearcher
-                         (@"select * from Win32_Volume WHERE DriveLetter = '" + driveLetter + "'");
-                        //Format the drive with the below code.
-                        foreach (ManagementObject vi in searcher.Get())
-                        {
-                            vi.InvokeMethod("Format", new object[]
-                          { "NFTS", true ,8192, "Untitled" , false });
-                        }
-                    }
-
-                    for (int i = 0; i < numtimes; i++)
-                    {
-                        CreateFile(driveLetter);
-                        File.Delete(driveLetter.ToString() + @"\Secure.txt");
-                    }
-
-
-                    MessageBox.Show("The secure erase was successful.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return true;
+                    vi.InvokeMethod("Format", new object[]
+                  { "NFTS", true ,8192, "Untitled" , false });
                 }
-                
+
+                MessageBox.Show("The secure erase was successful.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return true;
+            
+
             }
             else
             {
@@ -154,6 +137,109 @@ namespace UDiagnose.Classes
             }
 
         }
+
+        #region File Wipe
+        public bool WipeFile()
+        {
+            int timesToWrite = 0;
+
+            frmWipe wipeTimes = new frmWipe();
+            wipeTimes.ShowDialog();
+
+            timesToWrite = wipeTimes.numPasses;
+
+            if(wipeTimes.canceled == true)
+            {
+                MessageBox.Show("This has been aborted.", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return false;
+            }
+            else
+            {
+                OpenFileDialog openFile = new OpenFileDialog();
+                openFile.ShowDialog();
+
+                string filename = openFile.FileName;
+                try
+                {
+                    if (File.Exists(filename))
+                    {
+                        // Set the files attributes to normal in case it's read-only.
+
+                        File.SetAttributes(filename, FileAttributes.Normal);
+
+                        // Calculate the total number of sectors in the file.
+                        double sectors = Math.Ceiling(new FileInfo(filename).Length / 512.0);
+
+                        // Create a dummy-buffer the size of a sector.
+
+                        byte[] dummyBuffer = new byte[512];
+
+                        // Create a cryptographic Random Number Generator.
+                        // This is what I use to create the garbage data.
+
+                        RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider();
+
+                        // Open a FileStream to the file.
+                        FileStream inputStream = new FileStream(filename, FileMode.Open);
+                        for (int currentPass = 0; currentPass < timesToWrite; currentPass++)
+                        {
+                            //UpdatePassInfo(currentPass + 1, timesToWrite);
+
+                            // Go to the beginning of the stream
+
+                            inputStream.Position = 0;
+
+                            // Loop all sectors
+                            for (int sectorsWritten = 0; sectorsWritten < sectors; sectorsWritten++)
+                            {
+                                //UpdateSectorInfo(sectorsWritten + 1, (int)sectors);
+
+                                // Fill the dummy-buffer with random data
+
+                                rng.GetBytes(dummyBuffer);
+
+                                // Write it to the stream
+                                inputStream.Write(dummyBuffer, 0, dummyBuffer.Length);
+                            }
+                        }
+
+                        // Truncate the file to 0 bytes.
+                        // This will hide the original file-length if you try to recover the file.
+
+                        inputStream.SetLength(0);
+
+                        // Close the stream.
+                        inputStream.Close();
+
+                        // As an extra precaution I change the dates of the file so the
+                        // original dates are hidden if you try to recover the file.
+
+                        DateTime dt = new DateTime(2037, 1, 1, 0, 0, 0);
+                        File.SetCreationTime(filename, dt);
+                        File.SetLastAccessTime(filename, dt);
+                        File.SetLastWriteTime(filename, dt);
+
+                        // Finally, delete the file
+
+                        File.Delete(filename);
+
+                        MessageBox.Show("The file " +
+                            filename + " has successfully been wiped.", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
+                    }
+                }
+                catch (Exception ex)
+                {
+                    //WipeError(ex);
+                }
+
+                return true;
+            }
+
+        }
+
+        #endregion
 
     }
 }
