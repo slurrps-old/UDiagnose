@@ -30,7 +30,6 @@ namespace UDiagnose.Classes
             {
                 BuildTreeString(childNode, buffer);
             }
-
         }
 
 
@@ -59,8 +58,11 @@ namespace UDiagnose.Classes
             buffer.Append(Environment.NewLine);
             // loop through each of the treeview's root nodes
             foreach (TreeNode rootNode in mainForm.treeHardwareInfo.Nodes)
+            {
                 // call recursive function
                 BuildTreeString(rootNode, buffer);
+            }
+               
             // write data to file
             System.IO.File.WriteAllText(location, buffer.ToString());
 

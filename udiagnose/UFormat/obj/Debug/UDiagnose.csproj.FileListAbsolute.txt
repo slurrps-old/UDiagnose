@@ -86,3 +86,4 @@ C:\Users\klamb\Source\Repos\udiagnose\UFormat\obj\Debug\UDiagnose.csproj.CoreCom
 C:\Users\klamb\Source\Repos\udiagnose\UFormat\obj\Debug\UDiagnose.exe
 C:\Users\klamb\Source\Repos\udiagnose\UFormat\obj\Debug\UDiagnose.pdb
 C:\Users\lambk\Source\Repos\udiagnose\UFormat\obj\Debug\UDiagnose.Forms.frmPopup.resources
+C:\Users\lambk\Source\Repos\udiagnose\UFormat\obj\Debug\UDiagnose.Popups.frmSecurepopup.resources

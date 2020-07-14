@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
 using System.IO; //Used to list the drives
+using System.Management;
 
 namespace UDiagnose.Classes
 {
@@ -52,13 +53,15 @@ namespace UDiagnose.Classes
             if (di.IsReady)
             {
                 //Information to populate the rich text box
+                //main.driveInfo = main.driveInfo + "Drive is a " + DriveType() + Environment.NewLine;
                 main.driveInfo = main.driveInfo + "Drive Name: " + di.VolumeLabel + Environment.NewLine;
                 main.driveInfo = main.driveInfo + "Drive Format: " + di.DriveFormat + Environment.NewLine;
+
+                //--
+                //Need to convert these to TB by setting up if statements.
                 main.driveInfo = main.driveInfo + "Used Space: " + (main.ConversionToGig(di.TotalSize) - main.ConversionToGig(di.AvailableFreeSpace)).ToString("0.00") + " GB" + Environment.NewLine;
                 main.driveInfo = main.driveInfo + "Available Free Space: " + main.ConversionToGig(di.AvailableFreeSpace).ToString("0.00") + " GB" + Environment.NewLine;
-                //driveInfo = driveInfo + "Total Free Space: " +ConversionToGig(di.TotalFreeSpace).ToString("0.00") + Environment.NewLine;
                 main.driveInfo = main.driveInfo + "Total Size: " + main.ConversionToGig(di.TotalSize).ToString("0.00") + " GB" + Environment.NewLine;
-
                 //Calculate the percentage of the drive that has been filled.
                 fltPercent = (((float)main.ConversionToGig(di.TotalSize) - (float)main.ConversionToGig(di.AvailableFreeSpace)) / (float)main.ConversionToGig(di.TotalSize)) * 100.0f;
 
@@ -92,6 +95,44 @@ namespace UDiagnose.Classes
             }
 
             main.rtbDriveInfo.Text = main.driveInfo; //Set the above information on the drives to the rich text box on the form
+        }
+
+        private string DriveType()
+        {
+            ManagementScope scope = new ManagementScope(@"\\.\root\microsoft\windows\storage");
+            ManagementObjectSearcher searcher = new ManagementObjectSearcher("SELECT * FROM MSFT_PhysicalDisk");
+            string type = "";
+            scope.Connect();
+            searcher.Scope = scope;
+
+            foreach (ManagementObject queryObj in searcher.Get())
+            {
+                switch (Convert.ToInt16(queryObj["MediaType"]))
+                {
+                    case 1:
+                        type = "Unspecified";
+                        return type;
+
+                    case 3:
+                        type = "HDD";
+                        return type;
+
+                    case 4:
+                        type = "SSD";
+                        return type;
+
+                    case 5:
+                        type = "SCM";
+                        return type;
+
+                    default:
+                        type = "Unspecified";
+                        return type;
+                }
+            }
+            searcher.Dispose();
+
+            return type;
         }
     }
 }

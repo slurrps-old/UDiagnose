@@ -26,6 +26,7 @@ using ComponentFactory.Krypton.Toolkit;
 using System.Threading;
 using UFormat.Forms;
 using System.Windows.Forms.VisualStyles;
+using UDiagnose.Popups;
 
 namespace UDiagnose
 {
@@ -44,9 +45,10 @@ namespace UDiagnose
         //DriveInfo[] allDrives = DriveInfo.GetDrives(); //Calling the drive info instance from system.IO
         public string driveInfo; //This is the variable that will hold all of the drive information
 
-        //Initialize the SystemInfo Class and cputemp classes
+        //Initialize the appropriate classes
         Hardware hwInfo = new Hardware();
         CPUTemp CPUTemperature = new CPUTemp();
+        FormatClass format = new FormatClass();
         #endregion
 
         #region Performance Counters
@@ -99,30 +101,6 @@ namespace UDiagnose
             
 
         }//End Form Load
-        #endregion
-
-        #region Events for DRIVE Page
-        private void kryptonButton1_Click(object sender, EventArgs e)
-        {
-            FormatClass format = new FormatClass();
-            string driveLetter = "";
-
-            if (lstDrives.SelectedIndex == 0)
-            {
-                MessageBox.Show("Error you cannot format the windows partition drive, please try another drive.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else
-            {
-                //Get selected drive letter
-                driveLetter = lstDrives.SelectedItem.ToString();
-                driveLetter = driveLetter.Remove(2, 1);
-                //Call the formatdrive method
-                format.FormatDrive(driveLetter);
-                //Set an instance of the driveinfo class and call the refresh drives
-                DriveInfoClass dwInfo = new DriveInfoClass(this);
-                dwInfo.RefreshDrives();
-            }
-        }
         #endregion
 
         #region Functions
@@ -309,9 +287,55 @@ namespace UDiagnose
             DriveInfoClass dwInfo = new DriveInfoClass(this);
             dwInfo.RefreshDrives();
         }//End Drive Button code
+
+        private void kryptonButton1_Click(object sender, EventArgs e)
+        {
+            
+            string driveLetter = "";
+
+            if (lstDrives.SelectedIndex == 0)
+            {
+                MessageBox.Show("Error you cannot format the windows partition drive, please try another drive.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                //Get selected drive letter
+                driveLetter = lstDrives.SelectedItem.ToString();
+                driveLetter = driveLetter.Remove(2, 1);
+
+
+                //Call the formatdrive method
+                format.FormatDrive(driveLetter);
+                //Set an instance of the driveinfo class and call the refresh drives
+                DriveInfoClass dwInfo = new DriveInfoClass(this);
+                dwInfo.RefreshDrives();
+            }
+        }
+
+        private void btnSecureWipe_Click(object sender, EventArgs e)
+        {
+            if (lstDrives.SelectedIndex == 0)
+            {
+                MessageBox.Show("Error you cannot format the windows partition drive, please try another drive.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                string driveLetter = "";
+                //Get selected drive letter
+                driveLetter = lstDrives.SelectedItem.ToString();
+                driveLetter = driveLetter.Remove(2, 1);
+
+                format.SecureFormat(driveLetter);
+                DriveInfoClass dwInfo = new DriveInfoClass(this);
+                dwInfo.RefreshDrives();
+            }
+
+        }
         #endregion
 
         #region Menu Strip Items
+
+        #region File Strip
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //////////////////////////////////////////////////////////// Menu Strip ///////////////////////////////////////////////////////////////////////////////////
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -332,7 +356,17 @@ namespace UDiagnose
         {
             Application.Exit();
         }
+        #endregion
 
+        #region View Options
+        //Show format options
+        private void kryptonRibbonGroupButton4_Click(object sender, EventArgs e)
+        {
+
+        }
+        #endregion
+
+        #region Tools Strip
         //--------------------------------------------------------------------------------------------------------------------------------------------------------------
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ///////////////////////////////////////////////////////tools strip menu items////////////////////////////////////////////////////////////////////////////
@@ -389,6 +423,24 @@ namespace UDiagnose
         {
             Application.Exit();
         }
+        #endregion
+
+        #region View Options
+        //Show format options
+        private void btnViewOptions(object sender, EventArgs e)
+        {
+            if (grpFormatOptions.Visible == false)
+            {
+                grpFormatOptions.Visible = true;
+            }
+            else
+            {
+                grpFormatOptions.Visible = false;
+            }
+        }
+        #endregion
+
+        #region Help Strip
         //--------------------------------------------------------------------------------------------------------------------------------------------------------------
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ///////////////////////////////////////////////////Help Strip Menu/////////////////////////////////////////////////////////////////////
@@ -426,6 +478,8 @@ namespace UDiagnose
             About facts = new About();
             facts.Show();
         }
+
+        #endregion
 
         #endregion
 

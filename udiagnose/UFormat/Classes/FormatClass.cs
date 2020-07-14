@@ -7,6 +7,7 @@ using System.IO;
 using System.Windows.Forms;
 using System.Management;
 using UDiagnose.Forms;
+using UDiagnose.Popups;
 
 namespace UDiagnose.Classes
 {
@@ -41,28 +42,118 @@ namespace UDiagnose.Classes
                 fileSystem = drivedetails.fileSystem;
                 quickFormat = drivedetails.quickFormat;
                 clusterSize = drivedetails.allocationSize;
+                enableCompression = drivedetails.compression;
 
-                //query and format given drive         
-                ManagementObjectSearcher searcher = new ManagementObjectSearcher
-                 (@"select * from Win32_Volume WHERE DriveLetter = '" + driveLetter + "'");
-                //Format the drive with the below code.
-                foreach (ManagementObject vi in searcher.Get())
+                if(drivedetails.canceled == true)
                 {
-                    vi.InvokeMethod("Format", new object[]
-                  { fileSystem, quickFormat,clusterSize, label, enableCompression });
+                    MessageBox.Show("Format has been aborted.", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return false;
                 }
+                else
+                {
+                    try
+                    {
+                        //query and format given drive         
+                        ManagementObjectSearcher searcher = new ManagementObjectSearcher
+                         (@"select * from Win32_Volume WHERE DriveLetter = '" + driveLetter + "'");
+                        //Format the drive with the below code.
+                        foreach (ManagementObject vi in searcher.Get())
+                        {
 
-                MessageBox.Show("Format Complete", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            vi.InvokeMethod("Format", new object[]
+                          { fileSystem, quickFormat,clusterSize, label, enableCompression });
+                        }
 
-                return true;
+                        MessageBox.Show("Format Complete", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        return true;
+                    }
+                    catch (FormatException ex)
+                    {
+                        MessageBox.Show("Format has been aborted", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return false;
+                    }
+                }
+                
+                
             }
             //Else quit the process.
             else
             {
-                MessageBox.Show("This has been aborted.");
                 return false;
             }
 
         }
+
+        public void CreateFile(string drive_letter)
+        {
+            //Here we will set a couple variables.
+            DriveInfo di = new DriveInfo(drive_letter); //Set the drive information as a new instance di
+
+            string fileName = drive_letter + @"\Secure.txt";
+
+            using (var fileStream = new FileStream(fileName, FileMode.Create, FileAccess.Write, FileShare.None))
+            {
+                fileStream.SetLength(di.AvailableFreeSpace);
+            }
+        }
+
+        public bool SecureFormat(string driveLetter)
+        {
+            //Make sure that the user knows the repercussions.
+            DialogResult result = MessageBox.Show("Are you sure you want to format, this can damage the data on your drive."
+                + driveLetter + " ?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            //If Yes go ahead with the format
+            if (result == DialogResult.Yes)
+            {
+                frmSecurepopup secure = new frmSecurepopup();
+                secure.ShowDialog();
+                bool isFormated = false;
+                int numtimes = 0;
+
+                numtimes = secure.numPasses;
+                isFormated = secure.isFormated;
+
+                if(secure.canceled == true)
+                {
+                    MessageBox.Show("This has been aborted.", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return false;
+                }
+                else
+                {
+                    if (isFormated == true)
+                    {
+                        //query and format given drive         
+                        ManagementObjectSearcher searcher = new ManagementObjectSearcher
+                         (@"select * from Win32_Volume WHERE DriveLetter = '" + driveLetter + "'");
+                        //Format the drive with the below code.
+                        foreach (ManagementObject vi in searcher.Get())
+                        {
+                            vi.InvokeMethod("Format", new object[]
+                          { "NFTS", true ,8192, "Untitled" , false });
+                        }
+                    }
+
+                    for (int i = 0; i < numtimes; i++)
+                    {
+                        CreateFile(driveLetter);
+                        File.Delete(driveLetter.ToString() + @"\Secure.txt");
+                    }
+
+
+                    MessageBox.Show("The secure erase was successful.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return true;
+                }
+                
+            }
+            else
+            {
+                MessageBox.Show("This has been aborted.", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return false;
+            }
+
+        }
+
     }
 }

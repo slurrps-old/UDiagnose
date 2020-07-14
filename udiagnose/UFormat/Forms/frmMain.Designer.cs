@@ -77,10 +77,10 @@
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.DriveandHardware = new ComponentFactory.Krypton.Docking.KryptonDockableNavigator();
             this.pgDrives = new ComponentFactory.Krypton.Navigator.KryptonPage();
-            this.kryptonGroupBox1 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
+            this.grpFormatOptions = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
             this.btnFormatDrive = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.kryptonButton2 = new ComponentFactory.Krypton.Toolkit.KryptonButton();
-            this.kryptonButton3 = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.btnSecureWipe = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.label2 = new System.Windows.Forms.Label();
             this.pgHardwareInfo = new ComponentFactory.Krypton.Navigator.KryptonPage();
             this.pgSystemLoad = new ComponentFactory.Krypton.Navigator.KryptonPage();
@@ -146,6 +146,9 @@
             this.btnSaveInfo = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton();
             this.btnExit = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton();
             this.kryptonRibbonTab5 = new ComponentFactory.Krypton.Ribbon.KryptonRibbonTab();
+            this.kryptonRibbonGroup6 = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroup();
+            this.kryptonRibbonGroupLines4 = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupLines();
+            this.btnFormatOptions = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton();
             this.kryptonRibbonTab2 = new ComponentFactory.Krypton.Ribbon.KryptonRibbonTab();
             this.kryptonRibbonGroup4 = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroup();
             this.kryptonRibbonGroupLines3 = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupLines();
@@ -153,7 +156,6 @@
             this.btnCMD = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton();
             this.btnRegedit = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton();
             this.btnEventView = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton();
-            this.kryptonRibbonTab4 = new ComponentFactory.Krypton.Ribbon.KryptonRibbonTab();
             this.kryptonRibbonTab3 = new ComponentFactory.Krypton.Ribbon.KryptonRibbonTab();
             this.kryptonRibbonGroup2 = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroup();
             this.kryptonRibbonGroupLines1 = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupLines();
@@ -168,7 +170,6 @@
             this.kryptonRibbonGroupButton1 = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton();
             this.kryptonRibbonGroupButton2 = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton();
             this.kryptonRibbonGroupButton3 = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton();
-            this.kryptonRibbonTab6 = new ComponentFactory.Krypton.Ribbon.KryptonRibbonTab();
             this.ToolTipUDiagnose = new System.Windows.Forms.ToolTip(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.kryptonPalette1 = new ComponentFactory.Krypton.Toolkit.KryptonPalette(this.components);
@@ -200,10 +201,10 @@
             this.DriveandHardware.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pgDrives)).BeginInit();
             this.pgDrives.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1.Panel)).BeginInit();
-            this.kryptonGroupBox1.Panel.SuspendLayout();
-            this.kryptonGroupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grpFormatOptions)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grpFormatOptions.Panel)).BeginInit();
+            this.grpFormatOptions.Panel.SuspendLayout();
+            this.grpFormatOptions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pgHardwareInfo)).BeginInit();
             this.pgHardwareInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pgSystemLoad)).BeginInit();
@@ -399,7 +400,7 @@
             // 
             this.pgDrives.AutoHiddenSlideSize = new System.Drawing.Size(200, 200);
             this.pgDrives.AutoScroll = true;
-            this.pgDrives.Controls.Add(this.kryptonGroupBox1);
+            this.pgDrives.Controls.Add(this.grpFormatOptions);
             this.pgDrives.Controls.Add(this.label2);
             this.pgDrives.Controls.Add(this.groupBox1);
             this.pgDrives.Flags = 65534;
@@ -411,24 +412,25 @@
             this.pgDrives.ToolTipTitle = "Page ToolTip";
             this.pgDrives.UniqueName = "0E0C8E0A832345B073A5BFCB901374AF";
             // 
-            // kryptonGroupBox1
+            // grpFormatOptions
             // 
-            this.kryptonGroupBox1.CaptionEdge = ComponentFactory.Krypton.Toolkit.VisualOrientation.Bottom;
-            this.kryptonGroupBox1.CaptionOverlap = 0D;
-            this.kryptonGroupBox1.GroupBackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.HeaderPrimary;
-            this.kryptonGroupBox1.GroupBorderStyle = ComponentFactory.Krypton.Toolkit.PaletteBorderStyle.HeaderPrimary;
-            this.kryptonGroupBox1.Location = new System.Drawing.Point(12, 482);
-            this.kryptonGroupBox1.Name = "kryptonGroupBox1";
-            this.kryptonGroupBox1.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue;
+            this.grpFormatOptions.CaptionEdge = ComponentFactory.Krypton.Toolkit.VisualOrientation.Bottom;
+            this.grpFormatOptions.CaptionOverlap = 0D;
+            this.grpFormatOptions.GroupBackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.HeaderPrimary;
+            this.grpFormatOptions.GroupBorderStyle = ComponentFactory.Krypton.Toolkit.PaletteBorderStyle.HeaderPrimary;
+            this.grpFormatOptions.Location = new System.Drawing.Point(12, 482);
+            this.grpFormatOptions.Name = "grpFormatOptions";
+            this.grpFormatOptions.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue;
             // 
-            // kryptonGroupBox1.Panel
+            // grpFormatOptions.Panel
             // 
-            this.kryptonGroupBox1.Panel.Controls.Add(this.btnFormatDrive);
-            this.kryptonGroupBox1.Panel.Controls.Add(this.kryptonButton2);
-            this.kryptonGroupBox1.Panel.Controls.Add(this.kryptonButton3);
-            this.kryptonGroupBox1.Size = new System.Drawing.Size(327, 213);
-            this.kryptonGroupBox1.TabIndex = 12;
-            this.kryptonGroupBox1.Values.Heading = "Test Features not yet available";
+            this.grpFormatOptions.Panel.Controls.Add(this.btnFormatDrive);
+            this.grpFormatOptions.Panel.Controls.Add(this.kryptonButton2);
+            this.grpFormatOptions.Panel.Controls.Add(this.btnSecureWipe);
+            this.grpFormatOptions.Size = new System.Drawing.Size(327, 213);
+            this.grpFormatOptions.TabIndex = 12;
+            this.grpFormatOptions.Values.Heading = "Assess Drive Performance not yet available";
+            this.grpFormatOptions.Visible = false;
             // 
             // btnFormatDrive
             // 
@@ -449,14 +451,15 @@
             this.kryptonButton2.TabIndex = 10;
             this.kryptonButton2.Values.Text = "Assess Drive Performance";
             // 
-            // kryptonButton3
+            // btnSecureWipe
             // 
-            this.kryptonButton3.Location = new System.Drawing.Point(12, 76);
-            this.kryptonButton3.Name = "kryptonButton3";
-            this.kryptonButton3.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue;
-            this.kryptonButton3.Size = new System.Drawing.Size(156, 34);
-            this.kryptonButton3.TabIndex = 11;
-            this.kryptonButton3.Values.Text = "Clean Drive";
+            this.btnSecureWipe.Location = new System.Drawing.Point(12, 76);
+            this.btnSecureWipe.Name = "btnSecureWipe";
+            this.btnSecureWipe.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue;
+            this.btnSecureWipe.Size = new System.Drawing.Size(156, 34);
+            this.btnSecureWipe.TabIndex = 11;
+            this.btnSecureWipe.Values.Text = "Secure Wipe";
+            this.btnSecureWipe.Click += new System.EventHandler(this.btnSecureWipe_Click);
             // 
             // label2
             // 
@@ -515,7 +518,7 @@
             this.pgCPU,
             this.pgGPU});
             this.kryptonDockableNavigator1.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue;
-            this.kryptonDockableNavigator1.SelectedIndex = 1;
+            this.kryptonDockableNavigator1.SelectedIndex = 0;
             this.kryptonDockableNavigator1.Size = new System.Drawing.Size(745, 713);
             this.kryptonDockableNavigator1.TabIndex = 9;
             this.kryptonDockableNavigator1.Text = "kryptonDockableNavigator1";
@@ -1311,9 +1314,7 @@
             this.kryptonRibbonTab1,
             this.kryptonRibbonTab5,
             this.kryptonRibbonTab2,
-            this.kryptonRibbonTab4,
-            this.kryptonRibbonTab3,
-            this.kryptonRibbonTab6});
+            this.kryptonRibbonTab3});
             this.uDiagnoseRibbon.SelectedTab = this.kryptonRibbonTab1;
             this.uDiagnoseRibbon.Size = new System.Drawing.Size(909, 115);
             this.uDiagnoseRibbon.TabIndex = 15;
@@ -1348,7 +1349,26 @@
             // 
             // kryptonRibbonTab5
             // 
+            this.kryptonRibbonTab5.Groups.AddRange(new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroup[] {
+            this.kryptonRibbonGroup6});
             this.kryptonRibbonTab5.Text = "View";
+            // 
+            // kryptonRibbonGroup6
+            // 
+            this.kryptonRibbonGroup6.Items.AddRange(new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupContainer[] {
+            this.kryptonRibbonGroupLines4});
+            this.kryptonRibbonGroup6.TextLine1 = "Drive Information";
+            // 
+            // kryptonRibbonGroupLines4
+            // 
+            this.kryptonRibbonGroupLines4.Items.AddRange(new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupItem[] {
+            this.btnFormatOptions});
+            // 
+            // btnFormatOptions
+            // 
+            this.btnFormatOptions.Tag = "";
+            this.btnFormatOptions.TextLine1 = "Format Options";
+            this.btnFormatOptions.Click += new System.EventHandler(this.btnViewOptions);
             // 
             // kryptonRibbonTab2
             // 
@@ -1389,10 +1409,6 @@
             // 
             this.btnEventView.TextLine1 = "Event Viewer";
             this.btnEventView.Click += new System.EventHandler(this.eventViewerToolStripMenuItem_Click);
-            // 
-            // kryptonRibbonTab4
-            // 
-            this.kryptonRibbonTab4.Text = "Options";
             // 
             // kryptonRibbonTab3
             // 
@@ -1765,10 +1781,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pgDrives)).EndInit();
             this.pgDrives.ResumeLayout(false);
             this.pgDrives.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1.Panel)).EndInit();
-            this.kryptonGroupBox1.Panel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1)).EndInit();
-            this.kryptonGroupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.grpFormatOptions.Panel)).EndInit();
+            this.grpFormatOptions.Panel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.grpFormatOptions)).EndInit();
+            this.grpFormatOptions.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pgHardwareInfo)).EndInit();
             this.pgHardwareInfo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pgSystemLoad)).EndInit();
@@ -1826,7 +1842,6 @@
         private ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton btnCMD;
         private ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton btnRegedit;
         private ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton btnEventView;
-        private ComponentFactory.Krypton.Ribbon.KryptonRibbonTab kryptonRibbonTab4;
         private ComponentFactory.Krypton.Ribbon.KryptonRibbonTab kryptonRibbonTab3;
         private ComponentFactory.Krypton.Ribbon.KryptonRibbonGroup kryptonRibbonGroup2;
         private ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupLines kryptonRibbonGroupLines1;
@@ -1841,11 +1856,11 @@
         private ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton kryptonRibbonGroupButton1;
         private ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton kryptonRibbonGroupButton2;
         private ComponentFactory.Krypton.Navigator.KryptonPage pgSystemLoad;
-        private ComponentFactory.Krypton.Toolkit.KryptonButton kryptonButton3;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnSecureWipe;
         private ComponentFactory.Krypton.Toolkit.KryptonButton kryptonButton2;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnFormatDrive;
         private System.Windows.Forms.ToolTip ToolTipUDiagnose;
-        private ComponentFactory.Krypton.Toolkit.KryptonGroupBox kryptonGroupBox1;
+        private ComponentFactory.Krypton.Toolkit.KryptonGroupBox grpFormatOptions;
         private ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton kryptonRibbonGroupButton3;
         private ComponentFactory.Krypton.Navigator.KryptonPage pgSystemTemp;
         private System.Windows.Forms.Label lblGPUTemp;
@@ -1859,7 +1874,6 @@
         private MetroFramework.Controls.MetroProgressSpinner progMoboTemp;
         private System.Windows.Forms.Label label5;
         private ComponentFactory.Krypton.Navigator.KryptonPage pgHardwareInfo;
-        private ComponentFactory.Krypton.Ribbon.KryptonRibbonTab kryptonRibbonTab6;
         private ComponentFactory.Krypton.Toolkit.KryptonPalette kryptonPalette1;
         private ComponentFactory.Krypton.Docking.KryptonDockableNavigator kryptonDockableNavigator1;
         private ComponentFactory.Krypton.Navigator.KryptonPage pgOverview;
@@ -1928,6 +1942,9 @@
         public System.Windows.Forms.RichTextBox rtbDriveInfo;
         public System.Windows.Forms.ProgressBar progHardDrive;
         public System.Windows.Forms.Label lblDrivePercentage;
+        private ComponentFactory.Krypton.Ribbon.KryptonRibbonGroup kryptonRibbonGroup6;
+        private ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupLines kryptonRibbonGroupLines4;
+        private ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton btnFormatOptions;
     }
 }
 
