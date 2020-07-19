@@ -151,7 +151,7 @@ namespace UDiagnose
         public void OnTimedEvent(object source, ElapsedEventArgs e)
         {
             SystemInfo sysInfo = new SystemInfo();
-            //Temp has some issues that need to be worked out...
+            ////Temp has some issues that need to be worked out...
             //lblCPUTemp.Text = CPUTemperature.GetCPUTemp().ToString() + " °C";
             //lblGPUTemp.Text = CPUTemperature.GetGPUTemp().ToString() + " °C";
 
@@ -188,7 +188,6 @@ namespace UDiagnose
             //Invoke the UI elements from a different thread!! Important or the UI will not work for the system loads
             this.BeginInvoke((ThreadStart)delegate ()
             {
-               
                 //OVERVIEW PAGE---------------------------------------------------------------------------------
                 //Utilizations
                 //Memory
@@ -288,7 +287,7 @@ namespace UDiagnose
             dwInfo.RefreshDrives();
         }//End Drive Button code
 
-        private void kryptonButton1_Click(object sender, EventArgs e)
+        private void btnFormatDrive_Click(object sender, EventArgs e)
         {
             
             string driveLetter = "";
@@ -330,6 +329,12 @@ namespace UDiagnose
                 dwInfo.RefreshDrives();
             }
 
+        }
+
+        private void btnFileWipe_Click(object sender, EventArgs e)
+        {
+
+            format.WipeFile();
         }
         #endregion
 
@@ -483,11 +488,7 @@ namespace UDiagnose
 
         #endregion
 
-        private void btnFileWipe_Click(object sender, EventArgs e)
-        {
-
-            format.WipeFile();
-        }
+       
     }//End class
 
 

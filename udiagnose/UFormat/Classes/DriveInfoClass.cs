@@ -21,10 +21,11 @@ namespace UDiagnose.Classes
 
         public DriveInfoClass(frmMain form)
         {
+            //Set main to the incoming instance of frmMain
             main = form;
         }
 
-
+        #region Refresh Drive list
         public void RefreshDrives()
         {
             //Refresh the list
@@ -36,7 +37,9 @@ namespace UDiagnose.Classes
                 main.lstDrives.SelectedIndex = 0;
             }
         }
+        #endregion
 
+        #region Load Drive Info
         public void LoadDrives()
         {
             //Here we will set a couple variables.
@@ -96,7 +99,11 @@ namespace UDiagnose.Classes
 
             main.rtbDriveInfo.Text = main.driveInfo; //Set the above information on the drives to the rich text box on the form
         }
+        #endregion
 
+        
+
+        //Some test code to get the drive type SSD HDD ect...
         private string DriveType()
         {
             ManagementScope scope = new ManagementScope(@"\\.\root\microsoft\windows\storage");

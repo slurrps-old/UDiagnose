@@ -16,10 +16,13 @@ namespace UDiagnose.Classes
 
         public SaveHWInfo(frmMain form)
         {
+            //set mainForm to the incoming instance of frmMain
             mainForm = form;
 
         }
 
+        #region Functions
+        //This will build the string that is printed to the text file
         public void BuildTreeString(TreeNode rootNode, System.Text.StringBuilder buffer)
         {
 
@@ -28,15 +31,15 @@ namespace UDiagnose.Classes
 
             foreach (TreeNode childNode in rootNode.Nodes)
             {
+                //recursively call the method
                 BuildTreeString(childNode, buffer);
             }
         }
+        #endregion
 
-
+        #region Save Method
         public void SaveInfo()
         {
-
-
             string location = "";
             //Set it's name
             mainForm.saveFileDialog1.FileName = "HardWare Info ";
@@ -67,6 +70,7 @@ namespace UDiagnose.Classes
             System.IO.File.WriteAllText(location, buffer.ToString());
 
         }
+        #endregion
 
     }
 }

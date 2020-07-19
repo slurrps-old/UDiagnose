@@ -72,12 +72,6 @@ C:\Users\lambk\source\repos\udiagnose\UFormat\obj\Debug\UDiagnose.pdb
 C:\Users\klamb\Source\Repos\udiagnose\UFormat\bin\Debug\UDiagnose.exe.config
 C:\Users\klamb\Source\Repos\udiagnose\UFormat\bin\Debug\UDiagnose.exe
 C:\Users\klamb\Source\Repos\udiagnose\UFormat\bin\Debug\UDiagnose.pdb
-C:\Users\klamb\Source\Repos\udiagnose\UFormat\bin\Debug\ComponentFactory.Krypton.Design.dll
-C:\Users\klamb\Source\Repos\udiagnose\UFormat\bin\Debug\ComponentFactory.Krypton.Docking.dll
-C:\Users\klamb\Source\Repos\udiagnose\UFormat\bin\Debug\ComponentFactory.Krypton.Navigator.dll
-C:\Users\klamb\Source\Repos\udiagnose\UFormat\bin\Debug\ComponentFactory.Krypton.Ribbon.dll
-C:\Users\klamb\Source\Repos\udiagnose\UFormat\bin\Debug\ComponentFactory.Krypton.Toolkit.dll
-C:\Users\klamb\Source\Repos\udiagnose\UFormat\bin\Debug\ComponentFactory.Krypton.Workspace.dll
 C:\Users\klamb\Source\Repos\udiagnose\UFormat\obj\Debug\UDiagnose.Forms.ErrorCodeForm.resources
 C:\Users\klamb\Source\Repos\udiagnose\UFormat\obj\Debug\UDiagnose.frmMain.resources
 C:\Users\klamb\Source\Repos\udiagnose\UFormat\obj\Debug\UDiagnose.Properties.Resources.resources
@@ -87,3 +81,6 @@ C:\Users\klamb\Source\Repos\udiagnose\UFormat\obj\Debug\UDiagnose.exe
 C:\Users\klamb\Source\Repos\udiagnose\UFormat\obj\Debug\UDiagnose.pdb
 C:\Users\lambk\Source\Repos\udiagnose\UFormat\obj\Debug\UDiagnose.Forms.frmPopup.resources
 C:\Users\lambk\Source\Repos\udiagnose\UFormat\obj\Debug\UDiagnose.Popups.frmWipe.resources
+C:\Users\klamb\Source\Repos\udiagnose\UFormat\obj\Debug\UDiagnose.Forms.frmPopup.resources
+C:\Users\klamb\Source\Repos\udiagnose\UFormat\obj\Debug\UDiagnose.Popups.frmWait.resources
+C:\Users\klamb\Source\Repos\udiagnose\UFormat\obj\Debug\UDiagnose.Popups.frmWipe.resources

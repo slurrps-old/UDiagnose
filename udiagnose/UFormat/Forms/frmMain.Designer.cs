@@ -442,7 +442,7 @@
             this.btnFormatDrive.Size = new System.Drawing.Size(155, 34);
             this.btnFormatDrive.TabIndex = 9;
             this.btnFormatDrive.Values.Text = "Format Drive";
-            this.btnFormatDrive.Click += new System.EventHandler(this.kryptonButton1_Click);
+            this.btnFormatDrive.Click += new System.EventHandler(this.btnFormatDrive_Click);
             // 
             // btnFileWipe
             // 

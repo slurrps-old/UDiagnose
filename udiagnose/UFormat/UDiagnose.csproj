@@ -158,6 +158,12 @@
     <Compile Include="Popups\frmPopup.Designer.cs">
       <DependentUpon>frmPopup.cs</DependentUpon>
     </Compile>
+    <Compile Include="Popups\frmWait.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popups\frmWait.Designer.cs">
+      <DependentUpon>frmWait.cs</DependentUpon>
+    </Compile>
     <Compile Include="Popups\frmWipe.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -184,6 +190,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Popups\frmPopup.resx">
       <DependentUpon>frmPopup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popups\frmWait.resx">
+      <DependentUpon>frmWait.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Popups\frmWipe.resx">
       <DependentUpon>frmWipe.cs</DependentUpon>
