@@ -84,3 +84,10 @@ C:\Users\lambk\Source\Repos\udiagnose\UFormat\obj\Debug\UDiagnose.Popups.frmWipe
 C:\Users\klamb\Source\Repos\udiagnose\UFormat\obj\Debug\UDiagnose.Forms.frmPopup.resources
 C:\Users\klamb\Source\Repos\udiagnose\UFormat\obj\Debug\UDiagnose.Popups.frmWait.resources
 C:\Users\klamb\Source\Repos\udiagnose\UFormat\obj\Debug\UDiagnose.Popups.frmWipe.resources
+C:\Users\lambk\Source\Repos\udiagnose\UFormat\obj\Debug\UDiagnose.Popups.frmWait.resources
+C:\Users\lambk\Source\Repos\udiagnose\UFormat\bin\Debug\ComponentFactory.Krypton.Design.dll
+C:\Users\lambk\Source\Repos\udiagnose\UFormat\bin\Debug\ComponentFactory.Krypton.Docking.dll
+C:\Users\lambk\Source\Repos\udiagnose\UFormat\bin\Debug\ComponentFactory.Krypton.Navigator.dll
+C:\Users\lambk\Source\Repos\udiagnose\UFormat\bin\Debug\ComponentFactory.Krypton.Ribbon.dll
+C:\Users\lambk\Source\Repos\udiagnose\UFormat\bin\Debug\ComponentFactory.Krypton.Toolkit.dll
+C:\Users\lambk\Source\Repos\udiagnose\UFormat\bin\Debug\ComponentFactory.Krypton.Workspace.dll
