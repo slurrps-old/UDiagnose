@@ -9,21 +9,35 @@ using System.Management;
 using UDiagnose.Forms;
 using UDiagnose.Popups;
 using System.Security.Cryptography;
+using System.Threading;
 
 namespace UDiagnose.Classes
 {
     class FormatClass
     {
+        //Author: Kenneth Lamb
+        //Purpose:  This clas handles the formatting of the drives algorithms
+        // 
+        // Assumptions: 
+        //
+        // Exception Handling: 
+        //
+        // Summary of Methods:
+
+        //Instances of the Forms needed
+        public frmPopup drivedetails = new frmPopup();
+        public frmWait wait = new frmWait();
 
         public FormatClass()
         {
 
         }
 
+        #region FormatDrives
         public bool FormatDrive(string driveLetter, string fileSystem = "NTFS", bool quickFormat = true, int clusterSize = 8192, string label = "", bool enableCompression = false)
         {
             //Set an instance of the frmPopup form
-            frmPopup drivedetails = new frmPopup();
+            
 
             //Check to make sure the drive letter is correctly formatted.
             if (driveLetter.Length != 2 || driveLetter[1] != ':' || !char.IsLetter(driveLetter[0]))
@@ -45,6 +59,7 @@ namespace UDiagnose.Classes
                 clusterSize = drivedetails.allocationSize;
                 enableCompression = drivedetails.compression;
 
+                //Check if the process has been canceled
                 if(drivedetails.canceled == true)
                 {
                     MessageBox.Show("Format has been aborted.", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -52,6 +67,9 @@ namespace UDiagnose.Classes
                 }
                 else
                 {
+                    Thread sf = new Thread(new ThreadStart(showWait));
+                    sf.Start();
+                    //Try and format the drive
                     try
                     {
                         //query and format given drive         
@@ -60,23 +78,25 @@ namespace UDiagnose.Classes
                         //Format the drive with the below code.
                         foreach (ManagementObject vi in searcher.Get())
                         {
-
+                            //Invoke the format method
                             vi.InvokeMethod("Format", new object[]
                           { fileSystem, quickFormat,clusterSize, label, enableCompression });
                         }
-
-                        MessageBox.Show("Format Complete", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        //Message complete
+                        //close thread
+                        sf.Abort();
+                        //Call the new wait window
+                        updateWait();
 
                         return true;
                     }
-                    catch (FormatException ex)
+                    catch
                     {
+                        //Error message
                         MessageBox.Show("Format has been aborted", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return false;
                     }
-                }
-                
-                
+                }  
             }
             //Else quit the process.
             else
@@ -86,68 +106,151 @@ namespace UDiagnose.Classes
 
         }
 
-        public void CreateFile(string drive_letter)
+        private void showWait()
         {
-            //Here we will set a couple variables.
-            DriveInfo di = new DriveInfo(drive_letter); //Set the drive information as a new instance di
+            //set the button to be invisable
+            wait.btnAccept.Visible = false;
+            //Show form
+            wait.ShowDialog();
+        }
 
-            string fileName = drive_letter + @"\Secure.txt";
+        public void updateWait()
+        {
+            //Change the text
+            wait.lblMessage.Text = "Success, your format is complete.";
+            //set button to be visable
+            wait.btnAccept.Visible = true;
+            //Show form
+            wait.ShowDialog();
+        }
+        #endregion
 
-            using (var fileStream = new FileStream(fileName, FileMode.Create, FileAccess.Write, FileShare.None))
-            {
-                fileStream.SetLength(di.AvailableFreeSpace);
-            }
+        #region SecureWipe
+        public void CreateFile(string directory, byte num)
+        {
+            //Create the file name
+            string fileName = directory + @"\Secure.txt";
+            //create the filestream
+            FileStream fs = new FileStream(fileName, FileMode.CreateNew);
+            //set the current position and the offset
+            fs.Seek(2048L * 1024 * 1024, SeekOrigin.Begin);
+            //write the byte to the file
+            fs.WriteByte(num);
+            //Close the stream
+            fs.Close();
+
         }
 
         public bool SecureFormat(string driveLetter)
         {
-            //Make sure that the user knows the repercussions.
-            DialogResult result = MessageBox.Show("Are you sure you want to format, this can damage the data on your drive."
-                + driveLetter + " ?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            DriveInfo di = new DriveInfo(driveLetter); //Set the drive information as a new instance di
 
-            //If Yes go ahead with the format
-            if (result == DialogResult.Yes)
+            //Check if the Drive is removable
+            if (di.DriveType.ToString() == "removable")
             {
-                //Go through a loop creating and deleting a file as big as the available space on the drive.
-                for (int i = 0; i < 50; i++)
+                //Give warning to the user about the feature
+                MessageBox.Show("Warning this feature is stil experimental and may not work properly please be careful.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                //Here we will set a couple variables.
+                int num = 0; //Holds the num to add to the filename
+                byte bt = 0; //Holds the byte for the file creation
+                
+                Random rng = new Random(); //Random number to be generated for the final loop
+
+                //Make sure that the user knows the repercussions.
+                DialogResult result = MessageBox.Show("Are you sure you want to format, this can damage the data on your drive."
+                    + driveLetter + " ? Please be aware that doing this will take a while. Please do NOT use this on an SSD as this can damage the flash chips!"
+                    , "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                //If Yes go ahead with the format
+                if (result == DialogResult.Yes)
                 {
-                    CreateFile(driveLetter);
-                    File.Delete(driveLetter.ToString() + @"\Secure.txt");
-                }
+                    //Create a new directory holding the files
+                    CreateDirectory(driveLetter);
 
-                //Then to finish query and format given drive         
-                ManagementObjectSearcher searcher = new ManagementObjectSearcher
-                 (@"select * from Win32_Volume WHERE DriveLetter = '" + driveLetter + "'");
-                //Format the drive with the below code.
-                foreach (ManagementObject vi in searcher.Get())
+                    //Loop 7 times in total-----
+                    //Loop 1 byte = 0
+                    CreateFile(driveLetter + @"\SecureErase", bt);
+                    for (int i = 0; i >= 3; i++)
+                    {
+                        while (di.AvailableFreeSpace > 2147483648)
+                        {
+                            num++;
+                            File.Copy(driveLetter + @"\SecureErase\Secure.txt", driveLetter + @"\SecureErase\Secure" + num.ToString() + ".txt", true);
+                        }
+
+                        File.Delete(driveLetter.ToString() + @"\SecureErase");
+                    }
+                    //recreate directory
+                    CreateDirectory(driveLetter);
+                    //Loop 2 byte = 1
+                    bt = 1;
+                    CreateFile(driveLetter + @"\SecureErase", bt);
+                    for (int i = 0; i >= 3; i++)
+                    {
+                        while (di.AvailableFreeSpace > 2147483648)
+                        {
+                            num++;
+                            File.Copy(driveLetter + @"\SecureErase\Secure.txt", driveLetter + @"\SecureErase\Secure" + num.ToString() + ".txt", true);
+                        }
+
+                        File.Delete(driveLetter.ToString() + @"\SecureErase");
+                    }
+                    //Recreate directory
+                    CreateDirectory(driveLetter);
+                    //Loop 3 byte = random
+                    bt = Convert.ToByte(rng.Next(1, 10));
+                    CreateFile(driveLetter + @"\SecureErase", bt);
+                    for (int i = 0; i >= 1; i++)
+                    {
+                        while (di.AvailableFreeSpace > 2147483648)
+                        {
+                            num++;
+                            File.Copy(driveLetter + @"\SecureErase\Secure.txt", driveLetter + @"\SecureErase\Secure" + num.ToString() + ".txt", true);
+                        }
+
+                        File.Delete(driveLetter.ToString() + @"\SecureErase");
+                    }
+                    //End loops-----
+
+                    MessageBox.Show("The secure erase was successful.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return true;
+
+
+                }
+                else //Abort
                 {
-                    vi.InvokeMethod("Format", new object[]
-                  { "NFTS", true ,8192, "Untitled" , false });
+                    MessageBox.Show("This has been aborted.", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return false;
                 }
-
-                MessageBox.Show("The secure erase was successful.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return true;
-            
-
             }
-            else
+            else //Throw an error
             {
-                MessageBox.Show("This has been aborted.", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("This is not a removable drive. This operation will only work for removable drives. Please select again",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-
         }
+
+        public void CreateDirectory(string driveLetter)
+        {
+            //Create a new directory holding the files
+            DirectoryInfo directory = Directory.CreateDirectory(driveLetter + @"\SecureErase");
+        }
+        #endregion
 
         #region File Wipe
         public bool WipeFile()
         {
+            //Holds the times to overwrite the file
             int timesToWrite = 0;
-
+            //Set instance of the popup to get the timesToWrite
             frmWipe wipeTimes = new frmWipe();
             wipeTimes.ShowDialog();
-
+            //Set timesToWrite to the number from the popup
             timesToWrite = wipeTimes.numPasses;
 
+            //Check to see if this has been canceled
             if(wipeTimes.canceled == true)
             {
                 MessageBox.Show("This has been aborted.", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -155,12 +258,17 @@ namespace UDiagnose.Classes
             }
             else
             {
+                //Set an instance of openfiledialog and show it
                 OpenFileDialog openFile = new OpenFileDialog();
                 openFile.ShowDialog();
 
+                //Get the filename from the dialog
                 string filename = openFile.FileName;
+
+                //Try to wipe the file
                 try
                 {
+                    //Check if the file exists
                     if (File.Exists(filename))
                     {
                         // Set the files attributes to normal in case it's read-only.
@@ -223,22 +331,19 @@ namespace UDiagnose.Classes
 
                         File.Delete(filename);
 
+                        //Success message
                         MessageBox.Show("The file " +
                             filename + " has successfully been wiped.", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-
                     }
                 }
-                catch (Exception ex)
+                catch
                 {
                     //WipeError(ex);
                 }
 
                 return true;
             }
-
         }
-
         #endregion
 
     }

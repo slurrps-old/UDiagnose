@@ -22,30 +22,32 @@ namespace UDiagnose.Popups
             InitializeComponent();
         }
 
-        private void frmSecurepopup_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void kryptonButton1_Click(object sender, EventArgs e)
         {
+            //set numPasses to the converted number from the numUpDown control
             numPasses = Convert.ToInt32(numUpDown.Value);
+            //set canceled to false
             canceled = false;
 
+            //Check that numPasses is not 0
             if(numPasses == 0)
             {
+                //Error message
                 MessageBox.Show("Please select a number.");
             }
             else
             {
+                //Close this form
                 this.Close();
             }
-        }
+        }//End kryptonButton1_Click
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
+            //Set canceled to true
             canceled = true;
+            //Close this form
             this.Close();
-        }
+        }//End btnCancel_Click
     }
 }

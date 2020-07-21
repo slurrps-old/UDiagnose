@@ -78,7 +78,7 @@ namespace HardwareDisplay
         #region Fill Information of the PDM's 
         //--------------------------------------------------------------------------------------------------------
         //This function will load up the data required for FillTree method
-        public void TreeViewHardware()
+        public void SearchHardware()
         {
             //Load up the data to the appropriate variables
             Cache = GetCache();

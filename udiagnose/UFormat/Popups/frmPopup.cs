@@ -15,13 +15,14 @@ namespace UDiagnose.Forms
 {
     public partial class frmPopup : KryptonForm
     {
+        //Set all of the public variables
         public string VolumeLabel = "";
         public bool quickFormat = true;
         public string fileSystem = "NFTS";
         public int allocationSize = 0;
         public bool compression = false;
-
         public bool canceled = false;
+
         public frmPopup()
         {
             InitializeComponent();
@@ -29,17 +30,18 @@ namespace UDiagnose.Forms
 
         private void frmPopup_Load(object sender, EventArgs e)
         {
+            //Set the variables to the default values
             txtVolumeLabel.Text = "Untitled";
             cmbFileSystem.SelectedIndex = 0;
             cmbAllocationSize.SelectedIndex = 4;
-        }
+        }//End frmPopup_Load
 
         private void btnAccept_Click(object sender, EventArgs e)
         {
+            //Set variables
             int pos = 0;
             string temp;
             canceled = false;
-
 
             //Get Volume Label from user
             VolumeLabel = txtVolumeLabel.Text;
@@ -72,19 +74,17 @@ namespace UDiagnose.Forms
             {
                 allocationSize = Convert.ToInt32(temp);
             }
+            //Close this form
             this.Close();
-        }
-
-        private void kryptonComboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
+        }//End btnAccept_Click
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
+            //Set canceled to true
             canceled = true;
+            //Close this form
             this.Close();
-        }
+        }//End btnCancel_Click
 
     }
 }

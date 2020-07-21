@@ -13,20 +13,13 @@ using ComponentFactory.Krypton.Toolkit;
 using System.Xml;
 using System.IO;
 
-
-
-
-
-
 namespace UDiagnose.Forms
 {
     public partial class ErrorCodeForm : KryptonForm
     {
-               
+             
         public DataTable myData;
-        splashScreen splash = new splashScreen();
-        frmMain mainForm = new frmMain();
-
+        
         public ErrorCodeForm()
         {
             InitializeComponent();
@@ -38,7 +31,7 @@ namespace UDiagnose.Forms
         }
        
        public void loadXmlToDataTable()
-        {
+       {
             //Instantiate the public datatabe myDate and add its columns
             myData = new DataTable();
             myData.Columns.Add("Error");
@@ -62,26 +55,30 @@ namespace UDiagnose.Forms
             //Set the datagridview's datasource to the datatable we just populated
             dgDisplay.DataSource = myData;
             //Aaaaand we're done! (fuck office 365)
-        }
+       }//End loadXmlToDataTable
 
 
-       private void ErrorCodeForm_FormClosing(object sender, FormClosingEventArgs e)
-       {
-           
+        private void ErrorCodeForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+           //Show the main form
            splashScreen.mainForm.Show();
+            //Start back up the main forms timer
            splashScreen.mainForm.systemLoadTimer.Start();
 
-       }
+        }//End ErrorCodeForm_FormClosing
 
+        //This is some test that might be linked to googling a word or
+        //phrase that is in the text box next to the button
         private void btnGoogle_Click(object sender, EventArgs e)
         {
+
             System.Diagnostics.Process.Start("http://google.com");
 
-        }
+        }//End btnGoogle_Click
 
         public void SearchOptions()
         {
-            
+            //Check of the error radial button is checked
             if(radError.Checked == true)
             {
                 //Filter the rows of the data table where bookCode is like any of the text in the textbox txtSpecificBook
@@ -93,23 +90,26 @@ namespace UDiagnose.Forms
                 //Filter the rows of the data table where bookCode is like any of the text in the textbox txtSpecificBook
                 (dgDisplay.DataSource as DataTable).DefaultView.RowFilter = string.Format("Solution LIKE '%{0}%'", txtFind.Text);
             }
-        }
+        }//End SearchOptions
 
         private void txtFind_TextChanged(object sender, EventArgs e)
         {
+            //Call the search options method when the text changes in the text box
             SearchOptions();
-        }
+        }//End txtFind_TextChanged
 
         private void radError_CheckedChanged(object sender, EventArgs e)
         {
+            //clear the text box when error radial button is checked
             txtFind.Clear();
-        }
+        }//End radError_CheckedChanged
 
         private void radDesc_CheckedChanged(object sender, EventArgs e)
         {
+            //clear the text box when description radial button is checked
             txtFind.Clear();
-        }
+        }//End radDesc_CheckedChanged
 
-       
+
     }
 }

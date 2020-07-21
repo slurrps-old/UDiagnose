@@ -14,6 +14,7 @@ namespace UFormat.Forms
     {
         public About()
         {
+            //Set the properties of the form
             InitializeComponent();
             this.Text = String.Format("About {0}", AssemblyTitle);
             this.labelProductName.Text = AssemblyProduct;

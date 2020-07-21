@@ -78,6 +78,7 @@
             this.DriveandHardware = new ComponentFactory.Krypton.Docking.KryptonDockableNavigator();
             this.pgDrives = new ComponentFactory.Krypton.Navigator.KryptonPage();
             this.grpFormatOptions = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
+            this.label30 = new System.Windows.Forms.Label();
             this.btnFormatDrive = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnFileWipe = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnSecureWipe = new ComponentFactory.Krypton.Toolkit.KryptonButton();
@@ -147,8 +148,8 @@
             this.btnExit = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton();
             this.kryptonRibbonTab5 = new ComponentFactory.Krypton.Ribbon.KryptonRibbonTab();
             this.kryptonRibbonGroup6 = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroup();
-            this.kryptonRibbonGroupLines4 = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupLines();
-            this.btnFormatOptions = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton();
+            this.kryptonRibbonGroupTriple3 = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupTriple();
+            this.btnViewFormat = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton();
             this.kryptonRibbonTab2 = new ComponentFactory.Krypton.Ribbon.KryptonRibbonTab();
             this.kryptonRibbonGroup4 = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroup();
             this.kryptonRibbonGroupLines3 = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupLines();
@@ -167,9 +168,8 @@
             this.btnGo = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton();
             this.kryptonRibbonGroup5 = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroup();
             this.kryptonRibbonGroupTriple2 = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupTriple();
-            this.kryptonRibbonGroupButton1 = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton();
-            this.kryptonRibbonGroupButton2 = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton();
-            this.kryptonRibbonGroupButton3 = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton();
+            this.btnAbout = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton();
+            this.btnLicense = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton();
             this.ToolTipUDiagnose = new System.Windows.Forms.ToolTip(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.kryptonPalette1 = new ComponentFactory.Krypton.Toolkit.KryptonPalette(this.components);
@@ -193,7 +193,6 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.label30 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pCPUCounter)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pRAMCounter)).BeginInit();
@@ -434,6 +433,17 @@
             this.grpFormatOptions.Values.Heading = "Assess Drive Performance not yet available";
             this.grpFormatOptions.Visible = false;
             // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.BackColor = System.Drawing.Color.Transparent;
+            this.label30.ForeColor = System.Drawing.Color.White;
+            this.label30.Location = new System.Drawing.Point(176, 85);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(141, 16);
+            this.label30.TabIndex = 12;
+            this.label30.Text = "Do NOT use on a SSD!";
+            // 
             // btnFormatDrive
             // 
             this.btnFormatDrive.Location = new System.Drawing.Point(13, 27);
@@ -442,7 +452,7 @@
             this.btnFormatDrive.Size = new System.Drawing.Size(155, 34);
             this.btnFormatDrive.TabIndex = 9;
             this.btnFormatDrive.Values.Text = "Format Drive";
-            this.btnFormatDrive.Click += new System.EventHandler(this.kryptonButton1_Click);
+            this.btnFormatDrive.Click += new System.EventHandler(this.btnFormatDrive_Click);
             // 
             // btnFileWipe
             // 
@@ -521,7 +531,7 @@
             this.pgCPU,
             this.pgGPU});
             this.kryptonDockableNavigator1.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue;
-            this.kryptonDockableNavigator1.SelectedIndex = 0;
+            this.kryptonDockableNavigator1.SelectedIndex = 1;
             this.kryptonDockableNavigator1.Size = new System.Drawing.Size(745, 713);
             this.kryptonDockableNavigator1.TabIndex = 9;
             this.kryptonDockableNavigator1.Text = "kryptonDockableNavigator1";
@@ -869,7 +879,7 @@
             this.lblL3Cache.BackColor = System.Drawing.Color.Transparent;
             this.lblL3Cache.Font = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblL3Cache.ForeColor = System.Drawing.Color.White;
-            this.lblL3Cache.Location = new System.Drawing.Point(572, 605);
+            this.lblL3Cache.Location = new System.Drawing.Point(568, 605);
             this.lblL3Cache.Name = "lblL3Cache";
             this.lblL3Cache.Size = new System.Drawing.Size(18, 17);
             this.lblL3Cache.TabIndex = 37;
@@ -881,7 +891,7 @@
             this.label37.BackColor = System.Drawing.Color.Transparent;
             this.label37.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label37.ForeColor = System.Drawing.Color.White;
-            this.label37.Location = new System.Drawing.Point(422, 603);
+            this.label37.Location = new System.Drawing.Point(418, 603);
             this.label37.Name = "label37";
             this.label37.Size = new System.Drawing.Size(75, 19);
             this.label37.TabIndex = 38;
@@ -893,7 +903,7 @@
             this.lblL2Cache.BackColor = System.Drawing.Color.Transparent;
             this.lblL2Cache.Font = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblL2Cache.ForeColor = System.Drawing.Color.White;
-            this.lblL2Cache.Location = new System.Drawing.Point(572, 570);
+            this.lblL2Cache.Location = new System.Drawing.Point(568, 570);
             this.lblL2Cache.Name = "lblL2Cache";
             this.lblL2Cache.Size = new System.Drawing.Size(18, 17);
             this.lblL2Cache.TabIndex = 35;
@@ -905,7 +915,7 @@
             this.label33.BackColor = System.Drawing.Color.Transparent;
             this.label33.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label33.ForeColor = System.Drawing.Color.White;
-            this.label33.Location = new System.Drawing.Point(422, 568);
+            this.label33.Location = new System.Drawing.Point(418, 568);
             this.label33.Name = "label33";
             this.label33.Size = new System.Drawing.Size(75, 19);
             this.label33.TabIndex = 36;
@@ -917,7 +927,7 @@
             this.lblCPUThreads.BackColor = System.Drawing.Color.Transparent;
             this.lblCPUThreads.Font = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCPUThreads.ForeColor = System.Drawing.Color.White;
-            this.lblCPUThreads.Location = new System.Drawing.Point(572, 500);
+            this.lblCPUThreads.Location = new System.Drawing.Point(568, 500);
             this.lblCPUThreads.Name = "lblCPUThreads";
             this.lblCPUThreads.Size = new System.Drawing.Size(18, 17);
             this.lblCPUThreads.TabIndex = 33;
@@ -929,7 +939,7 @@
             this.label32.BackColor = System.Drawing.Color.Transparent;
             this.label32.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label32.ForeColor = System.Drawing.Color.White;
-            this.label32.Location = new System.Drawing.Point(422, 498);
+            this.label32.Location = new System.Drawing.Point(418, 498);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(140, 19);
             this.label32.TabIndex = 34;
@@ -941,7 +951,7 @@
             this.lblCPUCores.BackColor = System.Drawing.Color.Transparent;
             this.lblCPUCores.Font = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCPUCores.ForeColor = System.Drawing.Color.White;
-            this.lblCPUCores.Location = new System.Drawing.Point(572, 465);
+            this.lblCPUCores.Location = new System.Drawing.Point(568, 465);
             this.lblCPUCores.Name = "lblCPUCores";
             this.lblCPUCores.Size = new System.Drawing.Size(18, 17);
             this.lblCPUCores.TabIndex = 31;
@@ -953,7 +963,7 @@
             this.label34.BackColor = System.Drawing.Color.Transparent;
             this.label34.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label34.ForeColor = System.Drawing.Color.White;
-            this.label34.Location = new System.Drawing.Point(422, 463);
+            this.label34.Location = new System.Drawing.Point(418, 463);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(52, 19);
             this.label34.TabIndex = 32;
@@ -965,7 +975,7 @@
             this.lblL1Cahce.BackColor = System.Drawing.Color.Transparent;
             this.lblL1Cahce.Font = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblL1Cahce.ForeColor = System.Drawing.Color.White;
-            this.lblL1Cahce.Location = new System.Drawing.Point(572, 535);
+            this.lblL1Cahce.Location = new System.Drawing.Point(568, 535);
             this.lblL1Cahce.Name = "lblL1Cahce";
             this.lblL1Cahce.Size = new System.Drawing.Size(18, 17);
             this.lblL1Cahce.TabIndex = 29;
@@ -977,7 +987,7 @@
             this.label36.BackColor = System.Drawing.Color.Transparent;
             this.label36.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label36.ForeColor = System.Drawing.Color.White;
-            this.label36.Location = new System.Drawing.Point(422, 533);
+            this.label36.Location = new System.Drawing.Point(418, 533);
             this.label36.Name = "label36";
             this.label36.Size = new System.Drawing.Size(75, 19);
             this.label36.TabIndex = 30;
@@ -989,7 +999,7 @@
             this.lblBaseCPUSpeed.BackColor = System.Drawing.Color.Transparent;
             this.lblBaseCPUSpeed.Font = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBaseCPUSpeed.ForeColor = System.Drawing.Color.White;
-            this.lblBaseCPUSpeed.Location = new System.Drawing.Point(569, 429);
+            this.lblBaseCPUSpeed.Location = new System.Drawing.Point(565, 429);
             this.lblBaseCPUSpeed.Name = "lblBaseCPUSpeed";
             this.lblBaseCPUSpeed.Size = new System.Drawing.Size(33, 17);
             this.lblBaseCPUSpeed.TabIndex = 27;
@@ -1001,7 +1011,7 @@
             this.label31.BackColor = System.Drawing.Color.Transparent;
             this.label31.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label31.ForeColor = System.Drawing.Color.White;
-            this.label31.Location = new System.Drawing.Point(419, 428);
+            this.label31.Location = new System.Drawing.Point(415, 428);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(91, 19);
             this.label31.TabIndex = 28;
@@ -1318,7 +1328,7 @@
             this.kryptonRibbonTab5,
             this.kryptonRibbonTab2,
             this.kryptonRibbonTab3});
-            this.uDiagnoseRibbon.SelectedTab = this.kryptonRibbonTab1;
+            this.uDiagnoseRibbon.SelectedTab = this.kryptonRibbonTab3;
             this.uDiagnoseRibbon.Size = new System.Drawing.Size(909, 115);
             this.uDiagnoseRibbon.TabIndex = 15;
             // 
@@ -1342,11 +1352,16 @@
             // 
             // btnSaveInfo
             // 
+            this.btnSaveInfo.ImageLarge = global::UDiagnose.Properties.Resources.Save;
+            this.btnSaveInfo.ImageSmall = global::UDiagnose.Properties.Resources.Save;
+            this.btnSaveInfo.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
             this.btnSaveInfo.TextLine1 = "Save Hardware Info";
             this.btnSaveInfo.Click += new System.EventHandler(this.saveAstxtToolStripMenuItem_Click);
             // 
             // btnExit
             // 
+            this.btnExit.ImageLarge = null;
+            this.btnExit.ImageSmall = null;
             this.btnExit.TextLine1 = "Exit";
             this.btnExit.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -1359,19 +1374,21 @@
             // kryptonRibbonGroup6
             // 
             this.kryptonRibbonGroup6.Items.AddRange(new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupContainer[] {
-            this.kryptonRibbonGroupLines4});
+            this.kryptonRibbonGroupTriple3});
             this.kryptonRibbonGroup6.TextLine1 = "Drive Information";
             // 
-            // kryptonRibbonGroupLines4
+            // kryptonRibbonGroupTriple3
             // 
-            this.kryptonRibbonGroupLines4.Items.AddRange(new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupItem[] {
-            this.btnFormatOptions});
+            this.kryptonRibbonGroupTriple3.Items.AddRange(new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupItem[] {
+            this.btnViewFormat});
             // 
-            // btnFormatOptions
+            // btnViewFormat
             // 
-            this.btnFormatOptions.Tag = "";
-            this.btnFormatOptions.TextLine1 = "Format Options";
-            this.btnFormatOptions.Click += new System.EventHandler(this.btnViewOptions);
+            this.btnViewFormat.ImageLarge = global::UDiagnose.Properties.Resources.Format;
+            this.btnViewFormat.ImageSmall = global::UDiagnose.Properties.Resources.Format;
+            this.btnViewFormat.TextLine1 = "Format";
+            this.btnViewFormat.TextLine2 = "Options";
+            this.btnViewFormat.Click += new System.EventHandler(this.btnViewOptions);
             // 
             // kryptonRibbonTab2
             // 
@@ -1395,21 +1412,29 @@
             // 
             // btnDiskPart
             // 
+            this.btnDiskPart.ImageLarge = null;
+            this.btnDiskPart.ImageSmall = null;
             this.btnDiskPart.TextLine1 = "Disk Partition";
             this.btnDiskPart.Click += new System.EventHandler(this.diskPartitionToolStripMenuItem_Click);
             // 
             // btnCMD
             // 
+            this.btnCMD.ImageLarge = null;
+            this.btnCMD.ImageSmall = null;
             this.btnCMD.TextLine1 = "CMD";
             this.btnCMD.Click += new System.EventHandler(this.cMDToolStripMenuItem_Click);
             // 
             // btnRegedit
             // 
+            this.btnRegedit.ImageLarge = null;
+            this.btnRegedit.ImageSmall = null;
             this.btnRegedit.TextLine1 = "Regedit";
             this.btnRegedit.Click += new System.EventHandler(this.regEditToolStripMenuItem_Click);
             // 
             // btnEventView
             // 
+            this.btnEventView.ImageLarge = null;
+            this.btnEventView.ImageSmall = null;
             this.btnEventView.TextLine1 = "Event Viewer";
             this.btnEventView.Click += new System.EventHandler(this.eventViewerToolStripMenuItem_Click);
             // 
@@ -1434,6 +1459,8 @@
             // 
             // btnErrorCodeDesc
             // 
+            this.btnErrorCodeDesc.ImageLarge = null;
+            this.btnErrorCodeDesc.ImageSmall = global::UDiagnose.Properties.Resources.errorDescriptions;
             this.btnErrorCodeDesc.TextLine1 = "Error Code Descriptions";
             this.btnErrorCodeDesc.Click += new System.EventHandler(this.errorCodeDescriptionsToolStripMenuItem_Click);
             // 
@@ -1467,6 +1494,8 @@
             // 
             // btnGo
             // 
+            this.btnGo.ImageLarge = null;
+            this.btnGo.ImageSmall = global::UDiagnose.Properties.Resources.Go;
             this.btnGo.TextLine1 = "Go";
             this.btnGo.Click += new System.EventHandler(this.btnGo_Click);
             // 
@@ -1479,22 +1508,22 @@
             // kryptonRibbonGroupTriple2
             // 
             this.kryptonRibbonGroupTriple2.Items.AddRange(new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupItem[] {
-            this.kryptonRibbonGroupButton1,
-            this.kryptonRibbonGroupButton2,
-            this.kryptonRibbonGroupButton3});
+            this.btnAbout,
+            this.btnLicense});
             // 
-            // kryptonRibbonGroupButton1
+            // btnAbout
             // 
-            this.kryptonRibbonGroupButton1.TextLine1 = "About";
-            this.kryptonRibbonGroupButton1.Click += new System.EventHandler(this.kryptonRibbonGroupButton1_Click);
+            this.btnAbout.ImageLarge = global::UDiagnose.Properties.Resources.About;
+            this.btnAbout.ImageSmall = global::UDiagnose.Properties.Resources.About;
+            this.btnAbout.TextLine1 = "About";
+            this.btnAbout.Click += new System.EventHandler(this.btnAbout_Click);
             // 
-            // kryptonRibbonGroupButton2
+            // btnLicense
             // 
-            this.kryptonRibbonGroupButton2.TextLine1 = "License";
-            // 
-            // kryptonRibbonGroupButton3
-            // 
-            this.kryptonRibbonGroupButton3.TextLine1 = "Feature List";
+            this.btnLicense.ImageLarge = global::UDiagnose.Properties.Resources.License;
+            this.btnLicense.ImageSmall = global::UDiagnose.Properties.Resources.License;
+            this.btnLicense.TextLine1 = "License";
+            this.btnLicense.Click += new System.EventHandler(this.btnLicense_Click);
             // 
             // panel1
             // 
@@ -1754,17 +1783,6 @@
             this.label1.Size = new System.Drawing.Size(92, 19);
             this.label1.TabIndex = 22;
             // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.BackColor = System.Drawing.Color.Transparent;
-            this.label30.ForeColor = System.Drawing.Color.White;
-            this.label30.Location = new System.Drawing.Point(176, 85);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(141, 16);
-            this.label30.TabIndex = 12;
-            this.label30.Text = "Do NOT use on a SSD!";
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -1868,15 +1886,14 @@
         private ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton btnGo;
         private ComponentFactory.Krypton.Ribbon.KryptonRibbonGroup kryptonRibbonGroup5;
         private ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupTriple kryptonRibbonGroupTriple2;
-        private ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton kryptonRibbonGroupButton1;
-        private ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton kryptonRibbonGroupButton2;
+        private ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton btnAbout;
+        private ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton btnLicense;
         private ComponentFactory.Krypton.Navigator.KryptonPage pgSystemLoad;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnSecureWipe;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnFileWipe;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnFormatDrive;
         private System.Windows.Forms.ToolTip ToolTipUDiagnose;
         private ComponentFactory.Krypton.Toolkit.KryptonGroupBox grpFormatOptions;
-        private ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton kryptonRibbonGroupButton3;
         private ComponentFactory.Krypton.Navigator.KryptonPage pgSystemTemp;
         private System.Windows.Forms.Label lblGPUTemp;
         private System.Windows.Forms.Label lblCPUTemp;
@@ -1958,9 +1975,9 @@
         public System.Windows.Forms.ProgressBar progHardDrive;
         public System.Windows.Forms.Label lblDrivePercentage;
         private ComponentFactory.Krypton.Ribbon.KryptonRibbonGroup kryptonRibbonGroup6;
-        private ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupLines kryptonRibbonGroupLines4;
-        private ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton btnFormatOptions;
         private System.Windows.Forms.Label label30;
+        private ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupTriple kryptonRibbonGroupTriple3;
+        private ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton btnViewFormat;
     }
 }
 
