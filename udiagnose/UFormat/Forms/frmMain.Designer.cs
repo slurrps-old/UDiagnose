@@ -1328,7 +1328,7 @@
             this.kryptonRibbonTab5,
             this.kryptonRibbonTab2,
             this.kryptonRibbonTab3});
-            this.uDiagnoseRibbon.SelectedTab = this.kryptonRibbonTab3;
+            this.uDiagnoseRibbon.SelectedTab = this.kryptonRibbonTab1;
             this.uDiagnoseRibbon.Size = new System.Drawing.Size(909, 115);
             this.uDiagnoseRibbon.TabIndex = 15;
             // 

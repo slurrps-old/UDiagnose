@@ -11,13 +11,9 @@ namespace UDiagnose.Classes
 {
     class SaveHWInfo
     {
-        private frmMain mainForm; //PDM
         
-
-        public SaveHWInfo(frmMain form)
+        public SaveHWInfo()
         {
-            //set mainForm to the incoming instance of frmMain
-            mainForm = form;
 
         }
 
@@ -38,7 +34,7 @@ namespace UDiagnose.Classes
         #endregion
 
         #region Save Method
-        public void SaveInfo()
+        public void SaveInfo(frmMain mainForm)
         {
             string location = "";
             //Set it's name
