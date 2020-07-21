@@ -13,13 +13,20 @@ namespace UDiagnose.Classes
     
     class DriveInfoClass
     {
+        private frmMain main;
         public DriveInfoClass()
         {
 
         }
 
+        public DriveInfoClass(frmMain form)
+        {
+            //Set main to the incoming instance of frmMain
+            main = form;
+        }
+
         #region Refresh Drive list
-        public void RefreshDrives(frmMain main)
+        public void RefreshDrives()
         {
             //Refresh the list
             main.lstDrives.Items.Clear();
@@ -33,7 +40,7 @@ namespace UDiagnose.Classes
         #endregion
 
         #region Load Drive Info
-        public void LoadDrives(frmMain main)
+        public void LoadDrives()
         {
             //Here we will set a couple variables.
             string drive_letter = main.lstDrives.SelectedItem.ToString(); //Set the drive letter of the selected drives and populate the listbox on the form

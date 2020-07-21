@@ -41,6 +41,10 @@
             this.lblMessage.Size = new System.Drawing.Size(346, 22);
             this.lblMessage.TabIndex = 0;
             this.lblMessage.Text = "Please wait while we format your drive...";
+<<<<<<< HEAD
+=======
+            this.lblMessage.TextChanged += new System.EventHandler(this.lblMessage_TextChanged);
+>>>>>>> 8cb8c2ec58b2543b9e2be8ebfd9c6eea673b9272
             // 
             // btnAccept
             // 
@@ -79,6 +83,10 @@
             this.Name = "frmWait";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmWait";
+<<<<<<< HEAD
+=======
+            this.Load += new System.EventHandler(this.frmWait_Load);
+>>>>>>> 8cb8c2ec58b2543b9e2be8ebfd9c6eea673b9272
             this.ResumeLayout(false);
             this.PerformLayout();
 

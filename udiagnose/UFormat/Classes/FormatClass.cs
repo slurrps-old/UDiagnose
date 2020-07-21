@@ -143,25 +143,22 @@ namespace UDiagnose.Classes
 
         public bool SecureFormat(string driveLetter)
         {
+            //Give warning to the user about the feature
+            MessageBox.Show("Warning this feature is stil experimental and may not work properly please be careful.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            
+            //Here we will set a couple variables.
+            int num = 0; //Holds the num to add to the filename
+            byte bt = 0; //Holds the byte for the file creation
             DriveInfo di = new DriveInfo(driveLetter); //Set the drive information as a new instance di
+            Random rng = new Random(); //Random number to be generated for the final loop
 
+            //Make sure that the user knows the repercussions.
+            DialogResult result = MessageBox.Show("Are you sure you want to format, this can damage the data on your drive."
+                + driveLetter + " ? Please be aware that doing this will take a while. Please do NOT use this on an SSD as this can damage the flash chips!"
+                , "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             //Check if the Drive is removable
-            if (di.DriveType.ToString() == "removable")
+            if(di.DriveType.ToString() == "removable")
             {
-                //Give warning to the user about the feature
-                MessageBox.Show("Warning this feature is stil experimental and may not work properly please be careful.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
-                //Here we will set a couple variables.
-                int num = 0; //Holds the num to add to the filename
-                byte bt = 0; //Holds the byte for the file creation
-                
-                Random rng = new Random(); //Random number to be generated for the final loop
-
-                //Make sure that the user knows the repercussions.
-                DialogResult result = MessageBox.Show("Are you sure you want to format, this can damage the data on your drive."
-                    + driveLetter + " ? Please be aware that doing this will take a while. Please do NOT use this on an SSD as this can damage the flash chips!"
-                    , "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-
                 //If Yes go ahead with the format
                 if (result == DialogResult.Yes)
                 {
@@ -212,6 +209,17 @@ namespace UDiagnose.Classes
                         File.Delete(driveLetter.ToString() + @"\SecureErase");
                     }
                     //End loops-----
+
+                    //Not sure if I am going to do this or not.
+                    ////Then to finish query and format given drive         
+                    //ManagementObjectSearcher searcher = new ManagementObjectSearcher
+                    // (@"select * from Win32_Volume WHERE DriveLetter = '" + driveLetter + "'");
+                    ////Format the drive with the below code.
+                    //foreach (ManagementObject vi in searcher.Get())
+                    //{
+                    //    vi.InvokeMethod("Format", new object[]
+                    //  { "NFTS", true ,8192, "Untitled" , false });
+                    //}
 
                     MessageBox.Show("The secure erase was successful.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
