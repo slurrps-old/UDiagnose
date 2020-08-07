@@ -73,6 +73,9 @@ namespace UDiagnose
         {
             //Start the timer again
             splashTimer.Start();
+
+            //Dispose of the worker
+            backgroundWorker1.Dispose();
         }//End backgroundWorker1_RunWorkerCompleted
     }
 }

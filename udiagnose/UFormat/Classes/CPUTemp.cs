@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Management;
 using System.Text;
 using System.Threading.Tasks;
 using OpenHardwareMonitor.Hardware;
@@ -12,7 +13,7 @@ namespace UDiagnose
 {
     class CPUTemp
     {
-
+        #region OpenHardware Monitor
         UpdateVisitor updateVisitor = new UpdateVisitor(); //create a new instance of the update visitor class
         Computer computer = new Computer(); //create a new instance of the computer class
         public CPUTemp()
@@ -92,7 +93,9 @@ namespace UDiagnose
             computer.Close();
             return mainBoard;
         }
+        #endregion
 
 
+        
     }
 }

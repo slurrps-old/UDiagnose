@@ -81,22 +81,22 @@
       <HintPath>..\packages\CircularProgressBar.2.7.0.7\lib\net40\CircularProgressBar.dll</HintPath>
     </Reference>
     <Reference Include="ComponentFactory.Krypton.Design">
-      <HintPath>D:\Krypton-master\Krypton-master\Bin\ComponentFactory.Krypton.Design.dll</HintPath>
+      <HintPath>..\packages\ComponentFactory\lib\ComponentFactory.Krypton.Design.dll</HintPath>
     </Reference>
     <Reference Include="ComponentFactory.Krypton.Docking">
-      <HintPath>D:\Krypton-master\Krypton-master\Bin\ComponentFactory.Krypton.Docking.dll</HintPath>
+      <HintPath>..\packages\ComponentFactory\lib\ComponentFactory.Krypton.Docking.dll</HintPath>
     </Reference>
     <Reference Include="ComponentFactory.Krypton.Navigator">
-      <HintPath>D:\Krypton-master\Krypton-master\Bin\ComponentFactory.Krypton.Navigator.dll</HintPath>
+      <HintPath>..\packages\ComponentFactory\lib\ComponentFactory.Krypton.Navigator.dll</HintPath>
     </Reference>
     <Reference Include="ComponentFactory.Krypton.Ribbon">
-      <HintPath>D:\Krypton-master\Krypton-master\Bin\ComponentFactory.Krypton.Ribbon.dll</HintPath>
+      <HintPath>..\packages\ComponentFactory\lib\ComponentFactory.Krypton.Ribbon.dll</HintPath>
     </Reference>
     <Reference Include="ComponentFactory.Krypton.Toolkit">
-      <HintPath>D:\Krypton-master\Krypton-master\Bin\ComponentFactory.Krypton.Toolkit.dll</HintPath>
+      <HintPath>..\packages\ComponentFactory\lib\ComponentFactory.Krypton.Toolkit.dll</HintPath>
     </Reference>
     <Reference Include="ComponentFactory.Krypton.Workspace">
-      <HintPath>D:\Krypton-master\Krypton-master\Bin\ComponentFactory.Krypton.Workspace.dll</HintPath>
+      <HintPath>..\packages\ComponentFactory\lib\ComponentFactory.Krypton.Workspace.dll</HintPath>
     </Reference>
     <Reference Include="MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
       <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.dll</HintPath>
@@ -130,6 +130,7 @@
   <ItemGroup>
     <Compile Include="Classes\CPUTemp.cs" />
     <Compile Include="Classes\DriveInfoClass.cs" />
+    <Compile Include="Classes\EventLogClass.cs" />
     <Compile Include="Classes\FormatClass.cs" />
     <Compile Include="Classes\SaveHWInfo.cs" />
     <Compile Include="Forms\About.cs">
@@ -152,24 +153,6 @@
     </Compile>
     <Compile Include="Classes\Hardware.cs" />
     <Compile Include="Classes\Program.cs" />
-    <Compile Include="Popups\frmPopup.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Popups\frmPopup.Designer.cs">
-      <DependentUpon>frmPopup.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Popups\frmWait.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Popups\frmWait.Designer.cs">
-      <DependentUpon>frmWait.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Popups\frmWipe.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Popups\frmWipe.Designer.cs">
-      <DependentUpon>frmWipe.cs</DependentUpon>
-    </Compile>
     <Compile Include="Popups\License.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -193,15 +176,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Popups\frmPopup.resx">
-      <DependentUpon>frmPopup.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Popups\frmWait.resx">
-      <DependentUpon>frmWait.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Popups\frmWipe.resx">
-      <DependentUpon>frmWipe.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Popups\License.resx">
       <DependentUpon>License.cs</DependentUpon>

@@ -5,9 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UDiagnose;
-using System.Windows.Forms;
-using System.Management;
-using System.Security.AccessControl;
+using System.Diagnostics;
 
 namespace HardwareDisplay
 {
@@ -188,7 +186,6 @@ namespace HardwareDisplay
         }
         #endregion
 
-
         #region Name of GPU, CPU, and RAM for OverView Screen
         public string ProcessorName() //Hold the name of the processor in this method and return it
         {
@@ -211,6 +208,26 @@ namespace HardwareDisplay
             return info;
         }
         #endregion
+
+        #region GPUInstances
+        //This will get the instances from the GPU engine on the windows computer.
+        public string[] GetInstances()
+        {
+            string categoryName = "GPU Engine";
+            PerformanceCounterCategory pcc;
+            string[] instances;
+
+            pcc = new PerformanceCounterCategory(categoryName);
+
+            // Get the instances associated with this category.
+            instances = pcc.GetInstanceNames();
+
+            Array.Sort(instances);
+
+            return instances;
+        }
+        #endregion
+
 
     }//End Class
 

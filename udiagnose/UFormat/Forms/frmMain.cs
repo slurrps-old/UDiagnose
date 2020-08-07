@@ -27,6 +27,7 @@ using System.Threading;
 using UFormat.Forms;
 using System.Windows.Forms.VisualStyles;
 using UDiagnose.Popups;
+using Test_Event_Logs;
 
 namespace UDiagnose
 {
@@ -36,23 +37,19 @@ namespace UDiagnose
         //Public Timer for the system to gather load and temperatures live so that they do not iterfier with the UI controls
         public System.Timers.Timer systemLoadTimer;
         //-------------------------------------------------------------------------------------------------
-        //Constants for conveersions of different byt sizes
-        const float FLOAT_GIG_CONVERSION = 1073741824f; //Holds the float conversion number of GB per bit
-        const float FLOAT_TERA_CONVERSION = 0.0009765625F;//Holds the float conversion number for TB per bit
+        //Variable for performance counters
+        public string[] Instances;
         //-------------------------------------------------------------------------------------------------
-        //Global Variables to use DriveInfo and variable to hold all of the systems rive information.
-        public string driveInfo; //This is the variable that will hold all of the drive information
-
         //Initialize the appropriate classes
-        Hardware hwInfo = new Hardware(); //Hardware info class called
-        CPUTemp CPUTemperature = new CPUTemp(); //CPU class
+        readonly Hardware hwInfo = new Hardware(); //Hardware info class called
+        readonly CPUTemp CPUTemperature = new CPUTemp(); //CPU class
         FormatClass format = new FormatClass(); //format class called
-        DriveInfoClass driveInformation = new DriveInfoClass();//drive information class
-        SystemInfo sysInfo = new SystemInfo();
-        SaveHWInfo saveHW = new SaveHWInfo();
-        ErrorCodeForm form = new ErrorCodeForm();
-        About facts = new About();
-        Popups.License license = new Popups.License();
+        readonly DriveInfoClass driveInformation = new DriveInfoClass();//drive information class
+        readonly SaveHWInfo saveHW = new SaveHWInfo();
+        readonly ErrorCodeForm form = new ErrorCodeForm();
+        readonly About facts = new About();
+        readonly Popups.License license = new Popups.License();
+        readonly EventLogClass Events = new EventLogClass();
 
         #endregion
 
@@ -68,12 +65,7 @@ namespace UDiagnose
         public PerformanceCounter pHandles = new PerformanceCounter("Process", "Handle Count", "_Total");//Processor handle count
 
         //GPU
-        //GPU Utilization
-        //Not sure how to implement this as this changes from computer to computer
-        //public PerformanceCounter pGPUPercent = new PerformanceCounter("GPU Engine", "Utilization Percentage", "pid_10236_luid_0x00000000_0x0000CE82_phus_0_eng_0_engtype_3D");
-
-        //Find a way to make this work for any GPU
-        //public PerformanceCounter pGPUPercent = new PerformanceCounter("GPU Engine", "Utilization Percentage", "pid_10244_luid_0x00000000_0x00009FDA_phys_0_eng_0_engtype_3D");
+        public PerformanceCounter[] pGPU;
         //------------------------------------------------------------------------------------------------
         #endregion
 
@@ -101,45 +93,21 @@ namespace UDiagnose
             chartCPURAM.ChartAreas[0].AxisY.Maximum = 100;
             chartCPU.ChartAreas[0].AxisY.Maximum = 100;
 
-            
+            //Get the instances from the hardware for GPU
+            Instances = hwInfo.GetInstances();
+            //Set the array of performance counters to equal the length of the instances
+            pGPU = new PerformanceCounter[Instances.Length];
+            //Create an array of performance counters
+            for (int i = 0; i < Instances.Length; i++)
+            {
+                pGPU[i] = new PerformanceCounter("GPU Engine", "Utilization Percentage", Instances[i]);
+            }
+
+            //Load Events for system Event View
+            Events.LoadInfo(this);
 
         }//End Form Load
-        #endregion
-
-        #region Functions
-        
-        //Convert bytes to Gigabytes used to display correct drive information
-        public float ConversionToGig(float conversionNum)
-        {
-            //Pre: Needs conversionNum to be initialized
-            //Pose: Returns gigConversion number to the program
-            //Purpose: To convert the bytes number that is incoming to gigabytes
-
-            //Set the gigConversion to 0
-            float gigConversion = 0.0f;
-            //Grabs the conversionNum from the one passed into the function then 
-            //divides by the Float_GIG_CONVERSION Constant
-            gigConversion = conversionNum / FLOAT_GIG_CONVERSION;
-
-            return gigConversion; //Returns the variable gigConversion
-        }//End ConversionToGig
-
-        //Convert bytes to TeraBytes used to display correct drive information
-        public float ConversionToTer(float ConversionNum)
-        {
-            //Pre: Needs conversionNum to be initialized
-            //Pose: Returns teraConversion number to the program
-            //Purpose: To convert the bytes number that is incoming to terabytes
-
-            //Set the teraConversion to 0
-            float teraConversion = 0.0f;
-            //Grabs the conversionNum from the one passed into the function then 
-            //divides by the Float_TERA_CONVERSION Constant
-            teraConversion = ConversionNum / FLOAT_TERA_CONVERSION;
-
-            return teraConversion;
-        }//End ConversionToTer
-        #endregion
+        #endregion      
 
         #region Events for the Timer and Load for the splash screen
         //This event will load up the live data that will continue to read as long as the program is up and running. This is on a separate thread from the GUI
@@ -173,7 +141,13 @@ namespace UDiagnose
             int intThreads = Convert.ToInt32(pThreads.NextValue());//get the next value of the counter
             int intHandles = Convert.ToInt32(pHandles.NextValue());//get the next value of the counter
             //GPU
-            //float fGPU = pGPUPercent.NextValue();
+            float fGPU = 0.0f;
+            //Add all of the instances together to get utilization
+            for (int i = 0; i < Instances.Length; i++)
+            {
+                fGPU = fGPU + pGPU[i].NextValue();
+
+            }
 
 
             //Sysyem up time-----
@@ -197,7 +171,7 @@ namespace UDiagnose
                 lblCPUUtilization.Text = string.Format("{0:0.00}%", fCPU);//displays cpu utilization
 
                 //GPU
-                //lblGPUUtilization.Text = string.Format("{0:0.00}%", fGPU);
+                lblGPUUtilization.Text = string.Format("{0:0.00}%", fGPU);
 
                 //System Up Time
                 lblSystemUpTime.Text = time;//set the label to the time variable
@@ -206,7 +180,7 @@ namespace UDiagnose
                 chartCPURAM.Series["CPU"].Points.AddY(fCPU);//add the points to the fCPU variable per tic
                 chartCPURAM.Series["RAM"].Points.AddY(fRAM);//add the points to the fRAM variable per tic
                 chartCPURAM.Series["Drive"].Points.AddY(fDrive);//add the points to the fDrive variable per tic
-                //chartCPURAM.Series["GPU"].Points.AddY(fGPU);
+                chartCPURAM.Series["GPU"].Points.AddY(fGPU);
 
 
                 //---------------------------CPU PAGE-----------------------------------
@@ -220,6 +194,13 @@ namespace UDiagnose
                 lblCPUPAgeUtil.Text = string.Format("{0:0.00}%", fCPU);//displays cpu utilization
                 //System Up Time
                 lblCPUPageUpTime.Text = time;//set to the time variable to show system up time
+
+                //---------------------------GPU PAGE-----------------------------------
+                chartGPU.Series["GPU"].Points.AddY(fGPU);
+
+
+                //---------------------------Temp PAGE-----------------------------------
+                //progCPUTemp.Value = Convert.ToInt32(CPUTemperature.GetCPUTemp());
 
             });//End Invoke
 
@@ -243,6 +224,7 @@ namespace UDiagnose
             //Grab the TreeViewHardware queries
             hwInfo.SearchHardware(); //Search up the hardware on the computer
 
+            //---------------------------CPU PAGE-----------------------------------
             //CPU PAGE Information must be loaded after the Hardware information above.
             //CPU Page Details to be loaded from the splash screen
             lblCPU.Text = "CPU - " + hwInfo.ProcessorName(); //Processor name
@@ -252,6 +234,8 @@ namespace UDiagnose
             lblL1Cahce.Text = hwInfo.l1Cache.ToString(); //L1 Cache size
             lblL2Cache.Text = hwInfo.l2Cache.ToString(); //L2 Cache size
             lblL3Cache.Text = hwInfo.l3Cache.ToString(); //L3 Cache size
+
+            
 
         }//End loadUpData
 
@@ -274,60 +258,6 @@ namespace UDiagnose
             driveInformation.RefreshDrives(this); //Call the method from the DriveInfoClass
         }//End Drive Button code
 
-        private void btnFormatDrive_Click(object sender, EventArgs e)
-        {
-            //Set Drive letter to be nothing
-            string driveLetter = "";
-            //Check to make sure the selected drive is not the windows drive by making sure it is not index 0
-            if (lstDrives.SelectedIndex == 0)
-            {
-                //Error message
-                MessageBox.Show("Error you cannot format the windows partition drive, please try another drive.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else
-            {
-                //Get selected drive letter
-                driveLetter = lstDrives.SelectedItem.ToString();
-                driveLetter = driveLetter.Remove(2, 1);
-
-                //Call the formatdrive method from FormatClass
-                format.FormatDrive(driveLetter);
-                //Call the refresh method from the DriveInfoClass
-                driveInformation.RefreshDrives(this);
-            }
-        }//End btnFormatDrive_Click
-
-        private void btnSecureWipe_Click(object sender, EventArgs e)
-        {
-
-            //Check to make sure the selected drive is not the windows drive by making sure it is not index 0
-            if (lstDrives.SelectedIndex == 0)
-            {
-                //Error message
-                MessageBox.Show("Error you cannot format the windows partition drive, please try another drive.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else
-            {
-
-                //set drive letter to be nothing
-                string driveLetter = "";
-                //Get selected drive letter from selected item from list box
-                driveLetter = lstDrives.SelectedItem.ToString();
-                driveLetter = driveLetter.Remove(2, 1);
-
-                //Call secureFormat method from FormatClass
-                format.SecureFormat(driveLetter);
-                //Call the refresh method from the DriveInfoClass
-                driveInformation.RefreshDrives(this);
-            }
-
-        }//End btnSecureWipe_Click
-
-        private void btnFileWipe_Click(object sender, EventArgs e)
-        {
-            //Call the WipeFile method from the FormatClass
-            format.WipeFile();
-        }//End btnFileWipe_Click
         #endregion
 
         #region Menu Strip Items
@@ -353,17 +283,7 @@ namespace UDiagnose
         //Show format options
         private void btnViewOptions(object sender, EventArgs e)
         {
-            //Check if the grpFormatOptions is visible or not
-            if (grpFormatOptions.Visible == false)
-            {
-                //If not then make it visible
-                grpFormatOptions.Visible = true;
-            }
-            else
-            {
-                //else make it invisible
-                grpFormatOptions.Visible = false;
-            }
+           
         }//End btnViewOptions
         #endregion
 
@@ -374,7 +294,9 @@ namespace UDiagnose
             //We can use system.diagnostics.process.start to launch programs on the computer. 
             //diskmgmt.msc is alwasy located on the same directory in windows
             //we will use this to launch to take care of formatting for the most part.
-            System.Diagnostics.Process.Start(@"C:\Windows\System32\diskmgmt.msc");
+            Process diskPart = System.Diagnostics.Process.Start(@"C:\Windows\System32\diskmgmt.msc");
+
+            diskPart.Close();
         }//End diskPartitionToolStripMenuItem_Click
 
         //Cmd launcher
@@ -382,7 +304,9 @@ namespace UDiagnose
         {
             //We can use system.diagnostics.process.start to launch programs on the computer. 
             //Opens the command prompt
-            System.Diagnostics.Process.Start(@"C:\Windows\System32\cmd.exe");
+            Process CMD = System.Diagnostics.Process.Start(@"C:\Windows\System32\cmd.exe");
+
+            CMD.Close();
         }//End cMDToolStripMenuItem_Click
 
         //Disk Part launcher 
@@ -390,7 +314,9 @@ namespace UDiagnose
         {
             //We can use system.diagnostics.process.start to launch programs on the computer. 
             //Opens the disk partition command prompt
-            System.Diagnostics.Process.Start(@"C:\Windows\System32\diskpart.exe");
+            Process CMDDisk = System.Diagnostics.Process.Start(@"C:\Windows\System32\diskpart.exe");
+
+            CMDDisk.Close();
         }//End diskPartToolStripMenuItem_Click
 
         //Launches registry edit tool
@@ -405,7 +331,9 @@ namespace UDiagnose
                 case DialogResult.Yes:
                     //We can use system.diagnostics.process.start to launch programs on the computer. 
                     //Opens the registry editor
-                    System.Diagnostics.Process.Start(@"C:\WINDOWS\regedit.exe");
+                    Process regEdit = System.Diagnostics.Process.Start(@"C:\WINDOWS\regedit.exe");
+
+                    regEdit.Close();
                     break;
 
                 case DialogResult.No:
@@ -419,7 +347,9 @@ namespace UDiagnose
         {
             //We can use system.diagnostics.process.start to launch programs on the computer. 
             //Opens the event viewer
-            System.Diagnostics.Process.Start(@"C:\Windows\System32\eventvwr.exe");
+            Process eventViewer = System.Diagnostics.Process.Start(@"C:\Windows\System32\eventvwr.exe");
+
+            eventViewer.Close();
         }//End eventViewerToolStripMenuItem_Click
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -451,22 +381,29 @@ namespace UDiagnose
         //Go to specific websites
         private void btnGo_Click(object sender, EventArgs e)
         {
+            Process Website;
             //Check to see what the text in the cmbWebsites combo box reads and go to the appropriate
             //website via the default web browser
             if(cmbWebsites.Text == "Stack Overflow")
             {
                 cmbWebsites.Text = null;
-                System.Diagnostics.Process.Start("https://stackoverflow.com/");
+                Website = System.Diagnostics.Process.Start("https://stackoverflow.com/");
+
+                Website.Close();
             }
             else if(cmbWebsites.Text == "Code Project")
             {
                 cmbWebsites.Text = null;
-                System.Diagnostics.Process.Start("https://codeproject.com/");
+                Website = System.Diagnostics.Process.Start("https://codeproject.com/");
+
+                Website.Close();
             }
             else if(cmbWebsites.Text == "Toms Hardware")
             {
                 cmbWebsites.Text = null;
-                System.Diagnostics.Process.Start("https://www.tomshardware.com/");
+                Website = System.Diagnostics.Process.Start("https://www.tomshardware.com/");
+
+                Website.Close();
             }
         }//End btnGo_Click
 

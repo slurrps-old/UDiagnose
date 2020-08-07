@@ -64,13 +64,13 @@ namespace UDiagnose
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //CPU Information ------------------------------------------------------------
         //Retrieves processorID
+        static ManagementClass mcCpu = new ManagementClass("win32_processor");
+        ManagementObjectCollection mocCpu = mcCpu.GetInstances();
+
         protected String GetProcessorId()
         {
-
-            ManagementClass mc = new ManagementClass("win32_processor");
-            ManagementObjectCollection moc = mc.GetInstances();
             String Id = String.Empty;
-            foreach (ManagementObject mo in moc)
+            foreach (ManagementObject mo in mocCpu)
             {
 
                 Id = mo.Properties["processorID"].Value.ToString();
@@ -83,10 +83,8 @@ namespace UDiagnose
         //Retrieves processor information
         protected String GetProcessorInformation()
         {
-            ManagementClass mc = new ManagementClass("win32_processor");
-            ManagementObjectCollection moc = mc.GetInstances();
             String info = String.Empty;
-            foreach (ManagementObject mo in moc)
+            foreach (ManagementObject mo in mocCpu)
             {
                 string name = (string)mo["Name"];
                 name = name.Replace("(TM)", "™").Replace("(tm)", "™").Replace("(R)", "®").Replace("(r)", "®").Replace("(C)", "©").Replace("(c)", "©").Replace("    ", " ").Replace("  ", " ");
@@ -101,10 +99,8 @@ namespace UDiagnose
         //Processor sub information
         protected string GetProcessorSubInfo()
         {
-            ManagementClass mc = new ManagementClass("win32_processor");
-            ManagementObjectCollection moc = mc.GetInstances();
             String info = String.Empty;
-            foreach (ManagementObject mo in moc)
+            foreach (ManagementObject mo in mocCpu)
             {
                 info = (string)mo["Caption"] + ", " + (string)mo["SocketDesignation"];
             }
@@ -116,9 +112,9 @@ namespace UDiagnose
         protected double GetCpuMaxSpeedInGHz()
         {
             double GHz = 0.0;
-            using (ManagementClass mc = new ManagementClass("Win32_Processor"))
+            using (mcCpu)
             {
-                foreach (ManagementObject mo in mc.GetInstances())
+                foreach (ManagementObject mo in mocCpu)
                 {
                     GHz = 0.001 * (UInt32)mo.Properties["MaxClockSpeed"].Value;
                     break;
@@ -150,9 +146,9 @@ namespace UDiagnose
         protected Int16 GetProcessorRevision()
         {
             Int16 revision = 0;
-            using (ManagementClass mc = new ManagementClass("Win32_Processor"))
+            using (mcCpu)
             {
-                foreach (ManagementObject mo in mc.GetInstances())
+                foreach (ManagementObject mo in mocCpu)
                 {
                     revision = (Convert.ToInt16(mo.Properties["Revision"].Value));
                     break;
@@ -166,9 +162,9 @@ namespace UDiagnose
         protected bool GetVirtualization()
         {
             bool isVirtualized = false;
-            using (ManagementClass mc = new ManagementClass("Win32_Processor"))
+            using (mcCpu)
             {
-                foreach (ManagementObject mo in mc.GetInstances())
+                foreach (ManagementObject mo in mocCpu)
                 {
                     isVirtualized = (Convert.ToBoolean(mo.Properties["VirtualizationFirmwareEnabled"].Value));
                     break;
@@ -181,9 +177,8 @@ namespace UDiagnose
         protected int GetNumberCores()
         {
             int cores = 0;
-            ManagementObjectSearcher cpuCore = new ManagementObjectSearcher("select NumberOfCores from Win32_Processor");
 
-            foreach (ManagementObject obj in cpuCore.Get())
+            foreach (ManagementObject obj in mocCpu)
             {
                 cores = Convert.ToInt32(obj.Properties["NumberOfCores"].Value.ToString());
             }
@@ -195,9 +190,8 @@ namespace UDiagnose
         protected int GetNumberThreads()
         {
             int threads = 0;
-            ManagementObjectSearcher cpuThread = new ManagementObjectSearcher("select ThreadCount from Win32_Processor");
 
-            foreach (ManagementObject obj in cpuThread.Get())
+            foreach (ManagementObject obj in mocCpu)
             {
                 threads = Convert.ToInt32(obj.Properties["ThreadCount"].Value.ToString());
             }
@@ -210,12 +204,9 @@ namespace UDiagnose
         {
             double load = 0.00;
 
-            ManagementClass mgmt = new ManagementClass("Win32_Processor");
-            ManagementObjectCollection objCol = mgmt.GetInstances();
-
-            foreach (ManagementObject obj in objCol)
+            foreach (ManagementObject mo in mocCpu)
             {
-                load = Convert.ToDouble(obj.Properties["LoadPercentage"].Value);
+                load = Convert.ToDouble(mo.Properties["LoadPercentage"].Value);
             }
 
             return load;
@@ -226,13 +217,8 @@ namespace UDiagnose
         protected double GetCPUCurrentClockSpeed()
         {
             double cpuClockSpeed = 0;
-            //create an instance of the Managemnet class with the
-            //Win32_Processor class
-            ManagementClass mgmt = new ManagementClass("Win32_Processor");
-            //create a ManagementObjectCollection to loop through
-            ManagementObjectCollection objCol = mgmt.GetInstances();
             //start our loop for all processors found
-            foreach (ManagementObject obj in objCol)
+            foreach (ManagementObject obj in mocCpu)
             {
                 if (cpuClockSpeed == 0)
                 {
@@ -249,20 +235,19 @@ namespace UDiagnose
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //RAM Information---------------------------------------------------------------------------
         //Gets the physical memory amount installed into the computer
+
+        static ManagementClass mcRAM = new ManagementClass("Win32_PhysicalMemory");
+        ManagementObjectCollection mocRAM = mcRAM.GetInstances();
         protected long GetPhysicalMemory()
         {
-            ManagementScope oMs = new ManagementScope();
-            ObjectQuery oQuery = new ObjectQuery("SELECT Capacity FROM Win32_PhysicalMemory");
-            ManagementObjectSearcher oSearcher = new ManagementObjectSearcher(oMs, oQuery);
-            ManagementObjectCollection oCollection = oSearcher.Get();
-
+            
             long MemSize = 0;
             long mCap = 0;
 
             // In case more than one Memory sticks are installed
-            foreach (ManagementObject obj in oCollection)
+            foreach (ManagementObject mo in mocRAM)
             {
-                mCap = Convert.ToInt64(obj["Capacity"]);
+                mCap = Convert.ToInt64(mo["Capacity"]);
                 MemSize += mCap;
             }
             MemSize = (MemSize / 1024) / 1024;
@@ -291,13 +276,9 @@ namespace UDiagnose
         {
             int clockSpeed = 0;
 
-            ManagementScope oMs = new ManagementScope();
-            ObjectQuery oQuery3 = new ObjectQuery("select ConfiguredClockSpeed from Win32_PhysicalMemory");
-            ManagementObjectSearcher oSearcher2 = new ManagementObjectSearcher(oMs, oQuery3);
-            ManagementObjectCollection oCollection2 = oSearcher2.Get();
-            foreach (ManagementObject obj in oCollection2)
+            foreach (ManagementObject mo in mocRAM)
             {
-                clockSpeed = Convert.ToInt32(obj["ConfiguredClockSpeed"]);
+                clockSpeed = Convert.ToInt32(mo["ConfiguredClockSpeed"]);
 
             }
             return clockSpeed;
@@ -306,13 +287,11 @@ namespace UDiagnose
         //Ram Manufacturer
         protected string GetRAMManufact()
         {
-            ManagementObjectSearcher searcher = new ManagementObjectSearcher("select Manufacturer from Win32_PhysicalMemory");
-
-            foreach (ManagementObject obj in searcher.Get())
+            foreach (ManagementObject mo in mocRAM)
             {
                 try
                 {
-                    return obj.GetPropertyValue("Manufacturer").ToString();
+                    return mo.GetPropertyValue("Manufacturer").ToString();
                 }
                 catch { }
             }
@@ -324,15 +303,15 @@ namespace UDiagnose
         #region Motherboard Information
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //Motherboard Information
-
+        static ManagementClass mcMobo = new ManagementClass("win32_BaseBoard");
+        ManagementObjectCollection mocMobo = mcMobo.GetInstances();
         //Mobo Maker
         protected string GetBoardMaker()
         {
 
-            ManagementClass mc = new ManagementClass("win32_BaseBoard");
-            ManagementObjectCollection moc = mc.GetInstances();
+            
             String Id = String.Empty;
-            foreach (ManagementObject mo in moc)
+            foreach (ManagementObject mo in mocMobo)
             {
 
                 Id = mo.Properties["Manufacturer"].Value.ToString();
@@ -345,11 +324,9 @@ namespace UDiagnose
         //Mobo Product ID
         protected string GetBoardProductId()
         {
-
-            ManagementClass mc = new ManagementClass("win32_BaseBoard");
-            ManagementObjectCollection moc = mc.GetInstances();
+                        
             String Id = String.Empty;
-            foreach (ManagementObject mo in moc)
+            foreach (ManagementObject mo in mocMobo)
             {
 
                 Id = mo.Properties["Product"].Value.ToString();
@@ -362,11 +339,8 @@ namespace UDiagnose
         //Get Motherboard Serial number
         protected string GetBoardSerialNumber()
         {
-
-            ManagementClass mc = new ManagementClass("win32_BaseBoard");
-            ManagementObjectCollection moc = mc.GetInstances();
             String Id = String.Empty;
-            foreach (ManagementObject mo in moc)
+            foreach (ManagementObject mo in mocMobo)
             {
 
                 Id = mo.Properties["SerialNumber"].Value.ToString();
@@ -380,6 +354,8 @@ namespace UDiagnose
         #region BIOS Information
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////
         //Bios Information
+        static ManagementClass mcBIOS = new ManagementClass("Win32_BIOS");
+        ManagementObjectCollection mocBIOS = mcBIOS.GetInstances();
         //Retrieves BIOS Maker
         protected string GetBIOSmaker()
         {
@@ -400,10 +376,9 @@ namespace UDiagnose
         //BIOS Serial Number
         protected string GetBIOSVersion()
         {
-            ManagementClass mc = new ManagementClass("Win32_BIOS");
-            ManagementObjectCollection moc = mc.GetInstances();
+            
             String Id = String.Empty;
-            foreach (ManagementObject mo in moc)
+            foreach (ManagementObject mo in mocBIOS)
             {
 
                 Id = mo.Properties["Version"].Value.ToString();
@@ -434,15 +409,17 @@ namespace UDiagnose
         #region GPU Information
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //GPU Information
+        static ManagementClass mcGPU = new ManagementClass("Win32_VideoController");
+        ManagementObjectCollection mocGPU = mcGPU.GetInstances();
         //In process of being worked on
 
         protected string GetGPUInformation() //Gets the processor information
         {
             string strGPU = "";
 
-            ManagementObjectSearcher gpu = new ManagementObjectSearcher("select * from Win32_VideoController");
+            
 
-            foreach (ManagementObject mo in gpu.Get())
+            foreach (ManagementObject mo in mocGPU)
             {
                 strGPU = mo.Properties["VideoProcessor"].Value.ToString();
             }
@@ -455,9 +432,7 @@ namespace UDiagnose
         {
             string strGPUName = "";
 
-            ManagementObjectSearcher gpuName = new ManagementObjectSearcher("select Name from Win32_VideoController");
-
-            foreach (ManagementObject obj in gpuName.Get())
+            foreach (ManagementObject obj in mocGPU)
             {
                 strGPUName = obj.Properties["Name"].Value.ToString();
             }
@@ -471,9 +446,7 @@ namespace UDiagnose
         {
             string strGPUDriver = "";
 
-            ManagementObjectSearcher gpuDriver = new ManagementObjectSearcher("select DriverVersion from Win32_VideoController");
-
-            foreach (ManagementObject obj in gpuDriver.Get())
+            foreach (ManagementObject obj in mocGPU)
             {
                 strGPUDriver = obj.Properties["DriverVersion"].Value.ToString();
             }

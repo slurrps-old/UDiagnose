@@ -13,13 +13,6 @@ C:\Users\lambk\Source\Repos\udiagnose\UFormat\bin\Debug\CircularProgressBar.dll
 C:\Users\lambk\Source\Repos\udiagnose\UFormat\bin\Debug\MetroFramework.Design.dll
 C:\Users\lambk\Source\Repos\udiagnose\UFormat\bin\Debug\MetroFramework.dll
 C:\Users\lambk\Source\Repos\udiagnose\UFormat\bin\Debug\MetroFramework.Fonts.dll
-C:\Users\lambk\Source\Repos\udiagnose\UFormat\obj\Debug\UDiagnose.csprojAssemblyReference.cache
-C:\Users\lambk\source\repos\udiagnose\UFormat\bin\Debug\ComponentFactory.Krypton.Design.pdb
-C:\Users\lambk\source\repos\udiagnose\UFormat\bin\Debug\ComponentFactory.Krypton.Docking.pdb
-C:\Users\lambk\source\repos\udiagnose\UFormat\bin\Debug\ComponentFactory.Krypton.Navigator.pdb
-C:\Users\lambk\source\repos\udiagnose\UFormat\bin\Debug\ComponentFactory.Krypton.Toolkit.pdb
-C:\Users\lambk\source\repos\udiagnose\UFormat\bin\Debug\ComponentFactory.Krypton.Workspace.pdb
-C:\Users\lambk\Source\Repos\udiagnose\UFormat\bin\Debug\ComponentFactory.Krypton.Ribbon.pdb
 C:\Users\lambk\Source\Repos\udiagnose\UFormat\obj\Debug\UFormat.Forms.About.resources
 C:\Users\klamb\source\repos\udiagnose\UFormat\bin\Debug\ComponentFactory.Krypton.Design.pdb
 C:\Users\klamb\source\repos\udiagnose\UFormat\bin\Debug\ComponentFactory.Krypton.Docking.pdb
@@ -86,3 +79,11 @@ C:\Users\klamb\Source\Repos\udiagnose\UFormat\obj\Debug\UDiagnose.Popups.frmWait
 C:\Users\klamb\Source\Repos\udiagnose\UFormat\obj\Debug\UDiagnose.Popups.frmWipe.resources
 C:\Users\lambk\Source\Repos\udiagnose\UFormat\obj\Debug\UDiagnose.Popups.frmWait.resources
 C:\Users\lambk\Source\Repos\udiagnose\UFormat\obj\Debug\UDiagnose.Popups.License.resources
+C:\Users\klamb\Source\Repos\udiagnose\UFormat\obj\Debug\UDiagnose.Popups.License.resources
+C:\Users\lambk\Source\Repos\udiagnose\UFormat\bin\Debug\ComponentFactory.Krypton.Design.dll
+C:\Users\lambk\Source\Repos\udiagnose\UFormat\bin\Debug\ComponentFactory.Krypton.Docking.dll
+C:\Users\lambk\Source\Repos\udiagnose\UFormat\bin\Debug\ComponentFactory.Krypton.Navigator.dll
+C:\Users\lambk\Source\Repos\udiagnose\UFormat\bin\Debug\ComponentFactory.Krypton.Ribbon.dll
+C:\Users\lambk\Source\Repos\udiagnose\UFormat\bin\Debug\ComponentFactory.Krypton.Toolkit.dll
+C:\Users\lambk\Source\Repos\udiagnose\UFormat\bin\Debug\ComponentFactory.Krypton.Workspace.dll
+C:\Users\lambk\Source\Repos\udiagnose\UFormat\obj\Debug\UDiagnose.csprojAssemblyReference.cache

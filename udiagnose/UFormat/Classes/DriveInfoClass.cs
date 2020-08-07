@@ -13,10 +13,53 @@ namespace UDiagnose.Classes
     
     class DriveInfoClass
     {
+
+        //Constants for conveersions of different byt sizes
+        const float FLOAT_GIG_CONVERSION = 1073741824f; //Holds the float conversion number of GB per bit
+        const float FLOAT_TERA_CONVERSION = 0.0009765625F;//Holds the float conversion number for TB per bit
+        //-------------------------------------------------------------------------------------------------
+        //Global Variables to use DriveInfo and variable to hold all of the systems rive information.
+        public string driveInfo; //This is the variable that will hold all of the drive information
+        //-------------------------------------------------------------------------------------------------
         public DriveInfoClass()
         {
 
         }
+
+        #region Functions
+
+        //Convert bytes to Gigabytes used to display correct drive information
+        public float ConversionToGig(float conversionNum)
+        {
+            //Pre: Needs conversionNum to be initialized
+            //Pose: Returns gigConversion number to the program
+            //Purpose: To convert the bytes number that is incoming to gigabytes
+
+            //Set the gigConversion to 0
+            float gigConversion;
+            //Grabs the conversionNum from the one passed into the function then 
+            //divides by the Float_GIG_CONVERSION Constant
+            gigConversion = conversionNum / FLOAT_GIG_CONVERSION;
+
+            return gigConversion; //Returns the variable gigConversion
+        }//End ConversionToGig
+
+        //Convert bytes to TeraBytes used to display correct drive information
+        public float ConversionToTer(float ConversionNum)
+        {
+            //Pre: Needs conversionNum to be initialized
+            //Pose: Returns teraConversion number to the program
+            //Purpose: To convert the bytes number that is incoming to terabytes
+
+            //Set the teraConversion to 0
+            float teraConversion;
+            //Grabs the conversionNum from the one passed into the function then 
+            //divides by the Float_TERA_CONVERSION Constant
+            teraConversion = ConversionNum / FLOAT_TERA_CONVERSION;
+
+            return teraConversion;
+        }//End ConversionToTer
+        #endregion
 
         #region Refresh Drive list
         public void RefreshDrives(frmMain main)
@@ -41,32 +84,32 @@ namespace UDiagnose.Classes
             float fltPercent = 0;
 
             //Here we will start to fill in the variable driveInfo
-            main.driveInfo = "Is Drive Ready: " + di.IsReady.ToString() + Environment.NewLine;
-            main.driveInfo = main.driveInfo + "Drive Type: " + di.DriveType.ToString() + Environment.NewLine;
-            main.driveInfo = main.driveInfo + "Drive Letter: " + di.Name + Environment.NewLine;
+            driveInfo = "Is Drive Ready: " + di.IsReady.ToString() + Environment.NewLine;
+            driveInfo = driveInfo + "Drive Type: " + di.DriveType.ToString() + Environment.NewLine;
+            driveInfo = driveInfo + "Drive Letter: " + di.Name + Environment.NewLine;
             //driveInfo = driveInfo + "RootDirectory: " +di.RootDirectory.Name + Environment.NewLine; //Not sure if I need the root directory
 
             if (di.IsReady)
             {
                 //Information to populate the rich text box
                 //main.driveInfo = main.driveInfo + "Drive is a " + DriveType() + Environment.NewLine;
-                main.driveInfo = main.driveInfo + "Drive Name: " + di.VolumeLabel + Environment.NewLine;
-                main.driveInfo = main.driveInfo + "Drive Format: " + di.DriveFormat + Environment.NewLine;
+                driveInfo = driveInfo + "Drive Name: " + di.VolumeLabel + Environment.NewLine;
+                driveInfo = driveInfo + "Drive Format: " + di.DriveFormat + Environment.NewLine;
 
                 //--
                 //Need to convert these to TB by setting up if statements.
-                main.driveInfo = main.driveInfo + "Used Space: " + (main.ConversionToGig(di.TotalSize) - main.ConversionToGig(di.AvailableFreeSpace)).ToString("0.00") + " GB" + Environment.NewLine;
-                main.driveInfo = main.driveInfo + "Available Free Space: " + main.ConversionToGig(di.AvailableFreeSpace).ToString("0.00") + " GB" + Environment.NewLine;
-                main.driveInfo = main.driveInfo + "Total Size: " + main.ConversionToGig(di.TotalSize).ToString("0.00") + " GB" + Environment.NewLine;
+                driveInfo = driveInfo + "Used Space: " + (ConversionToGig(di.TotalSize) - ConversionToGig(di.AvailableFreeSpace)).ToString("0.00") + " GB" + Environment.NewLine;
+                driveInfo = driveInfo + "Available Free Space: " + ConversionToGig(di.AvailableFreeSpace).ToString("0.00") + " GB" + Environment.NewLine;
+                driveInfo = driveInfo + "Total Size: " + ConversionToGig(di.TotalSize).ToString("0.00") + " GB" + Environment.NewLine;
                 //Calculate the percentage of the drive that has been filled.
-                fltPercent = (((float)main.ConversionToGig(di.TotalSize) - (float)main.ConversionToGig(di.AvailableFreeSpace)) / (float)main.ConversionToGig(di.TotalSize)) * 100.0f;
+                fltPercent = (((float)ConversionToGig(di.TotalSize) - (float)ConversionToGig(di.AvailableFreeSpace)) / (float)ConversionToGig(di.TotalSize)) * 100.0f;
 
 
                 main.lblDrivePercentage.Text = "You have used " + fltPercent.ToString("0.00") + "% of your drive"; //This will show the percentage of the drive being used 
 
                 //Progress bar This needs to be inside the if statement as they need to be initialized by the drive being ready
-                main.progHardDrive.Maximum = Convert.ToInt32(main.ConversionToGig(di.TotalSize)); //This will set the maximun space on the drive to the progress bar
-                main.progHardDrive.Value = Convert.ToInt32(main.ConversionToGig(di.TotalSize) - main.ConversionToGig(di.AvailableFreeSpace)); //This will get how much is used on the drive and set the value to the progress bar
+                main.progHardDrive.Maximum = Convert.ToInt32(ConversionToGig(di.TotalSize)); //This will set the maximun space on the drive to the progress bar
+                main.progHardDrive.Value = Convert.ToInt32(ConversionToGig(di.TotalSize) - ConversionToGig(di.AvailableFreeSpace)); //This will get how much is used on the drive and set the value to the progress bar
 
                 if (fltPercent >= 80.0f)
                 {
@@ -80,7 +123,7 @@ namespace UDiagnose.Classes
             else
             {
                 //Fills in the rich text box letting the user know the drive is not ready
-                main.driveInfo = "Is Drive Ready: " + di.IsReady.ToString() + Environment.NewLine; //If not found set the information to nothing
+                driveInfo = "Is Drive Ready: " + di.IsReady.ToString() + Environment.NewLine; //If not found set the information to nothing
 
                 main.progHardDrive.Maximum = 100; //Sets the maximun to 100
                 main.progHardDrive.Value = 0; //Sets the value to 0
@@ -90,7 +133,7 @@ namespace UDiagnose.Classes
 
             }
 
-            main.rtbDriveInfo.Text = main.driveInfo; //Set the above information on the drives to the rich text box on the form
+            main.rtbDriveInfo.Text = driveInfo; //Set the above information on the drives to the rich text box on the form
         }
         #endregion
 

@@ -44,7 +44,7 @@ namespace UDiagnose.Classes
                 return false;
 
             //Make sure that the user knows the repercussions.
-            DialogResult result = MessageBox.Show("Are you sure you want to format, this will permenantly delete any information on the drive." 
+            DialogResult result = MessageBox.Show("Are you sure you want to format, this will permenantly delete any information on the drive " 
                 + driveLetter + " ?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
             //If Yes go ahead with the format
@@ -59,6 +59,7 @@ namespace UDiagnose.Classes
                 clusterSize = drivedetails.allocationSize;
                 enableCompression = drivedetails.compression;
 
+                
                 //Check if the process has been canceled
                 if(drivedetails.canceled == true)
                 {
@@ -67,8 +68,8 @@ namespace UDiagnose.Classes
                 }
                 else
                 {
-                    Thread sf = new Thread(new ThreadStart(showWait));
-                    sf.Start();
+                    //Thread sf = new Thread(new ThreadStart(showWait));
+                    //sf.Start();
                     //Try and format the drive
                     try
                     {
@@ -84,7 +85,7 @@ namespace UDiagnose.Classes
                         }
                         //Message complete
                         //close thread
-                        sf.Abort();
+                        //sf.Abort();
                         //Call the new wait window
                         updateWait();
 
@@ -94,6 +95,7 @@ namespace UDiagnose.Classes
                     {
                         //Error message
                         MessageBox.Show("Format has been aborted", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        wait.Close();
                         return false;
                     }
                 }  
@@ -126,117 +128,126 @@ namespace UDiagnose.Classes
         #endregion
 
         #region SecureWipe
-        public void CreateFile(string directory, byte num)
-        {
-            //Create the file name
-            string fileName = directory + @"\Secure.txt";
-            //create the filestream
-            FileStream fs = new FileStream(fileName, FileMode.CreateNew);
-            //set the current position and the offset
-            fs.Seek(2048L * 1024 * 1024, SeekOrigin.Begin);
-            //write the byte to the file
-            fs.WriteByte(num);
-            //Close the stream
-            fs.Close();
+        //public void CreateFile(string directory, byte num)
+        //{
+        //    //Create the file name
+        //    string fileName = directory + @"\Secure.txt";
+        //    //create the filestream
+        //    FileStream fs = new FileStream(fileName, FileMode.CreateNew);
+        //    //set the current position and the offset
+        //    fs.Seek(2048L * 1024 * 1024, SeekOrigin.Begin);
+        //    //write the byte to the file
+        //    fs.WriteByte(num);
+        //    //Close the stream
+        //    fs.Close();
 
-        }
+        //}
 
-        public bool SecureFormat(string driveLetter)
-        {
-            DriveInfo di = new DriveInfo(driveLetter); //Set the drive information as a new instance di
+        //public void CreateDirectory(string driveLetter)
+        //{
+        //    //Create a new directory holding the files
+        //    DirectoryInfo directory = Directory.CreateDirectory(driveLetter + @"\SecureErase");
+        //}
 
-            //Check if the Drive is removable
-            if (di.DriveType.ToString() == "removable")
-            {
-                //Give warning to the user about the feature
-                MessageBox.Show("Warning this feature is stil experimental and may not work properly please be careful.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        //public bool SecureFormat(string driveLetter)
+        //{
+        //    DriveInfo di = new DriveInfo(driveLetter); //Set the drive information as a new instance di
 
-                //Here we will set a couple variables.
-                int num = 0; //Holds the num to add to the filename
-                byte bt = 0; //Holds the byte for the file creation
+        //    //Check if the Drive is removable
+        //    if (di.DriveType.ToString() == "Removable")
+        //    {
+        //        //Give warning to the user about the feature
+        //        MessageBox.Show("Warning this feature is stil experimental and may not work properly please be careful.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+        //        //Here we will set a couple variables.
+        //        int num = 0; //Holds the num to add to the filename
+        //        byte bt = 0; //Holds the byte for the file creation
+        //        int progress = 0;
                 
-                Random rng = new Random(); //Random number to be generated for the final loop
+        //        Random rng = new Random(); //Random number to be generated for the final loop
 
-                //Make sure that the user knows the repercussions.
-                DialogResult result = MessageBox.Show("Are you sure you want to format, this can damage the data on your drive."
-                    + driveLetter + " ? Please be aware that doing this will take a while. Please do NOT use this on an SSD as this can damage the flash chips!"
-                    , "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+        //        //Make sure that the user knows the repercussions.
+        //        DialogResult result = MessageBox.Show("Are you sure you want to format, this can damage the data on your drive."
+        //            + driveLetter + " ? Please be aware that doing this will take a while. Please do NOT use this on an SSD as this can damage the flash chips!"
+        //            , "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
-                //If Yes go ahead with the format
-                if (result == DialogResult.Yes)
-                {
-                    //Create a new directory holding the files
-                    CreateDirectory(driveLetter);
+        //        //If Yes go ahead with the format
+        //        if (result == DialogResult.Yes)
+        //        {
+        //            Thread sf = new Thread(new ThreadStart(showWait));
+        //            sf.Start();
+        //            //Create a new directory holding the files
+        //            CreateDirectory(driveLetter);
 
-                    //Loop 7 times in total-----
-                    //Loop 1 byte = 0
-                    CreateFile(driveLetter + @"\SecureErase", bt);
-                    for (int i = 0; i >= 3; i++)
-                    {
-                        while (di.AvailableFreeSpace > 2147483648)
-                        {
-                            num++;
-                            File.Copy(driveLetter + @"\SecureErase\Secure.txt", driveLetter + @"\SecureErase\Secure" + num.ToString() + ".txt", true);
-                        }
+        //            //Loop 7 times in total-----
+        //            //Loop 1 byte = 0
+        //            CreateFile(driveLetter + @"\SecureErase", bt);
+        //            for (int i = 0; i <= 3; i++)
+        //            {
+        //                while (di.AvailableFreeSpace > 2147483648)
+        //                {
+        //                    num++;
+        //                    File.Copy(driveLetter + @"\SecureErase\Secure.txt", driveLetter + @"\SecureErase\Secure" + num.ToString() + ".txt", true);
+        //                }
 
-                        File.Delete(driveLetter.ToString() + @"\SecureErase");
-                    }
-                    //recreate directory
-                    CreateDirectory(driveLetter);
-                    //Loop 2 byte = 1
-                    bt = 1;
-                    CreateFile(driveLetter + @"\SecureErase", bt);
-                    for (int i = 0; i >= 3; i++)
-                    {
-                        while (di.AvailableFreeSpace > 2147483648)
-                        {
-                            num++;
-                            File.Copy(driveLetter + @"\SecureErase\Secure.txt", driveLetter + @"\SecureErase\Secure" + num.ToString() + ".txt", true);
-                        }
+        //                File.Delete(driveLetter.ToString() + @"\SecureErase");
+        //            }
+        //            //recreate directory
+        //            CreateDirectory(driveLetter);
+        //            //Loop 2 byte = 1
+        //            bt = 1;
+        //            CreateFile(driveLetter + @"\SecureErase", bt);
+        //            for (int i = 0; i <= 3; i++)
+        //            {
+        //                while (di.AvailableFreeSpace > 2147483648)
+        //                {
+        //                    num++;
+        //                    File.Copy(driveLetter + @"\SecureErase\Secure.txt", driveLetter + @"\SecureErase\Secure" + num.ToString() + ".txt", true);
+        //                }
 
-                        File.Delete(driveLetter.ToString() + @"\SecureErase");
-                    }
-                    //Recreate directory
-                    CreateDirectory(driveLetter);
-                    //Loop 3 byte = random
-                    bt = Convert.ToByte(rng.Next(1, 10));
-                    CreateFile(driveLetter + @"\SecureErase", bt);
-                    for (int i = 0; i >= 1; i++)
-                    {
-                        while (di.AvailableFreeSpace > 2147483648)
-                        {
-                            num++;
-                            File.Copy(driveLetter + @"\SecureErase\Secure.txt", driveLetter + @"\SecureErase\Secure" + num.ToString() + ".txt", true);
-                        }
+        //                File.Delete(driveLetter.ToString() + @"\SecureErase");
+        //            }
+        //            //Recreate directory
+        //            CreateDirectory(driveLetter);
+        //            //Loop 3 byte = random
+        //            bt = Convert.ToByte(rng.Next(1, 10));
+        //            CreateFile(driveLetter + @"\SecureErase", bt);
+        //            for (int i = 0; i <= 1; i++)
+        //            {
+        //                while (di.AvailableFreeSpace > 2147483648)
+        //                {
+        //                    num++;
+        //                    File.Copy(driveLetter + @"\SecureErase\Secure.txt", driveLetter + @"\SecureErase\Secure" + num.ToString() + ".txt", true);
+        //                }
 
-                        File.Delete(driveLetter.ToString() + @"\SecureErase");
-                    }
-                    //End loops-----
+        //                File.Delete(driveLetter.ToString() + @"\SecureErase");
+        //            }
+        //            //End loops-----
 
-                    MessageBox.Show("The secure erase was successful.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return true;
+        //            //Message complete
+        //            //close thread
+        //            sf.Abort();
+        //            //Call the new wait window
+        //            updateWait();
+        //            //MessageBox.Show("The secure erase was successful.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //            return true;
 
 
-                }
-                else //Abort
-                {
-                    MessageBox.Show("This has been aborted.", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return false;
-                }
-            }
-            else //Throw an error
-            {
-                MessageBox.Show("This is not a removable drive. This operation will only work for removable drives. Please select again",
-                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-        }
+        //        }
+        //        else //Abort
+        //        {
+        //            MessageBox.Show("This has been aborted.", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //            return false;
+        //        }
+        //    }
+        //    else //Throw an error
+        //    {
+        //        MessageBox.Show("This is not a removable drive. This operation will only work for removable drives. Please select again",
+        //            "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //        return false;
+        //    }
+        //}
 
-        public void CreateDirectory(string driveLetter)
-        {
-            //Create a new directory holding the files
-            DirectoryInfo directory = Directory.CreateDirectory(driveLetter + @"\SecureErase");
-        }
         #endregion
 
         #region File Wipe

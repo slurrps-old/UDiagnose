@@ -42,6 +42,8 @@
             treeNode4,
             treeNode5,
             treeNode6});
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
@@ -56,10 +58,14 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title3 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title3 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.Series series10 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title4 = new System.Windows.Forms.DataVisualization.Charting.Title();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lstDrives = new ComponentFactory.Krypton.Toolkit.KryptonListBox();
@@ -68,22 +74,26 @@
             this.lblDrivePercentage = new System.Windows.Forms.Label();
             this.lblDriveInfo = new System.Windows.Forms.Label();
             this.lblDriveList = new System.Windows.Forms.Label();
-            this.treeHardwareInfo = new System.Windows.Forms.TreeView();
             this.pCPUCounter = new System.Diagnostics.PerformanceCounter();
             this.pRAMCounter = new System.Diagnostics.PerformanceCounter();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.grpHardwareInfo = new System.Windows.Forms.GroupBox();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.DriveandHardware = new ComponentFactory.Krypton.Docking.KryptonDockableNavigator();
             this.pgDrives = new ComponentFactory.Krypton.Navigator.KryptonPage();
-            this.grpFormatOptions = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
-            this.label30 = new System.Windows.Forms.Label();
-            this.btnFormatDrive = new ComponentFactory.Krypton.Toolkit.KryptonButton();
-            this.btnFileWipe = new ComponentFactory.Krypton.Toolkit.KryptonButton();
-            this.btnSecureWipe = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.label2 = new System.Windows.Forms.Label();
             this.pgHardwareInfo = new ComponentFactory.Krypton.Navigator.KryptonPage();
+            this.kryptonDockableNavigator2 = new ComponentFactory.Krypton.Docking.KryptonDockableNavigator();
+            this.pgHardware = new ComponentFactory.Krypton.Navigator.KryptonPage();
+            this.grpHardwareInfo = new System.Windows.Forms.GroupBox();
+            this.treeHardwareInfo = new System.Windows.Forms.TreeView();
+            this.pgEventViewer = new ComponentFactory.Krypton.Navigator.KryptonPage();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.dgEvents = new System.Windows.Forms.DataGridView();
+            this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EntryType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Source = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.InstanceID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pgSystemLoad = new ComponentFactory.Krypton.Navigator.KryptonPage();
             this.kryptonDockableNavigator1 = new ComponentFactory.Krypton.Docking.KryptonDockableNavigator();
             this.pgOverview = new ComponentFactory.Krypton.Navigator.KryptonPage();
@@ -128,6 +138,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.chartCPU = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.pgGPU = new ComponentFactory.Krypton.Navigator.KryptonPage();
+            this.chartGPU = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.pgSystemTemp = new ComponentFactory.Krypton.Navigator.KryptonPage();
             this.label4 = new System.Windows.Forms.Label();
             this.progMoboTemp = new MetroFramework.Controls.MetroProgressSpinner();
@@ -147,9 +158,6 @@
             this.btnSaveInfo = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton();
             this.btnExit = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton();
             this.kryptonRibbonTab5 = new ComponentFactory.Krypton.Ribbon.KryptonRibbonTab();
-            this.kryptonRibbonGroup6 = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroup();
-            this.kryptonRibbonGroupTriple3 = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupTriple();
-            this.btnViewFormat = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton();
             this.kryptonRibbonTab2 = new ComponentFactory.Krypton.Ribbon.KryptonRibbonTab();
             this.kryptonRibbonGroup4 = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroup();
             this.kryptonRibbonGroupLines3 = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupLines();
@@ -172,7 +180,6 @@
             this.btnLicense = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton();
             this.ToolTipUDiagnose = new System.Windows.Forms.ToolTip(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
-            this.kryptonPalette1 = new ComponentFactory.Krypton.Toolkit.KryptonPalette(this.components);
             this.label29 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -193,20 +200,25 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pCPUCounter)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pRAMCounter)).BeginInit();
-            this.grpHardwareInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DriveandHardware)).BeginInit();
             this.DriveandHardware.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pgDrives)).BeginInit();
             this.pgDrives.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.grpFormatOptions)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grpFormatOptions.Panel)).BeginInit();
-            this.grpFormatOptions.Panel.SuspendLayout();
-            this.grpFormatOptions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pgHardwareInfo)).BeginInit();
             this.pgHardwareInfo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonDockableNavigator2)).BeginInit();
+            this.kryptonDockableNavigator2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pgHardware)).BeginInit();
+            this.pgHardware.SuspendLayout();
+            this.grpHardwareInfo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pgEventViewer)).BeginInit();
+            this.pgEventViewer.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgEvents)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pgSystemLoad)).BeginInit();
             this.pgSystemLoad.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonDockableNavigator1)).BeginInit();
@@ -219,6 +231,8 @@
             this.pgCPU.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartCPU)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pgGPU)).BeginInit();
+            this.pgGPU.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartGPU)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pgSystemTemp)).BeginInit();
             this.pgSystemTemp.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uDiagnoseRibbon)).BeginInit();
@@ -312,6 +326,136 @@
             this.lblDriveList.TabIndex = 6;
             this.lblDriveList.Text = "List of Drives";
             // 
+            // pCPUCounter
+            // 
+            this.pCPUCounter.CategoryName = "Processor";
+            this.pCPUCounter.CounterName = "% Processor Time";
+            this.pCPUCounter.InstanceName = "_Total";
+            // 
+            // pRAMCounter
+            // 
+            this.pRAMCounter.CategoryName = "Memory";
+            this.pRAMCounter.CounterName = "% Committed Bytes In Use";
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 1000;
+            // 
+            // DriveandHardware
+            // 
+            this.DriveandHardware.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.DriveandHardware.Bar.BarOrientation = ComponentFactory.Krypton.Toolkit.VisualOrientation.Left;
+            this.DriveandHardware.Bar.ItemOrientation = ComponentFactory.Krypton.Toolkit.ButtonOrientation.FixedTop;
+            this.DriveandHardware.Bar.ItemSizing = ComponentFactory.Krypton.Navigator.BarItemSizing.SameWidthAndHeight;
+            this.DriveandHardware.Bar.TabBorderStyle = ComponentFactory.Krypton.Toolkit.TabBorderStyle.OneNote;
+            this.DriveandHardware.Button.ButtonDisplayLogic = ComponentFactory.Krypton.Navigator.ButtonDisplayLogic.None;
+            this.DriveandHardware.Button.CloseButtonAction = ComponentFactory.Krypton.Navigator.CloseButtonAction.None;
+            this.DriveandHardware.Button.CloseButtonDisplay = ComponentFactory.Krypton.Navigator.ButtonDisplay.Hide;
+            this.DriveandHardware.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DriveandHardware.Group.GroupBackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.HeaderForm;
+            this.DriveandHardware.Group.GroupBorderStyle = ComponentFactory.Krypton.Toolkit.PaletteBorderStyle.HeaderPrimary;
+            this.DriveandHardware.Header.HeaderPositionBar = ComponentFactory.Krypton.Toolkit.VisualOrientation.Left;
+            this.DriveandHardware.Header.HeaderStyleBar = ComponentFactory.Krypton.Toolkit.HeaderStyle.Form;
+            this.DriveandHardware.Location = new System.Drawing.Point(0, 0);
+            this.DriveandHardware.Name = "DriveandHardware";
+            this.DriveandHardware.NavigatorMode = ComponentFactory.Krypton.Navigator.NavigatorMode.HeaderBarCheckButtonGroup;
+            this.DriveandHardware.PageBackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.PanelClient;
+            this.DriveandHardware.Pages.AddRange(new ComponentFactory.Krypton.Navigator.KryptonPage[] {
+            this.pgDrives,
+            this.pgHardwareInfo,
+            this.pgSystemLoad,
+            this.pgSystemTemp});
+            this.DriveandHardware.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue;
+            this.DriveandHardware.SelectedIndex = 0;
+            this.DriveandHardware.Size = new System.Drawing.Size(909, 715);
+            this.DriveandHardware.StateNormal.BorderEdge.Color1 = System.Drawing.Color.Transparent;
+            this.DriveandHardware.TabIndex = 12;
+            this.DriveandHardware.Text = "kryptonDockableNavigator1";
+            // 
+            // pgDrives
+            // 
+            this.pgDrives.AutoHiddenSlideSize = new System.Drawing.Size(200, 200);
+            this.pgDrives.AutoScroll = true;
+            this.pgDrives.Controls.Add(this.label2);
+            this.pgDrives.Controls.Add(this.groupBox1);
+            this.pgDrives.Flags = 65534;
+            this.pgDrives.LastVisibleSet = true;
+            this.pgDrives.MinimumSize = new System.Drawing.Size(50, 50);
+            this.pgDrives.Name = "pgDrives";
+            this.pgDrives.Size = new System.Drawing.Size(745, 713);
+            this.pgDrives.StateNormal.Page.ColorStyle = ComponentFactory.Krypton.Toolkit.PaletteColorStyle.RoundedTopLight;
+            this.pgDrives.Text = "Drive Information";
+            this.pgDrives.ToolTipTitle = "Page ToolTip";
+            this.pgDrives.UniqueName = "0E0C8E0A832345B073A5BFCB901374AF";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Gadugi", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(15, 47);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(523, 31);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "Please select a drive to view its information";
+            // 
+            // pgHardwareInfo
+            // 
+            this.pgHardwareInfo.AutoHiddenSlideSize = new System.Drawing.Size(200, 200);
+            this.pgHardwareInfo.AutoScroll = true;
+            this.pgHardwareInfo.Controls.Add(this.kryptonDockableNavigator2);
+            this.pgHardwareInfo.Flags = 65534;
+            this.pgHardwareInfo.LastVisibleSet = true;
+            this.pgHardwareInfo.MinimumSize = new System.Drawing.Size(50, 50);
+            this.pgHardwareInfo.Name = "pgHardwareInfo";
+            this.pgHardwareInfo.Size = new System.Drawing.Size(745, 713);
+            this.pgHardwareInfo.Text = "Hardware Information";
+            this.pgHardwareInfo.ToolTipTitle = "Page ToolTip";
+            this.pgHardwareInfo.UniqueName = "0624E6BFA1794EE8C288E0B74C38C0B1";
+            // 
+            // kryptonDockableNavigator2
+            // 
+            this.kryptonDockableNavigator2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonDockableNavigator2.Location = new System.Drawing.Point(0, 0);
+            this.kryptonDockableNavigator2.Name = "kryptonDockableNavigator2";
+            this.kryptonDockableNavigator2.NavigatorMode = ComponentFactory.Krypton.Navigator.NavigatorMode.HeaderBarCheckButtonGroup;
+            this.kryptonDockableNavigator2.PageBackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.PanelClient;
+            this.kryptonDockableNavigator2.Pages.AddRange(new ComponentFactory.Krypton.Navigator.KryptonPage[] {
+            this.pgHardware,
+            this.pgEventViewer});
+            this.kryptonDockableNavigator2.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue;
+            this.kryptonDockableNavigator2.SelectedIndex = 0;
+            this.kryptonDockableNavigator2.Size = new System.Drawing.Size(745, 713);
+            this.kryptonDockableNavigator2.TabIndex = 0;
+            this.kryptonDockableNavigator2.Text = "kryptonDockableNavigator2";
+            // 
+            // pgHardware
+            // 
+            this.pgHardware.AutoHiddenSlideSize = new System.Drawing.Size(200, 200);
+            this.pgHardware.Controls.Add(this.grpHardwareInfo);
+            this.pgHardware.Flags = 65534;
+            this.pgHardware.LastVisibleSet = true;
+            this.pgHardware.MinimumSize = new System.Drawing.Size(50, 50);
+            this.pgHardware.Name = "pgHardware";
+            this.pgHardware.Size = new System.Drawing.Size(743, 680);
+            this.pgHardware.Text = "Hardware Specs";
+            this.pgHardware.ToolTipTitle = "Page ToolTip";
+            this.pgHardware.UniqueName = "B791085C5C7B43766AA5F1F3A3127147";
+            // 
+            // grpHardwareInfo
+            // 
+            this.grpHardwareInfo.BackColor = System.Drawing.Color.Transparent;
+            this.grpHardwareInfo.Controls.Add(this.treeHardwareInfo);
+            this.grpHardwareInfo.Font = new System.Drawing.Font("Gadugi", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpHardwareInfo.ForeColor = System.Drawing.Color.White;
+            this.grpHardwareInfo.Location = new System.Drawing.Point(40, 18);
+            this.grpHardwareInfo.Name = "grpHardwareInfo";
+            this.grpHardwareInfo.Size = new System.Drawing.Size(548, 698);
+            this.grpHardwareInfo.TabIndex = 11;
+            this.grpHardwareInfo.TabStop = false;
+            this.grpHardwareInfo.Text = "Hardware Specs";
+            // 
             // treeHardwareInfo
             // 
             this.treeHardwareInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -340,165 +484,90 @@
             this.treeHardwareInfo.TabIndex = 7;
             this.ToolTipUDiagnose.SetToolTip(this.treeHardwareInfo, "Here is displayed all of the current hardware in your system.");
             // 
-            // pCPUCounter
+            // pgEventViewer
             // 
-            this.pCPUCounter.CategoryName = "Processor";
-            this.pCPUCounter.CounterName = "% Processor Time";
-            this.pCPUCounter.InstanceName = "_Total";
+            this.pgEventViewer.AutoHiddenSlideSize = new System.Drawing.Size(200, 200);
+            this.pgEventViewer.Controls.Add(this.groupBox3);
+            this.pgEventViewer.Flags = 65534;
+            this.pgEventViewer.LastVisibleSet = true;
+            this.pgEventViewer.MinimumSize = new System.Drawing.Size(50, 50);
+            this.pgEventViewer.Name = "pgEventViewer";
+            this.pgEventViewer.Size = new System.Drawing.Size(743, 680);
+            this.pgEventViewer.Text = "Event Viewer";
+            this.pgEventViewer.ToolTipTitle = "Page ToolTip";
+            this.pgEventViewer.UniqueName = "87E7C48B379749D5359899A8C66106D5";
             // 
-            // pRAMCounter
+            // groupBox3
             // 
-            this.pRAMCounter.CategoryName = "Memory";
-            this.pRAMCounter.CounterName = "% Committed Bytes In Use";
+            this.groupBox3.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox3.Controls.Add(this.dgEvents);
+            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox3.Font = new System.Drawing.Font("Gadugi", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox3.ForeColor = System.Drawing.Color.White;
+            this.groupBox3.Location = new System.Drawing.Point(0, 0);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(10, 3, 10, 10);
+            this.groupBox3.Size = new System.Drawing.Size(743, 680);
+            this.groupBox3.TabIndex = 1;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "System Events";
             // 
-            // timer1
+            // dgEvents
             // 
-            this.timer1.Interval = 1000;
+            this.dgEvents.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgEvents.BackgroundColor = System.Drawing.Color.Black;
+            this.dgEvents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgEvents.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Date,
+            this.EntryType,
+            this.Source,
+            this.InstanceID});
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Gadugi", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgEvents.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dgEvents.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgEvents.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.dgEvents.Location = new System.Drawing.Point(10, 31);
+            this.dgEvents.Name = "dgEvents";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Gadugi", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgEvents.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgEvents.Size = new System.Drawing.Size(723, 639);
+            this.dgEvents.TabIndex = 0;
             // 
-            // grpHardwareInfo
+            // Date
             // 
-            this.grpHardwareInfo.BackColor = System.Drawing.Color.Transparent;
-            this.grpHardwareInfo.Controls.Add(this.treeHardwareInfo);
-            this.grpHardwareInfo.Font = new System.Drawing.Font("Gadugi", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grpHardwareInfo.ForeColor = System.Drawing.Color.White;
-            this.grpHardwareInfo.Location = new System.Drawing.Point(25, 9);
-            this.grpHardwareInfo.Name = "grpHardwareInfo";
-            this.grpHardwareInfo.Size = new System.Drawing.Size(548, 698);
-            this.grpHardwareInfo.TabIndex = 10;
-            this.grpHardwareInfo.TabStop = false;
-            this.grpHardwareInfo.Text = "Hardware Specs";
+            this.Date.HeaderText = "Date";
+            this.Date.Name = "Date";
+            this.Date.ReadOnly = true;
             // 
-            // DriveandHardware
+            // EntryType
             // 
-            this.DriveandHardware.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.DriveandHardware.Bar.ItemOrientation = ComponentFactory.Krypton.Toolkit.ButtonOrientation.FixedTop;
-            this.DriveandHardware.Bar.ItemSizing = ComponentFactory.Krypton.Navigator.BarItemSizing.SameWidthAndHeight;
-            this.DriveandHardware.Bar.TabBorderStyle = ComponentFactory.Krypton.Toolkit.TabBorderStyle.OneNote;
-            this.DriveandHardware.Button.CloseButtonAction = ComponentFactory.Krypton.Navigator.CloseButtonAction.None;
-            this.DriveandHardware.Button.CloseButtonDisplay = ComponentFactory.Krypton.Navigator.ButtonDisplay.Hide;
-            this.DriveandHardware.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DriveandHardware.Group.GroupBackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.HeaderForm;
-            this.DriveandHardware.Group.GroupBorderStyle = ComponentFactory.Krypton.Toolkit.PaletteBorderStyle.HeaderPrimary;
-            this.DriveandHardware.Header.HeaderPositionBar = ComponentFactory.Krypton.Toolkit.VisualOrientation.Left;
-            this.DriveandHardware.Header.HeaderStyleBar = ComponentFactory.Krypton.Toolkit.HeaderStyle.Form;
-            this.DriveandHardware.Location = new System.Drawing.Point(0, 0);
-            this.DriveandHardware.Name = "DriveandHardware";
-            this.DriveandHardware.NavigatorMode = ComponentFactory.Krypton.Navigator.NavigatorMode.HeaderBarCheckButtonGroup;
-            this.DriveandHardware.PageBackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.PanelClient;
-            this.DriveandHardware.Pages.AddRange(new ComponentFactory.Krypton.Navigator.KryptonPage[] {
-            this.pgDrives,
-            this.pgHardwareInfo,
-            this.pgSystemLoad,
-            this.pgSystemTemp});
-            this.DriveandHardware.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue;
-            this.DriveandHardware.SelectedIndex = 0;
-            this.DriveandHardware.Size = new System.Drawing.Size(909, 715);
-            this.DriveandHardware.TabIndex = 12;
-            this.DriveandHardware.Text = "kryptonDockableNavigator1";
+            this.EntryType.HeaderText = "Entry Type";
+            this.EntryType.Name = "EntryType";
+            this.EntryType.ReadOnly = true;
             // 
-            // pgDrives
+            // Source
             // 
-            this.pgDrives.AutoHiddenSlideSize = new System.Drawing.Size(200, 200);
-            this.pgDrives.AutoScroll = true;
-            this.pgDrives.Controls.Add(this.grpFormatOptions);
-            this.pgDrives.Controls.Add(this.label2);
-            this.pgDrives.Controls.Add(this.groupBox1);
-            this.pgDrives.Flags = 65534;
-            this.pgDrives.LastVisibleSet = true;
-            this.pgDrives.MinimumSize = new System.Drawing.Size(50, 50);
-            this.pgDrives.Name = "pgDrives";
-            this.pgDrives.Size = new System.Drawing.Size(745, 713);
-            this.pgDrives.Text = "Drive Information";
-            this.pgDrives.ToolTipTitle = "Page ToolTip";
-            this.pgDrives.UniqueName = "0E0C8E0A832345B073A5BFCB901374AF";
+            this.Source.HeaderText = "Source";
+            this.Source.Name = "Source";
+            this.Source.ReadOnly = true;
             // 
-            // grpFormatOptions
+            // InstanceID
             // 
-            this.grpFormatOptions.CaptionEdge = ComponentFactory.Krypton.Toolkit.VisualOrientation.Bottom;
-            this.grpFormatOptions.CaptionOverlap = 0D;
-            this.grpFormatOptions.GroupBackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.HeaderPrimary;
-            this.grpFormatOptions.GroupBorderStyle = ComponentFactory.Krypton.Toolkit.PaletteBorderStyle.HeaderPrimary;
-            this.grpFormatOptions.Location = new System.Drawing.Point(12, 482);
-            this.grpFormatOptions.Name = "grpFormatOptions";
-            this.grpFormatOptions.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue;
-            // 
-            // grpFormatOptions.Panel
-            // 
-            this.grpFormatOptions.Panel.Controls.Add(this.label30);
-            this.grpFormatOptions.Panel.Controls.Add(this.btnFormatDrive);
-            this.grpFormatOptions.Panel.Controls.Add(this.btnFileWipe);
-            this.grpFormatOptions.Panel.Controls.Add(this.btnSecureWipe);
-            this.grpFormatOptions.Size = new System.Drawing.Size(327, 213);
-            this.grpFormatOptions.TabIndex = 12;
-            this.grpFormatOptions.Values.Heading = "Assess Drive Performance not yet available";
-            this.grpFormatOptions.Visible = false;
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.BackColor = System.Drawing.Color.Transparent;
-            this.label30.ForeColor = System.Drawing.Color.White;
-            this.label30.Location = new System.Drawing.Point(176, 85);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(141, 16);
-            this.label30.TabIndex = 12;
-            this.label30.Text = "Do NOT use on a SSD!";
-            // 
-            // btnFormatDrive
-            // 
-            this.btnFormatDrive.Location = new System.Drawing.Point(13, 27);
-            this.btnFormatDrive.Name = "btnFormatDrive";
-            this.btnFormatDrive.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue;
-            this.btnFormatDrive.Size = new System.Drawing.Size(155, 34);
-            this.btnFormatDrive.TabIndex = 9;
-            this.btnFormatDrive.Values.Text = "Format Drive";
-            this.btnFormatDrive.Click += new System.EventHandler(this.btnFormatDrive_Click);
-            // 
-            // btnFileWipe
-            // 
-            this.btnFileWipe.Location = new System.Drawing.Point(12, 125);
-            this.btnFileWipe.Name = "btnFileWipe";
-            this.btnFileWipe.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue;
-            this.btnFileWipe.Size = new System.Drawing.Size(156, 34);
-            this.btnFileWipe.TabIndex = 10;
-            this.btnFileWipe.Values.Text = "File Wipe";
-            this.btnFileWipe.Click += new System.EventHandler(this.btnFileWipe_Click);
-            // 
-            // btnSecureWipe
-            // 
-            this.btnSecureWipe.Location = new System.Drawing.Point(12, 76);
-            this.btnSecureWipe.Name = "btnSecureWipe";
-            this.btnSecureWipe.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue;
-            this.btnSecureWipe.Size = new System.Drawing.Size(156, 34);
-            this.btnSecureWipe.TabIndex = 11;
-            this.btnSecureWipe.Values.Text = "Secure Wipe";
-            this.btnSecureWipe.Click += new System.EventHandler(this.btnSecureWipe_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Gadugi", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(15, 47);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(523, 31);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "Please select a drive to view its information";
-            // 
-            // pgHardwareInfo
-            // 
-            this.pgHardwareInfo.AutoHiddenSlideSize = new System.Drawing.Size(200, 200);
-            this.pgHardwareInfo.AutoScroll = true;
-            this.pgHardwareInfo.Controls.Add(this.grpHardwareInfo);
-            this.pgHardwareInfo.Flags = 65534;
-            this.pgHardwareInfo.LastVisibleSet = true;
-            this.pgHardwareInfo.MinimumSize = new System.Drawing.Size(50, 50);
-            this.pgHardwareInfo.Name = "pgHardwareInfo";
-            this.pgHardwareInfo.Size = new System.Drawing.Size(745, 713);
-            this.pgHardwareInfo.Text = "Hardware Information";
-            this.pgHardwareInfo.ToolTipTitle = "Page ToolTip";
-            this.pgHardwareInfo.UniqueName = "0624E6BFA1794EE8C288E0B74C38C0B1";
+            this.InstanceID.HeaderText = "InstanceID";
+            this.InstanceID.Name = "InstanceID";
+            this.InstanceID.ReadOnly = true;
             // 
             // pgSystemLoad
             // 
@@ -517,6 +586,7 @@
             // kryptonDockableNavigator1
             // 
             this.kryptonDockableNavigator1.Bar.ItemSizing = ComponentFactory.Krypton.Navigator.BarItemSizing.SameWidthAndHeight;
+            this.kryptonDockableNavigator1.Button.ButtonDisplayLogic = ComponentFactory.Krypton.Navigator.ButtonDisplayLogic.None;
             this.kryptonDockableNavigator1.Button.CloseButtonAction = ComponentFactory.Krypton.Navigator.CloseButtonAction.None;
             this.kryptonDockableNavigator1.Button.CloseButtonDisplay = ComponentFactory.Krypton.Navigator.ButtonDisplay.Hide;
             this.kryptonDockableNavigator1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -531,7 +601,7 @@
             this.pgCPU,
             this.pgGPU});
             this.kryptonDockableNavigator1.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue;
-            this.kryptonDockableNavigator1.SelectedIndex = 1;
+            this.kryptonDockableNavigator1.SelectedIndex = 0;
             this.kryptonDockableNavigator1.Size = new System.Drawing.Size(745, 713);
             this.kryptonDockableNavigator1.TabIndex = 9;
             this.kryptonDockableNavigator1.Text = "kryptonDockableNavigator1";
@@ -1169,6 +1239,7 @@
             // pgGPU
             // 
             this.pgGPU.AutoHiddenSlideSize = new System.Drawing.Size(200, 200);
+            this.pgGPU.Controls.Add(this.chartGPU);
             this.pgGPU.Flags = 65534;
             this.pgGPU.LastVisibleSet = true;
             this.pgGPU.MinimumSize = new System.Drawing.Size(50, 50);
@@ -1178,10 +1249,76 @@
             this.pgGPU.ToolTipTitle = "Page ToolTip";
             this.pgGPU.UniqueName = "F28124FC65A8430BDB934FF2B49CD80E";
             // 
+            // chartGPU
+            // 
+            this.chartGPU.BackColor = System.Drawing.Color.Transparent;
+            this.chartGPU.BorderSkin.BackColor = System.Drawing.Color.White;
+            chartArea3.AxisX.IsLabelAutoFit = false;
+            chartArea3.AxisX.LabelStyle.Font = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea3.AxisX.LabelStyle.ForeColor = System.Drawing.Color.White;
+            chartArea3.AxisX.LineColor = System.Drawing.Color.White;
+            chartArea3.AxisX.MajorGrid.LineColor = System.Drawing.Color.White;
+            chartArea3.AxisX.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dot;
+            chartArea3.AxisX.MajorTickMark.LineColor = System.Drawing.Color.White;
+            chartArea3.AxisX.MinorGrid.LineColor = System.Drawing.Color.White;
+            chartArea3.AxisX.Title = "Time in Seconds";
+            chartArea3.AxisX.TitleFont = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea3.AxisX.TitleForeColor = System.Drawing.Color.White;
+            chartArea3.AxisX2.LineColor = System.Drawing.Color.White;
+            chartArea3.AxisY.IsLabelAutoFit = false;
+            chartArea3.AxisY.LabelStyle.Font = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea3.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White;
+            chartArea3.AxisY.LineColor = System.Drawing.Color.White;
+            chartArea3.AxisY.MajorGrid.LineColor = System.Drawing.Color.White;
+            chartArea3.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dot;
+            chartArea3.AxisY.MajorTickMark.LineColor = System.Drawing.Color.White;
+            chartArea3.AxisY.MinorGrid.LineColor = System.Drawing.Color.White;
+            chartArea3.AxisY.Title = "System Utilization %";
+            chartArea3.AxisY.TitleFont = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea3.AxisY.TitleForeColor = System.Drawing.Color.White;
+            chartArea3.AxisY2.LineColor = System.Drawing.Color.White;
+            chartArea3.BackColor = System.Drawing.Color.Transparent;
+            chartArea3.BorderColor = System.Drawing.Color.White;
+            chartArea3.Name = "CPUArea";
+            chartArea3.ShadowColor = System.Drawing.Color.White;
+            this.chartGPU.ChartAreas.Add(chartArea3);
+            legend3.Font = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            legend3.IsTextAutoFit = false;
+            legend3.Name = "Legend1";
+            legend3.TitleFont = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chartGPU.Legends.Add(legend3);
+            this.chartGPU.Location = new System.Drawing.Point(4, 24);
+            this.chartGPU.Name = "chartGPU";
+            this.chartGPU.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
+            this.chartGPU.PaletteCustomColors = new System.Drawing.Color[] {
+        System.Drawing.Color.Aqua,
+        System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255))))),
+        System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128))))),
+        System.Drawing.Color.LawnGreen};
+            series6.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.TopBottom;
+            series6.ChartArea = "CPUArea";
+            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Area;
+            series6.EmptyPointStyle.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.TopBottom;
+            series6.Font = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            series6.LabelBackColor = System.Drawing.Color.Transparent;
+            series6.LabelBorderColor = System.Drawing.Color.Transparent;
+            series6.LabelForeColor = System.Drawing.Color.White;
+            series6.Legend = "Legend1";
+            series6.Name = "GPU";
+            series6.ShadowColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.chartGPU.Series.Add(series6);
+            this.chartGPU.Size = new System.Drawing.Size(737, 406);
+            this.chartGPU.TabIndex = 10;
+            this.chartGPU.Text = "CPU Utilization";
+            title3.ForeColor = System.Drawing.Color.White;
+            title3.Name = "CPU Utilization";
+            this.chartGPU.Titles.Add(title3);
+            // 
             // pgSystemTemp
             // 
             this.pgSystemTemp.AutoHiddenSlideSize = new System.Drawing.Size(200, 200);
             this.pgSystemTemp.AutoScroll = true;
+            this.pgSystemTemp.Controls.Add(this.label30);
             this.pgSystemTemp.Controls.Add(this.label4);
             this.pgSystemTemp.Controls.Add(this.progMoboTemp);
             this.pgSystemTemp.Controls.Add(this.label5);
@@ -1367,28 +1504,7 @@
             // 
             // kryptonRibbonTab5
             // 
-            this.kryptonRibbonTab5.Groups.AddRange(new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroup[] {
-            this.kryptonRibbonGroup6});
             this.kryptonRibbonTab5.Text = "View";
-            // 
-            // kryptonRibbonGroup6
-            // 
-            this.kryptonRibbonGroup6.Items.AddRange(new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupContainer[] {
-            this.kryptonRibbonGroupTriple3});
-            this.kryptonRibbonGroup6.TextLine1 = "Drive Information";
-            // 
-            // kryptonRibbonGroupTriple3
-            // 
-            this.kryptonRibbonGroupTriple3.Items.AddRange(new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupItem[] {
-            this.btnViewFormat});
-            // 
-            // btnViewFormat
-            // 
-            this.btnViewFormat.ImageLarge = global::UDiagnose.Properties.Resources.Format;
-            this.btnViewFormat.ImageSmall = global::UDiagnose.Properties.Resources.Format;
-            this.btnViewFormat.TextLine1 = "Format";
-            this.btnViewFormat.TextLine2 = "Options";
-            this.btnViewFormat.Click += new System.EventHandler(this.btnViewOptions);
             // 
             // kryptonRibbonTab2
             // 
@@ -1557,39 +1673,39 @@
             // 
             this.chart1.BackColor = System.Drawing.Color.Transparent;
             this.chart1.BorderSkin.BackColor = System.Drawing.Color.White;
-            chartArea3.AxisX.IsLabelAutoFit = false;
-            chartArea3.AxisX.LabelStyle.Font = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea3.AxisX.LabelStyle.ForeColor = System.Drawing.Color.White;
-            chartArea3.AxisX.LineColor = System.Drawing.Color.White;
-            chartArea3.AxisX.MajorGrid.LineColor = System.Drawing.Color.White;
-            chartArea3.AxisX.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dot;
-            chartArea3.AxisX.MajorTickMark.LineColor = System.Drawing.Color.White;
-            chartArea3.AxisX.MinorGrid.LineColor = System.Drawing.Color.White;
-            chartArea3.AxisX.Title = "Time in Seconds";
-            chartArea3.AxisX.TitleFont = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea3.AxisX.TitleForeColor = System.Drawing.Color.White;
-            chartArea3.AxisX2.LineColor = System.Drawing.Color.White;
-            chartArea3.AxisY.IsLabelAutoFit = false;
-            chartArea3.AxisY.LabelStyle.Font = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea3.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White;
-            chartArea3.AxisY.LineColor = System.Drawing.Color.White;
-            chartArea3.AxisY.MajorGrid.LineColor = System.Drawing.Color.White;
-            chartArea3.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dot;
-            chartArea3.AxisY.MajorTickMark.LineColor = System.Drawing.Color.White;
-            chartArea3.AxisY.MinorGrid.LineColor = System.Drawing.Color.White;
-            chartArea3.AxisY.Title = "System Utilization";
-            chartArea3.AxisY.TitleFont = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea3.AxisY.TitleForeColor = System.Drawing.Color.White;
-            chartArea3.AxisY2.LineColor = System.Drawing.Color.White;
-            chartArea3.BackColor = System.Drawing.Color.Transparent;
-            chartArea3.BorderColor = System.Drawing.Color.White;
-            chartArea3.Name = "ChartArea1";
-            chartArea3.ShadowColor = System.Drawing.Color.White;
-            this.chart1.ChartAreas.Add(chartArea3);
-            legend3.Font = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            legend3.IsTextAutoFit = false;
-            legend3.Name = "Legend1";
-            this.chart1.Legends.Add(legend3);
+            chartArea4.AxisX.IsLabelAutoFit = false;
+            chartArea4.AxisX.LabelStyle.Font = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea4.AxisX.LabelStyle.ForeColor = System.Drawing.Color.White;
+            chartArea4.AxisX.LineColor = System.Drawing.Color.White;
+            chartArea4.AxisX.MajorGrid.LineColor = System.Drawing.Color.White;
+            chartArea4.AxisX.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dot;
+            chartArea4.AxisX.MajorTickMark.LineColor = System.Drawing.Color.White;
+            chartArea4.AxisX.MinorGrid.LineColor = System.Drawing.Color.White;
+            chartArea4.AxisX.Title = "Time in Seconds";
+            chartArea4.AxisX.TitleFont = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea4.AxisX.TitleForeColor = System.Drawing.Color.White;
+            chartArea4.AxisX2.LineColor = System.Drawing.Color.White;
+            chartArea4.AxisY.IsLabelAutoFit = false;
+            chartArea4.AxisY.LabelStyle.Font = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea4.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White;
+            chartArea4.AxisY.LineColor = System.Drawing.Color.White;
+            chartArea4.AxisY.MajorGrid.LineColor = System.Drawing.Color.White;
+            chartArea4.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dot;
+            chartArea4.AxisY.MajorTickMark.LineColor = System.Drawing.Color.White;
+            chartArea4.AxisY.MinorGrid.LineColor = System.Drawing.Color.White;
+            chartArea4.AxisY.Title = "System Utilization";
+            chartArea4.AxisY.TitleFont = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea4.AxisY.TitleForeColor = System.Drawing.Color.White;
+            chartArea4.AxisY2.LineColor = System.Drawing.Color.White;
+            chartArea4.BackColor = System.Drawing.Color.Transparent;
+            chartArea4.BorderColor = System.Drawing.Color.White;
+            chartArea4.Name = "ChartArea1";
+            chartArea4.ShadowColor = System.Drawing.Color.White;
+            this.chart1.ChartAreas.Add(chartArea4);
+            legend4.Font = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            legend4.IsTextAutoFit = false;
+            legend4.Name = "Legend1";
+            this.chart1.Legends.Add(legend4);
             this.chart1.Location = new System.Drawing.Point(10, 138);
             this.chart1.Name = "chart1";
             this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
@@ -1598,37 +1714,37 @@
         System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255))))),
         System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128))))),
         System.Drawing.Color.LawnGreen};
-            series6.ChartArea = "ChartArea1";
-            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series6.EmptyPointStyle.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.TopBottom;
-            series6.Font = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            series6.LabelBackColor = System.Drawing.Color.Transparent;
-            series6.LabelBorderColor = System.Drawing.Color.Transparent;
-            series6.LabelForeColor = System.Drawing.Color.White;
-            series6.Legend = "Legend1";
-            series6.Name = "CPU";
             series7.ChartArea = "ChartArea1";
             series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series7.EmptyPointStyle.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.TopBottom;
             series7.Font = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            series7.LabelBackColor = System.Drawing.Color.Transparent;
+            series7.LabelBorderColor = System.Drawing.Color.Transparent;
+            series7.LabelForeColor = System.Drawing.Color.White;
             series7.Legend = "Legend1";
-            series7.Name = "RAM";
+            series7.Name = "CPU";
             series8.ChartArea = "ChartArea1";
             series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series8.Font = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             series8.Legend = "Legend1";
-            series8.Name = "Drive";
+            series8.Name = "RAM";
             series9.ChartArea = "ChartArea1";
             series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             series9.Legend = "Legend1";
-            series9.Name = "GPU";
-            this.chart1.Series.Add(series6);
+            series9.Name = "Drive";
+            series10.ChartArea = "ChartArea1";
+            series10.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series10.Legend = "Legend1";
+            series10.Name = "GPU";
             this.chart1.Series.Add(series7);
             this.chart1.Series.Add(series8);
             this.chart1.Series.Add(series9);
+            this.chart1.Series.Add(series10);
             this.chart1.Size = new System.Drawing.Size(684, 276);
             this.chart1.TabIndex = 8;
-            title3.ForeColor = System.Drawing.Color.White;
-            title3.Name = "System Loads";
-            this.chart1.Titles.Add(title3);
+            title4.ForeColor = System.Drawing.Color.White;
+            title4.Name = "System Loads";
+            this.chart1.Titles.Add(title4);
             // 
             // label27
             // 
@@ -1783,6 +1899,18 @@
             this.label1.Size = new System.Drawing.Size(92, 19);
             this.label1.TabIndex = 22;
             // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.BackColor = System.Drawing.Color.Transparent;
+            this.label30.Font = new System.Drawing.Font("Gadugi", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label30.ForeColor = System.Drawing.Color.White;
+            this.label30.Location = new System.Drawing.Point(234, 343);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(211, 31);
+            this.label30.TabIndex = 32;
+            this.label30.Text = "In Development!";
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -1807,19 +1935,22 @@
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pCPUCounter)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pRAMCounter)).EndInit();
-            this.grpHardwareInfo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DriveandHardware)).EndInit();
             this.DriveandHardware.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pgDrives)).EndInit();
             this.pgDrives.ResumeLayout(false);
             this.pgDrives.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.grpFormatOptions.Panel)).EndInit();
-            this.grpFormatOptions.Panel.ResumeLayout(false);
-            this.grpFormatOptions.Panel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.grpFormatOptions)).EndInit();
-            this.grpFormatOptions.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pgHardwareInfo)).EndInit();
             this.pgHardwareInfo.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonDockableNavigator2)).EndInit();
+            this.kryptonDockableNavigator2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pgHardware)).EndInit();
+            this.pgHardware.ResumeLayout(false);
+            this.grpHardwareInfo.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pgEventViewer)).EndInit();
+            this.pgEventViewer.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgEvents)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pgSystemLoad)).EndInit();
             this.pgSystemLoad.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonDockableNavigator1)).EndInit();
@@ -1834,6 +1965,8 @@
             this.pgCPU.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartCPU)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pgGPU)).EndInit();
+            this.pgGPU.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chartGPU)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pgSystemTemp)).EndInit();
             this.pgSystemTemp.ResumeLayout(false);
             this.pgSystemTemp.PerformLayout();
@@ -1849,12 +1982,10 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label lblDriveInfo;
         private System.Windows.Forms.Label lblDriveList;
-        public System.Windows.Forms.TreeView treeHardwareInfo;
         private System.Diagnostics.PerformanceCounter pCPUCounter;
         private System.Diagnostics.PerformanceCounter pRAMCounter;
         public System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
-        private System.Windows.Forms.GroupBox grpHardwareInfo;
         public System.Windows.Forms.Timer timer1;
         private ComponentFactory.Krypton.Docking.KryptonDockableNavigator DriveandHardware;
         private ComponentFactory.Krypton.Navigator.KryptonPage pgDrives;
@@ -1889,11 +2020,7 @@
         private ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton btnAbout;
         private ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton btnLicense;
         private ComponentFactory.Krypton.Navigator.KryptonPage pgSystemLoad;
-        private ComponentFactory.Krypton.Toolkit.KryptonButton btnSecureWipe;
-        private ComponentFactory.Krypton.Toolkit.KryptonButton btnFileWipe;
-        private ComponentFactory.Krypton.Toolkit.KryptonButton btnFormatDrive;
         private System.Windows.Forms.ToolTip ToolTipUDiagnose;
-        private ComponentFactory.Krypton.Toolkit.KryptonGroupBox grpFormatOptions;
         private ComponentFactory.Krypton.Navigator.KryptonPage pgSystemTemp;
         private System.Windows.Forms.Label lblGPUTemp;
         private System.Windows.Forms.Label lblCPUTemp;
@@ -1906,7 +2033,6 @@
         private MetroFramework.Controls.MetroProgressSpinner progMoboTemp;
         private System.Windows.Forms.Label label5;
         private ComponentFactory.Krypton.Navigator.KryptonPage pgHardwareInfo;
-        private ComponentFactory.Krypton.Toolkit.KryptonPalette kryptonPalette1;
         private ComponentFactory.Krypton.Docking.KryptonDockableNavigator kryptonDockableNavigator1;
         private ComponentFactory.Krypton.Navigator.KryptonPage pgOverview;
         private System.Windows.Forms.GroupBox groupBox2;
@@ -1974,10 +2100,19 @@
         public System.Windows.Forms.RichTextBox rtbDriveInfo;
         public System.Windows.Forms.ProgressBar progHardDrive;
         public System.Windows.Forms.Label lblDrivePercentage;
-        private ComponentFactory.Krypton.Ribbon.KryptonRibbonGroup kryptonRibbonGroup6;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartGPU;
+        private ComponentFactory.Krypton.Docking.KryptonDockableNavigator kryptonDockableNavigator2;
+        private ComponentFactory.Krypton.Navigator.KryptonPage pgHardware;
+        private System.Windows.Forms.GroupBox grpHardwareInfo;
+        public System.Windows.Forms.TreeView treeHardwareInfo;
+        private ComponentFactory.Krypton.Navigator.KryptonPage pgEventViewer;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Date;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EntryType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Source;
+        private System.Windows.Forms.DataGridViewTextBoxColumn InstanceID;
+        public System.Windows.Forms.DataGridView dgEvents;
         private System.Windows.Forms.Label label30;
-        private ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupTriple kryptonRibbonGroupTriple3;
-        private ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton btnViewFormat;
     }
 }
 
