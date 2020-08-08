@@ -64,8 +64,8 @@ namespace UDiagnose
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //CPU Information ------------------------------------------------------------
         //Retrieves processorID
-        static ManagementClass mcCpu = new ManagementClass("win32_processor");
-        ManagementObjectCollection mocCpu = mcCpu.GetInstances();
+        readonly static ManagementClass mcCpu = new ManagementClass("win32_processor");
+        readonly ManagementObjectCollection mocCpu = mcCpu.GetInstances();
 
         protected String GetProcessorId()
         {
@@ -236,13 +236,13 @@ namespace UDiagnose
         //RAM Information---------------------------------------------------------------------------
         //Gets the physical memory amount installed into the computer
 
-        static ManagementClass mcRAM = new ManagementClass("Win32_PhysicalMemory");
-        ManagementObjectCollection mocRAM = mcRAM.GetInstances();
+        readonly static ManagementClass mcRAM = new ManagementClass("Win32_PhysicalMemory");
+        readonly ManagementObjectCollection mocRAM = mcRAM.GetInstances();
         protected long GetPhysicalMemory()
         {
             
             long MemSize = 0;
-            long mCap = 0;
+            long mCap;
 
             // In case more than one Memory sticks are installed
             foreach (ManagementObject mo in mocRAM)
@@ -303,8 +303,8 @@ namespace UDiagnose
         #region Motherboard Information
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //Motherboard Information
-        static ManagementClass mcMobo = new ManagementClass("win32_BaseBoard");
-        ManagementObjectCollection mocMobo = mcMobo.GetInstances();
+        readonly static ManagementClass mcMobo = new ManagementClass("win32_BaseBoard");
+        readonly ManagementObjectCollection mocMobo = mcMobo.GetInstances();
         //Mobo Maker
         protected string GetBoardMaker()
         {
@@ -354,8 +354,8 @@ namespace UDiagnose
         #region BIOS Information
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////
         //Bios Information
-        static ManagementClass mcBIOS = new ManagementClass("Win32_BIOS");
-        ManagementObjectCollection mocBIOS = mcBIOS.GetInstances();
+        readonly static ManagementClass mcBIOS = new ManagementClass("Win32_BIOS");
+        readonly ManagementObjectCollection mocBIOS = mcBIOS.GetInstances();
         //Retrieves BIOS Maker
         protected string GetBIOSmaker()
         {
@@ -409,8 +409,8 @@ namespace UDiagnose
         #region GPU Information
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //GPU Information
-        static ManagementClass mcGPU = new ManagementClass("Win32_VideoController");
-        ManagementObjectCollection mocGPU = mcGPU.GetInstances();
+        readonly static ManagementClass mcGPU = new ManagementClass("Win32_VideoController");
+        readonly ManagementObjectCollection mocGPU = mcGPU.GetInstances();
         //In process of being worked on
 
         protected string GetGPUInformation() //Gets the processor information
@@ -459,7 +459,6 @@ namespace UDiagnose
         protected string GetDriverDate()
         {
             string driverDate = "";
-            DateTime date = System.DateTime.Now;
             ManagementObjectSearcher gpuDriver = new ManagementObjectSearcher("select * from Win32_VideoController");
 
             foreach (ManagementObject obj in gpuDriver.Get())
@@ -467,7 +466,7 @@ namespace UDiagnose
                 driverDate = (obj.Properties["DriverDate"].Value.ToString());
             }
 
-            int pos = 0;
+            int pos;
             pos = driverDate.IndexOf(".");
             driverDate = driverDate.Substring(0, pos);
             driverDate = driverDate.Remove(8, 6);

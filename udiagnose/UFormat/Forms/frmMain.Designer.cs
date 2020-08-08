@@ -140,6 +140,7 @@
             this.pgGPU = new ComponentFactory.Krypton.Navigator.KryptonPage();
             this.chartGPU = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.pgSystemTemp = new ComponentFactory.Krypton.Navigator.KryptonPage();
+            this.label30 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.progMoboTemp = new MetroFramework.Controls.MetroProgressSpinner();
             this.label5 = new System.Windows.Forms.Label();
@@ -200,7 +201,6 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.label30 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pCPUCounter)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pRAMCounter)).BeginInit();
@@ -366,8 +366,8 @@
             this.pgSystemLoad,
             this.pgSystemTemp});
             this.DriveandHardware.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue;
-            this.DriveandHardware.SelectedIndex = 0;
-            this.DriveandHardware.Size = new System.Drawing.Size(909, 715);
+            this.DriveandHardware.SelectedIndex = 1;
+            this.DriveandHardware.Size = new System.Drawing.Size(909, 766);
             this.DriveandHardware.StateNormal.BorderEdge.Color1 = System.Drawing.Color.Transparent;
             this.DriveandHardware.TabIndex = 12;
             this.DriveandHardware.Text = "kryptonDockableNavigator1";
@@ -409,7 +409,7 @@
             this.pgHardwareInfo.LastVisibleSet = true;
             this.pgHardwareInfo.MinimumSize = new System.Drawing.Size(50, 50);
             this.pgHardwareInfo.Name = "pgHardwareInfo";
-            this.pgHardwareInfo.Size = new System.Drawing.Size(745, 713);
+            this.pgHardwareInfo.Size = new System.Drawing.Size(745, 764);
             this.pgHardwareInfo.Text = "Hardware Information";
             this.pgHardwareInfo.ToolTipTitle = "Page ToolTip";
             this.pgHardwareInfo.UniqueName = "0624E6BFA1794EE8C288E0B74C38C0B1";
@@ -425,8 +425,8 @@
             this.pgHardware,
             this.pgEventViewer});
             this.kryptonDockableNavigator2.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue;
-            this.kryptonDockableNavigator2.SelectedIndex = 0;
-            this.kryptonDockableNavigator2.Size = new System.Drawing.Size(745, 713);
+            this.kryptonDockableNavigator2.SelectedIndex = 1;
+            this.kryptonDockableNavigator2.Size = new System.Drawing.Size(745, 764);
             this.kryptonDockableNavigator2.TabIndex = 0;
             this.kryptonDockableNavigator2.Text = "kryptonDockableNavigator2";
             // 
@@ -438,7 +438,7 @@
             this.pgHardware.LastVisibleSet = true;
             this.pgHardware.MinimumSize = new System.Drawing.Size(50, 50);
             this.pgHardware.Name = "pgHardware";
-            this.pgHardware.Size = new System.Drawing.Size(743, 680);
+            this.pgHardware.Size = new System.Drawing.Size(743, 731);
             this.pgHardware.Text = "Hardware Specs";
             this.pgHardware.ToolTipTitle = "Page ToolTip";
             this.pgHardware.UniqueName = "B791085C5C7B43766AA5F1F3A3127147";
@@ -492,7 +492,7 @@
             this.pgEventViewer.LastVisibleSet = true;
             this.pgEventViewer.MinimumSize = new System.Drawing.Size(50, 50);
             this.pgEventViewer.Name = "pgEventViewer";
-            this.pgEventViewer.Size = new System.Drawing.Size(743, 680);
+            this.pgEventViewer.Size = new System.Drawing.Size(743, 731);
             this.pgEventViewer.Text = "Event Viewer";
             this.pgEventViewer.ToolTipTitle = "Page ToolTip";
             this.pgEventViewer.UniqueName = "87E7C48B379749D5359899A8C66106D5";
@@ -507,7 +507,7 @@
             this.groupBox3.Location = new System.Drawing.Point(0, 0);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(10, 3, 10, 10);
-            this.groupBox3.Size = new System.Drawing.Size(743, 680);
+            this.groupBox3.Size = new System.Drawing.Size(743, 731);
             this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "System Events";
@@ -542,7 +542,7 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgEvents.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgEvents.Size = new System.Drawing.Size(723, 639);
+            this.dgEvents.Size = new System.Drawing.Size(723, 690);
             this.dgEvents.TabIndex = 0;
             // 
             // Date
@@ -1337,6 +1337,18 @@
             this.pgSystemTemp.ToolTipTitle = "Page ToolTip";
             this.pgSystemTemp.UniqueName = "9CAC71B5A8DD4B3D24B75C4949832D73";
             // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.BackColor = System.Drawing.Color.Transparent;
+            this.label30.Font = new System.Drawing.Font("Gadugi", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label30.ForeColor = System.Drawing.Color.White;
+            this.label30.Location = new System.Drawing.Point(234, 343);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(211, 31);
+            this.label30.TabIndex = 32;
+            this.label30.Text = "In Development!";
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -1465,6 +1477,7 @@
             this.kryptonRibbonTab5,
             this.kryptonRibbonTab2,
             this.kryptonRibbonTab3});
+            this.uDiagnoseRibbon.SelectedContext = null;
             this.uDiagnoseRibbon.SelectedTab = this.kryptonRibbonTab1;
             this.uDiagnoseRibbon.Size = new System.Drawing.Size(909, 115);
             this.uDiagnoseRibbon.TabIndex = 15;
@@ -1648,7 +1661,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 162);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(909, 715);
+            this.panel1.Size = new System.Drawing.Size(909, 766);
             this.panel1.TabIndex = 16;
             // 
             // label29
@@ -1899,25 +1912,13 @@
             this.label1.Size = new System.Drawing.Size(92, 19);
             this.label1.TabIndex = 22;
             // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.BackColor = System.Drawing.Color.Transparent;
-            this.label30.Font = new System.Drawing.Font("Gadugi", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label30.ForeColor = System.Drawing.Color.White;
-            this.label30.Location = new System.Drawing.Point(234, 343);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(211, 31);
-            this.label30.TabIndex = 32;
-            this.label30.Text = "In Development!";
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(909, 877);
+            this.ClientSize = new System.Drawing.Size(909, 928);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnGetDriveInfo);
             this.Controls.Add(this.uDiagnoseRibbon);

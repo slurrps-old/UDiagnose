@@ -42,8 +42,7 @@ namespace UDiagnose
         //-------------------------------------------------------------------------------------------------
         //Initialize the appropriate classes
         readonly Hardware hwInfo = new Hardware(); //Hardware info class called
-        readonly CPUTemp CPUTemperature = new CPUTemp(); //CPU class
-        FormatClass format = new FormatClass(); //format class called
+        //readonly CPUTemp CPUTemperature = new CPUTemp(); //CPU class
         readonly DriveInfoClass driveInformation = new DriveInfoClass();//drive information class
         readonly SaveHWInfo saveHW = new SaveHWInfo();
         readonly ErrorCodeForm form = new ErrorCodeForm();
@@ -79,6 +78,7 @@ namespace UDiagnose
         //This is the load section that loads in the default values and code when launching the program.
         private void Form1_Load(object sender, EventArgs e)
         {
+
             //Call the FillTreeView function
             //It will load the treeview with all of the information queried in the splash screen.
             hwInfo.FillTreeView(this);
@@ -93,6 +93,7 @@ namespace UDiagnose
             chartCPURAM.ChartAreas[0].AxisY.Maximum = 100;
             chartCPU.ChartAreas[0].AxisY.Maximum = 100;
 
+            //-------
             //Get the instances from the hardware for GPU
             Instances = hwInfo.GetInstances();
             //Set the array of performance counters to equal the length of the instances
@@ -102,9 +103,12 @@ namespace UDiagnose
             {
                 pGPU[i] = new PerformanceCounter("GPU Engine", "Utilization Percentage", Instances[i]);
             }
+            //-------
 
             //Load Events for system Event View
             Events.LoadInfo(this);
+
+            
 
         }//End Form Load
         #endregion      
@@ -145,7 +149,15 @@ namespace UDiagnose
             //Add all of the instances together to get utilization
             for (int i = 0; i < Instances.Length; i++)
             {
-                fGPU = fGPU + pGPU[i].NextValue();
+                try
+                {
+                    fGPU += pGPU[i].NextValue();
+                }
+                catch
+                {
+
+                }
+                
 
             }
 
@@ -375,7 +387,7 @@ namespace UDiagnose
             //Stop the timer
             systemLoadTimer.Stop();
             //Show the errorCodeForm
-            form.Show();
+            form.ShowDialog();
         }//End errorCodeDescriptionsToolStripMenuItem_Click
 
         //Go to specific websites
@@ -386,25 +398,24 @@ namespace UDiagnose
             //website via the default web browser
             if(cmbWebsites.Text == "Stack Overflow")
             {
-                cmbWebsites.Text = null;
                 Website = System.Diagnostics.Process.Start("https://stackoverflow.com/");
 
                 Website.Close();
             }
             else if(cmbWebsites.Text == "Code Project")
             {
-                cmbWebsites.Text = null;
                 Website = System.Diagnostics.Process.Start("https://codeproject.com/");
 
                 Website.Close();
             }
             else if(cmbWebsites.Text == "Toms Hardware")
             {
-                cmbWebsites.Text = null;
                 Website = System.Diagnostics.Process.Start("https://www.tomshardware.com/");
 
                 Website.Close();
             }
+
+            cmbWebsites.Text = null;
         }//End btnGo_Click
 
         //About form show
