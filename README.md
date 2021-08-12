@@ -1,4 +1,5 @@
-# UDiagnose
+# OLD VERSION #
+# UDiagnose #
 A diagnostic tool for windows based computers
 
 UDiagnose is a diagnostic tool that can pull up a computers hardware information, temperature information as well as its drive information for all drives that are connected. This gives the user access to see what kind of hardware they are using in the system or by what manufacturer. It also gives a detailed look at the bios revision and driver information on the components in the system. Another feature that is in this program is the live hardware monitoring It can monitor a variety of things including CPU and GPU temp as well as load percentage for RAM and CPU.
